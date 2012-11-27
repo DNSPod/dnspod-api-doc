@@ -1,0 +1,3667 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DNSPod用户API文档 &mdash; DNSPod API 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="DNSPod API 1.0.0 documentation" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="#">DNSPod API 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="dnspodapi">
+<h1>DNSPod用户API文档<a class="headerlink" href="#dnspodapi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="api">
+<h2>API开发规范<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>关于滥用：</dt>
+<dd><dl class="first last docutils">
+<dt>以下这些，但并不限于以下这些行为都被视为滥用：</dt>
+<dd><ol class="first last loweralpha simple">
+<li>短时间内大量添加、删除、修改、刷新域名或者记录，或者设置记录状态。</li>
+<li>记录内容没有任何改变的刷新，比如动态DNS中IP没变也请求修改记录。</li>
+<li>其它没有提到的，但会给系统带来压力的请求行为。</li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>禁止登录：</dt>
+<dd><p class="first last">如果账号尝试登录错误次数在5分钟内超过30次则会被禁止登录一个小时，写程序的时候特别是动态客户端的时候必须判断是否登录成功，如果不成功必须马上停止尝试。如果使用动态客户端，在网页上修改了密码后务必到客户端修改，否则将不可用。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>关于封禁：</dt>
+<dd><p class="first last">由于滥用API将会导致账号在API中封禁，但并不影响在官方网站上的使用，封禁一定的时间后会自动解除，一般需要一个小时后才会解封，所以请小心操作，不要拿API进行大量测试。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>请求地址：</dt>
+<dd><p class="first last">请求的地址为 <a class="reference external" href="https://dnsapi.cn/">https://dnsapi.cn/</a> 开头的地址，基于SSL安全传输。为了安全必须用https开头的地址，否则将有可能被封禁。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>请求方法：</dt>
+<dd><p class="first last">只支持POST方法请求数据，用其它方法会提示相关错误。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>关于编码：</dt>
+<dd><p class="first last">请用UTF-8编码进行数据传输，返回的数据也是UTF-8编码的。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>关于UserAgent：</dt>
+<dd><p class="first last">请求的时候必须设置UserAgent，如果不设置或者设置为不合法的（比如设置为浏览器的）也会导致账号被封禁API。
+UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
+比如：MJJ DDNS Client/1.0.0 (<a class="reference external" href="mailto:shallwedance&#37;&#52;&#48;126&#46;com">shallwedance<span>&#64;</span>126<span>&#46;</span>com</a>)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>关于安全：</dt>
+<dd><p class="first last">用户需要输入用户邮箱和密码才能进行下一步的操作，如果需要在客户端上或数据库中保存用户的信息，必须加密后保存，不得明文保存在文件中。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>技术支持：</dt>
+<dd><p class="first last">请登录论坛 <a class="reference external" href="http://discussdns.com/forum-45-1.html">http://discussdns.com/forum-45-1.html</a> 提问。</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h2>最近更新<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>2012-07-27</dt>
+<dd><ul class="first last simple">
+<li>增加D令牌验证相关的说明</li>
+</ul>
+</dd>
+<dt>2012-05-07</dt>
+<dd><ul class="first last simple">
+<li>获取记录列表接口增加按子域名(sub_domain)获取记录</li>
+<li>增加Domain.Info接口</li>
+<li>增加Record.Info接口</li>
+</ul>
+</dd>
+<dt>2012-03-22</dt>
+<dd><ul class="first last simple">
+<li>增加设置域名搜索引擎推送接口</li>
+<li>增加设置域名启用国内URL转发接口</li>
+</ul>
+</dd>
+<dt>2012-03-14</dt>
+<dd><ul class="first last simple">
+<li>User.Detail接口增加了nick 返回，意为用户称呼</li>
+<li>User.Modify接口增加了 nick 参数，意为用户称呼</li>
+</ul>
+</dd>
+<dt>2012-03-09</dt>
+<dd><ul class="first last simple">
+<li>添加和修改宕机监控接口增加了 less_notice 参数</li>
+<li>获取警告信息接口增加了 switch_log 返回</li>
+</ul>
+</dd>
+<dt>2012-02-24</dt>
+<dd><ul class="first last simple">
+<li>增加了宕机监控相关的API</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h2>公共参数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>所有的接口都需要这些参数，在此统一说明，下面的接口将不再列出。这些参数必须和接口参数一起提交。</dt>
+<dd><ul class="first last simple">
+<li>login_email 用户帐号，必选</li>
+<li>login_password 用户密码，必选</li>
+<li>format {json,xml} 返回的数据格式，可选，默认为xml，建议用json</li>
+<li>lang {en,cn} 返回的错误语言，可选，默认为en，建议用cn</li>
+<li>error_on_empty {yes,no} 没有数据时是否返回错误，可选，默认为yes，建议用no</li>
+<li>user_id 用户的ID，可选，仅代理接口需要， 用户接口不需要提交此参数</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h2>共通返回<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>这些返回在所有的接口都有可能返回，它们是所有接口共通的，在此统一说明，下面的接口将不再列出。</dt>
+<dd><ul class="first last simple">
+<li>-1 登陆失败</li>
+<li>-2 API使用超出限制</li>
+<li>-3 不是合法代理 (仅用于代理接口)</li>
+<li>-4 不在代理名下 (仅用于代理接口)</li>
+<li>-7 无权使用此接口</li>
+<li>-8 登录失败次数过多，账号被暂时封禁</li>
+<li>-99 此功能暂停开放，请稍候重试</li>
+<li>1 操作成功</li>
+<li>2 只允许POST方法</li>
+<li>3 未知错误</li>
+<li>6 用户ID错误 (仅用于代理接口)</li>
+<li>7 用户不在您名下 (仅用于代理接口)</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="d">
+<h2>D令牌验证相关<a class="headerlink" href="#d" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>对于已经开启D令牌的用户，在请求API时需要增加如下两个参数：</dt>
+<dd><ul class="first last simple">
+<li>login_code D令牌生成的随机验证码，必选</li>
+<li>login_remember {yes,no} 是否记住验证码，可选，默认为yes</li>
+</ul>
+</dd>
+</dl>
+<p>说明：由于D令牌的随机码每30秒变换一次，所以建议用户在第一次请求API的时候选择记住验证码。选择记住验证码后，除了返回所请求的数据以外，还会发一个名为&#8217;t&#8217; + user_id 的cookie，形如：t123456，该cookie的有效期为1个月，以后再请求API可以带上这个cookie，而无须再提交login_code和login_remember参数。</p>
+<dl class="docutils">
+<dt>对于开启了D令牌的用户，某些重要操作可能会返回以下错误码，在此统一说明，下面的接口将不再列出。</dt>
+<dd><ul class="first last simple">
+<li>50 您开启了D令牌，需要验证码</li>
+<li>51 没有开启D令牌</li>
+<li>52 验证码不正确</li>
+<li>53 您已经开启了D令牌</li>
+<li>54 域名所有者开启了D令牌，您也需要开启D令牌才能管理该域名</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>获取API版本号<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Info.Version">https://dnsapi.cn/Info.Version</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Info.Version -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;4.6&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-10 11:20:39&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>帐户相关<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id6">
+<h2>获取帐户信息<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/User.Detail">https://dnsapi.cn/User.Detail</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Detail -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-10 11:22:26&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;625033&quot;</span><span class="p">,</span>
+            <span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;email_verified&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;telephone_verified&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+            <span class="s">&quot;agent_pending&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s">&quot;real_name&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;user_type&quot;</span><span class="p">:</span> <span class="s">&quot;personal&quot;</span><span class="p">,</span>
+            <span class="s">&quot;telephone&quot;</span><span class="p">:</span> <span class="s">&quot;15012345678&quot;</span><span class="p">,</span>
+            <span class="s">&quot;im&quot;</span><span class="p">:</span> <span class="s">&quot;10000000&quot;</span><span class="p">,</span>
+            <span class="s">&quot;nick&quot;</span><span class="p">:</span> <span class="s">&quot;DNSPod 先生&quot;</span><span class="p">,</span>
+            <span class="s">&quot;balance&quot;</span><span class="p">:</span> <span class="s">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s">&quot;smsbalance&quot;</span><span class="p">:</span> <span class="s">&quot;4&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id7">
+<h2>修改资料<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/User.Modify">https://dnsapi.cn/User.Modify</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>real_name 真实姓名，如果用户类型是企业，则为公司名称</li>
+<li>nick 用户称呼，用于与用户联系时称呼用户</li>
+<li>telephone 用户手机号码</li>
+<li>im 用户qq</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>8 手机号码不正确</li>
+<li>9 用户qq不正确</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;im=10000000'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-24 13:34:56&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h2>修改密码<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Userpasswd.Modify">https://dnsapi.cn/Userpasswd.Modify</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>old_password 旧密码</li>
+<li>new_password 新密码</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>8 旧密码错误</li>
+<li>9 新密码错误</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Userpassword.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;old_password=old_password&amp;new_password=new_password'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-24 13:45:27&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id9">
+<h2>修改邮箱<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Useremail.Modify">https://dnsapi.cn/Useremail.Modify</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>old_email 旧邮箱</li>
+<li>new_email 新邮箱</li>
+<li>password 当前密码</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>8 旧邮箱错误</li>
+<li>9 新邮箱错误</li>
+<li>10 当前密码错误</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Useremail.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;old_email=api1@dnspod.com&amp;new_email=api@dnspod.com&amp;password=password'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-24 14:49:41&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>获取手机验证码<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Telephoneverify.Code">https://dnsapi.cn/Telephoneverify.Code</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>telephone 用户手机号码</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通参数</li>
+<li>4 用户已经通过手机验证</li>
+<li>5 手机号码非法</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Telephoneverify.Code -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;telephone=18600000000'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;4&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Telephone is verified&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-24 15:57:21&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-23 16:01:52&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;verify_code&quot;</span><span class="p">:</span><span class="s">&quot;676479&quot;</span><span class="p">,</span>
+        <span class="s">&quot;verify_desc&quot;</span><span class="p">:</span><span class="s">&quot;</span><span class="se">\u8bf7\u4f7f\u7528</span><span class="s"> 18600000000 </span><span class="se">\u7f16\u8f91\u77ed\u4fe1\uff0c\u5c06</span><span class="s"> 676479 </span><span class="se">\u53d1\u9001\u81f3\u53f7\u7801</span><span class="s">  159 6183 3568</span><span class="se">\u3002</span><span class="s">&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h2>获取用户日志<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/User.Log">https://dnsapi.cn/User.Log</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Log -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-10 11:29:36&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;log&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+        <span class="s">&quot;2012-09-04 13:56:24: 111.111.111.111 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-08-30 17:01:47: 111.111.111.111 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-08-29 22:12:35(API): (111.111.111.111) 添加域名 api2.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-08-29 21:59:55: (111.111.111.111) 添加域名 api1.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-08-29 21:59:45: (111.111.111.111) 添加域名 apiapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-08-29 21:59:30: 111.111.111.111 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-08-24 15:49:53: 111.111.111.111 登陆 成功&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="id12">
+<h1>域名相关<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id13">
+<h2>添加新域名<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Create">https://dnsapi.cn/Domain.Create</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain 域名, 没有 www, 如 dnspod.com</li>
+<li>group_id 域名分组ID，可选参数</li>
+<li>is_mark {yes|no} 是否星标域名，可选参数</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名无效</li>
+<li>7 域名已存在</li>
+<li>11 域名已经存在并且是其它域名的别名</li>
+<li>12 域名已经存在并且您没有权限管理</li>
+<li>41 网站内容不符合DNSPod解析服务条款，域名添加失败</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;domain=api2.com&amp;format=json'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-29 22:12:35&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;1992403&quot;</span><span class="p">,</span>
+        <span class="s">&quot;punycode&quot;</span><span class="p">:</span><span class="s">&quot;api2.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain&quot;</span><span class="p">:</span><span class="s">&quot;api2.com&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id14">
+<h2>获取域名列表<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.List">https://dnsapi.cn/Domain.List</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last">
+<li><p class="first">公共参数</p>
+</li>
+<li><dl class="first docutils">
+<dt>type 域名权限种类，可选参数，默认为&#8217;all&#8217;。包含以下类型：</dt>
+<dd><ul class="first last simple">
+<li>all：所有域名</li>
+<li>mine：我的域名</li>
+<li>share：共享给我的域名</li>
+<li>ismark：星标域名</li>
+<li>pause：暂停域名</li>
+<li>vip：VIP域名</li>
+<li>recent：最近操作过的域名</li>
+<li>share_out：我共享出去的域名</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">offset 记录开始的偏移，第一条记录为 0，依次类推，可选参数</p>
+</li>
+<li><p class="first">length 共要获取的记录的数量，比如获取20条，则为20，可选参数</p>
+</li>
+<li><p class="first">group_id 分组ID，获取指定分组的域名，可选参数</p>
+</li>
+</ul>
+</dd>
+<dt>注意事项：</dt>
+<dd><ul class="first last simple">
+<li>如果账户中的域名数量超过了3000，将会强制分页并且只返回前3000条，这时需要通过 offset 和 length 参数去获取其它域名。</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 记录开始的偏移无效</li>
+<li>7 共要获取的记录的数量无效</li>
+<li>9 没有任何域名</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-10 11:51:31&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;domain_total&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;all_total&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;mine_total&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;share_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;vip_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;ismark_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;pause_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;error_total&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;lock_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;spam_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;share_out_total&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="s">&quot;domains&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1992403</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;api2.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Free&quot;</span><span class="p">,</span>
+            <span class="s">&quot;grade_title&quot;</span><span class="p">:</span> <span class="s">&quot;免费套餐&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enable&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ext_status&quot;</span><span class="p">:</span> <span class="s">&quot;dnserror&quot;</span><span class="p">,</span>
+            <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="s">&quot;2&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;is_mark&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;is_vip&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;searchengine_push&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+            <span class="s">&quot;beian&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-08-29 22:12:35&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-08-29 22:12:35&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;600&quot;</span><span class="p">,</span>
+            <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h2>删除域名<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Remove">https://dnsapi.cn/Domain.Remove</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>6 域名ID错误</li>
+<li>7 域名已锁定</li>
+<li>8 VIP域名不可以删除</li>
+<li>9 非域名所有者</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=1992403'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 11:09:31&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h2>设置域名状态<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Status">https://dnsapi.cn/Domain.Status</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>status {enable, disable} 域名状态</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Status -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2058967&amp;status=disable'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 12:02:04&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id17">
+<h2>获取域名信息<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Info">https://dnsapi.cn/Domain.Info</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 12:10:16&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;2059079&quot;</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;api4.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;api4.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Free&quot;</span><span class="p">,</span>
+        <span class="s">&quot;grade_title&quot;</span><span class="p">:</span> <span class="s">&quot;免费套餐&quot;</span><span class="p">,</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;pause&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ext_status&quot;</span><span class="p">:</span> <span class="s">&quot;dnserror&quot;</span><span class="p">,</span>
+        <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="s">&quot;9&quot;</span><span class="p">,</span>
+        <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;is_mark&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+        <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;is_vip&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+        <span class="s">&quot;searchengine_push&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+        <span class="s">&quot;beian&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+        <span class="s">&quot;user_id&quot;</span><span class="p">:</span> <span class="s">&quot;625033&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 12:05:46&quot;</span><span class="p">,</span>
+        <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 12:06:12&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;600&quot;</span><span class="p">,</span>
+        <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id18">
+<h2>获取域名日志<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Log">https://dnsapi.cn/Domain.Log</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 17:24:23&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;log&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;2012-09-12 12:07:05: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net.&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:07:04: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:07:02: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:57: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:33(API): (111.111.111.111) 暂停 域名解析&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 pop 值 mail.api4.com. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:12: (111.111.111.111) 添加 A 记录 默认 线路 shop 值 64.144.7.55 &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 smtp 值 mail.api4.com. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 webmail 值 webmail.secureserver.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 www 值 64.144.7.51 &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 ftp 值 64.144.7.51 &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:06:11: (111.111.111.111) 添加 CNAME 记录 默认 线路 e 值 email.secureserver.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2012-09-12 12:05:46: (111.111.111.111) 添加新域名 api4.com api@dnspod.com(625033)&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id19">
+<h2>设置域名搜索引擎推送<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Searchenginepush">https://dnsapi.cn/Domain.Searchenginepush</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>status {yes,no} 是否推送</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;status=yes'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 17:28:44&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="url">
+<h2>设置域名国内URL转发(废弃 不更新)<a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+</ul>
+</dd>
+</dl>
+<p>示例</p>
+<p>返回参考：</p>
+</div>
+<div class="section" id="id20">
+<h2>添加域名共享<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domainshare.Create">https://dnsapi.cn/Domainshare.Create</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>email 要共享到的邮箱</li>
+<li>mode {r,rw}共享模式，r (只读)　或 rw (读取、修改)，默认为 r</li>
+<li>sub_domain 子域名共享，如：www、bbs等。如果要共享整个域名，则无需提交此参数</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=otheruser@dnspod.com&amp;mode=rw'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 17:47:21&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id21">
+<h2>域名共享列表<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domainshare.List">https://dnsapi.cn/Domainshare.List</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 17:51:50&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;share&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;share_to&quot;</span><span class="p">:</span> <span class="s">&quot;yizerowu@dnspod.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;rw&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id22">
+<h2>修改域名共享<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domainshare.Modify">https://dnsapi.cn/Domainshare.Modify</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>email 被共享者的邮箱，原来是什么就提交什么，不能修改</li>
+<li>mode {r,rw}共享模式，r (只读)　或 rw (读取、修改)，默认为 r</li>
+<li>old_sub_domain 已经成功共享的子域名，如果只修改主域名共享，则无需提交此参数</li>
+<li>new_sub_domain 要修改到的共享子域名</li>
+</ul>
+</dd>
+</dl>
+<p>示例</p>
+<ol class="arabic">
+<li><p class="first">修改主域名共享状态，从 rw 修改为 r:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r'</pre>
+</div>
+</li>
+<li><p class="first">修改子域名的共享状态，从rw 修改为 r:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&amp;old_sub_domain=www&amp;new_sub_domain=www'</pre>
+</div>
+</li>
+<li><p class="first">将主域名共享修改为子域名共享:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;new_sub_domain=www'</pre>
+</div>
+</li>
+<li><p class="first">将子域名共享修改为主域名共享:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www'</pre>
+</div>
+</li>
+<li><p class="first">将www的子域名共享修改为bbs的子主域名共享:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&amp;new_sub_domain=bbs'</pre>
+</div>
+</li>
+</ol>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 18:54:18&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id23">
+<h2>删除域名共享<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Domainshare.Remove">https://dnsapi.cn/Domainshare.Remove</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>email 被共享者的邮箱，原来是什么就提交什么，不能修改</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:19:20&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id24">
+<h2>域名过户<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Transfer">https://dnsapi.cn/Domain.Transfer</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>email 被共享者的邮箱，原来是什么就提交什么，不能修改</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:21:33&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id25">
+<h2>锁定域名<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Lock">https://dnsapi.cn/Domain.Lock</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 域名ID</li>
+<li>days 要锁定的天数</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;days=3'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:31:13&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;lock&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;domain_id&quot;</span><span class="p">:</span> <span class="mi">2059079</span><span class="p">,</span>
+        <span class="s">&quot;lock_code&quot;</span><span class="p">:</span> <span class="s">&quot;fdd638&quot;</span><span class="p">,</span>
+        <span class="s">&quot;lock_end&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-21&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id26">
+<h2>锁定状态<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Lockstatus">https://dnsapi.cn/Domain.Lockstatus</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:35:04&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;lock&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;lock_status&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+        <span class="s">&quot;start_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18&quot;</span><span class="p">,</span>
+        <span class="s">&quot;end_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-21&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id27">
+<h2>锁定解锁<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Unlock">https://dnsapi.cn/Domain.Unlock</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>lock_code 域名解锁码，锁定的时候会返回</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Unlock -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;lock_code=fdd638'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:38:58&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;lock&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;lock_status&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+        <span class="s">&quot;start_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18&quot;</span><span class="p">,</span>
+        <span class="s">&quot;end_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-21&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id28">
+<h2>域名绑定列表<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domainalias.List">https://dnsapi.cn/Domainalias.List</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:11:20&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;alias&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;18737&quot;</span><span class="p">,</span>
+            <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="s">&quot;dnspodapi.com&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id29">
+<h2>添加域名绑定<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domainalias.Create">https://dnsapi.cn/Domainalias.Create</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id ，域名ID</li>
+<li>domain 要绑定的域名，不带www.</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;domain=dnspodapi.com'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:09:57&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;alias&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;18737&quot;</span><span class="p">,</span>
+        <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;dnspodapi.com&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id30">
+<h2>删除域名绑定<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domainalias.Remove">https://dnsapi.cn/Domainalias.Remove</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>alias_id 绑定ID，绑定域名的时候会返回</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;alias_id=18737'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:15:20&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id31">
+<h2>获取域名分组<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domaingroup.List">https://dnsapi.cn/Domaingroup.List</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:33:33&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;默认分组&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;经常修改&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;很少修改&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;即将到期&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;私人域名&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;公司域名&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;客户域名&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+            <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;与我共享&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>说明：</dt>
+<dd><ul class="first last simple">
+<li>该接口只对VPI帐户有效，免费用户无法获取域名分组，免费用户会返回错误提示。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id32">
+<h2>添加域名分组<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><a class="reference external" href="https://dnsapi.cn/Domaingroup.Create">https://dnsapi.cn/Domaingroup.Create</a></dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>group_name 分组名称</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_name=dnspod'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:41:00&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;groups&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;1985&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt>说明：</dt>
+<dd><ul class="first last simple">
+<li>该接口只对VPI帐户有效，免费用户无法获取域名分组，免费用户会返回错误提示。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id33">
+<h2>修改域名分组<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><a class="reference external" href="https://dnsapi.cn/Domaingroup.Modify">https://dnsapi.cn/Domaingroup.Modify</a></dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>group_id 分组ID</li>
+<li>group_name 分组名称</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985&amp;group_name=dnspodgroup'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-19 10:25:32&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id34">
+<h2>删除域名分组<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domaingroup.Remove">https://dnsapi.cn/Domaingroup.Remove</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>group_id 分组ID</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-19 10:45:45&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id35">
+<h2>设置域名分组(更改域名所在分组)<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Changegroup">https://dnsapi.cn/Domain.Changegroup</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>group_id 分组ID</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Changegroup -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;group_id=1985'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 17:33:01&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<p>说明：</p>
+<blockquote>
+<div><ul class="simple">
+<li>其它用户共享过来的域名全在“与我共享”系统分组下，不能更改</li>
+<li>只有域名所有者可以更改域名的分组，被共享者不能更改</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id36">
+<h2>设置域名星标<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Ismark">https://dnsapi.cn/Domain.Ismark</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>is_mark {yes | no}, 是否星标域名</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;is_mark=yes'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 17:42:02&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id37">
+<h2>设置域名备注<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Remark">https://dnsapi.cn/Domain.Remark</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>remark 域名备注，删除备注请提交空内容</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;remark=这个域名需要备注一下'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 17:50:37&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id38">
+<h2>获取域名权限<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Purview">https://dnsapi.cn/Domain.Purview</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Purview -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 17:51:25&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;purview&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;URL转发条数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;NS记录条数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">99999</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;AAAA记录条数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">99999</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;SRV记录条数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;域名别名绑定个数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;域名锁定天数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">30</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;域名共享个数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;子域名级数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;泛解析级数&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;负载均衡数量&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">4</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;记录TTL最低&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">120</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;混合泛解析支持&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;增强线路类型&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;分省线路类型&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;分大洲线路类型&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>说明：</dt>
+<dd><ul class="first last simple">
+<li>获取成功后要在本地保存一份，不要操作一次获取一次</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id39">
+<h2>域名取回获取邮箱列表<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Acquire">https://dnsapi.cn/Domain.Acquire</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain 要取回的域名</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:00:05&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;emails&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;support@namecheap.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;e31d739cb2824a5f80d7b90848a195d8.protect@whoisguard.com&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id40">
+<h2>域名取回发送验证码<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Domain.Acquiresend">https://dnsapi.cn/Domain.Acquiresend</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain 要取回的域名</li>
+<li>email 域名取回邮箱列表中的一个邮箱</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;email=support@namecheap.com'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:07:44&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id41">
+<h2>验证域名取回的验证码<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://dnsapi.cn/Domain.Acquirevalidate">https://dnsapi.cn/Domain.Acquirevalidate</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain 要取回的域名</li>
+<li>code  发送到邮箱的验证码</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;code=111000'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:12:44&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id42">
+<h2>获取等级允许的记录类型(修改)<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Type">https://dnsapi.cn/Record.Type</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:23:40&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;types&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;A&quot;</span><span class="p">,</span>
+        <span class="s">&quot;CNAME&quot;</span><span class="p">,</span>
+        <span class="s">&quot;MX&quot;</span><span class="p">,</span>
+        <span class="s">&quot;TXT&quot;</span><span class="p">,</span>
+        <span class="s">&quot;NS&quot;</span><span class="p">,</span>
+        <span class="s">&quot;AAAA&quot;</span><span class="p">,</span>
+        <span class="s">&quot;SRV&quot;</span><span class="p">,</span>
+        <span class="s">&quot;URL&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id43">
+<h2>获取等级允许的记录线路<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Line">https://dnsapi.cn/Record.Line</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3</li>
+<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free&amp;domain_id=2059079'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+<span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+    <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:29:58&quot;</span>
+<span class="p">},</span>
+<span class="s">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+    <span class="s">&quot;电信&quot;</span><span class="p">,</span>
+    <span class="s">&quot;联通&quot;</span><span class="p">,</span>
+    <span class="s">&quot;教育网&quot;</span><span class="p">,</span>
+    <span class="s">&quot;移动&quot;</span><span class="p">,</span>
+    <span class="s">&quot;铁通&quot;</span><span class="p">,</span>
+    <span class="s">&quot;国内&quot;</span><span class="p">,</span>
+    <span class="s">&quot;国外&quot;</span><span class="p">,</span>
+    <span class="s">&quot;搜索引擎&quot;</span><span class="p">,</span>
+    <span class="s">&quot;百度&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Google&quot;</span><span class="p">,</span>
+    <span class="s">&quot;有道&quot;</span><span class="p">,</span>
+    <span class="s">&quot;必应&quot;</span><span class="p">,</span>
+    <span class="s">&quot;搜搜&quot;</span><span class="p">,</span>
+    <span class="s">&quot;搜狗&quot;</span><span class="p">,</span>
+    <span class="s">&quot;360搜索&quot;</span>
+<span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id44">
+<h1>记录相关<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id45">
+<h2>添加记录<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://dnsapi.cn/Record.Create">https://dnsapi.cn/Record.Create</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id  域名ID, 必选</li>
+<li>sub_domain  主机记录, 如 www, 默认&#64;，可选</li>
+<li>record_type  记录类型，通过API记录类型获得，大写英文，比如：A, 必选</li>
+<li>record_line  记录线路，通过API记录线路获得，中文，比如：默认, 必选</li>
+<li>value  记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com., 必选</li>
+<li>mx {1-20}  MX优先级, 当记录类型是 MX 时有效，范围1-20, MX记录必选</li>
+<li>ttl {1-604800}  TTL，范围1-604800，不同等级域名最小值不同, 可选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line=默认&amp;value=1.1.1.1'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-23 22:17:47&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;16894439&quot;</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enable&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id46">
+<h2>记录列表<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://dnsapi.cn/Record.List">https://dnsapi.cn/Record.List</a></li>
+</ul>
+</div></blockquote>
+<p>HTTP请求方式：</p>
+<blockquote>
+<div><ul class="simple">
+<li>POST</li>
+</ul>
+</div></blockquote>
+<p>请求参数：</p>
+<blockquote>
+<div><ul class="simple">
+<li>公共参数</li>
+<li>domain_id 域名ID，必选</li>
+<li>offset 记录开始的偏移，第一条记录为 0，依次类推，可选</li>
+<li>length 共要获取的记录的数量，比如获取20条，则为20，可选</li>
+<li>sub_domain 子域名，如果指定则只返回此子域名的记录，可选</li>
+</ul>
+</div></blockquote>
+<p>注意事项：</p>
+<blockquote>
+<div><ul class="simple">
+<li>如果域名的记录数量超过了3000，将会强制分页并且只返回前3000条，这时需要通过 offset 和 length 参数去获取其它记录。</li>
+</ul>
+</div></blockquote>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-23 22:20:59&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">2317346</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;punycode&quot;</span><span class="p">:</span><span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;grade&quot;</span><span class="p">:</span><span class="s">&quot;D_Plus&quot;</span><span class="p">,</span>
+        <span class="s">&quot;owner&quot;</span><span class="p">:</span><span class="s">&quot;api@dnspod.com&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;sub_domains&quot;</span><span class="p">:</span><span class="s">&quot;3&quot;</span><span class="p">,</span>
+        <span class="s">&quot;record_total&quot;</span><span class="p">:</span><span class="s">&quot;3&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;16894439&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
+            <span class="s">&quot;line&quot;</span><span class="p">:</span><span class="s">&quot;</span><span class="se">\u9ed8\u8ba4</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;A&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span><span class="s">&quot;600&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;1.1.1.1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mx&quot;</span><span class="p">:</span><span class="s">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s">&quot;enabled&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-23 22:17:47&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;16662141&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
+            <span class="s">&quot;line&quot;</span><span class="p">:</span><span class="s">&quot;</span><span class="se">\u9ed8\u8ba4</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;NS&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span><span class="s">&quot;600&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;ns1.dnsv2.com.&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mx&quot;</span><span class="p">:</span><span class="s">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s">&quot;enabled&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-16 15:52:56&quot;</span><span class="p">,</span>
+            <span class="s">&quot;hold&quot;</span><span class="p">:</span><span class="s">&quot;hold&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;16662142&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
+            <span class="s">&quot;line&quot;</span><span class="p">:</span><span class="s">&quot;</span><span class="se">\u9ed8\u8ba4</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;NS&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span><span class="s">&quot;600&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;ns2.dnsv2.com.&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mx&quot;</span><span class="p">:</span><span class="s">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s">&quot;enabled&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-16 15:52:56&quot;</span><span class="p">,</span>
+            <span class="s">&quot;hold&quot;</span><span class="p">:</span><span class="s">&quot;hold&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id47">
+<h2>修改记录<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Modify">https://dnsapi.cn/Record.Modify</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 域名ID，必选</li>
+<li>record_id 记录ID，必选</li>
+<li>sub_domain 主机记录，默认&#64;，如 www，可选</li>
+<li>record_type 记录类型，通过API记录类型获得，大写英文，比如：A，必选</li>
+<li>record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选</li>
+<li>value 记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com.，必选</li>
+<li>mx {1-20} MX优先级, 当记录类型是 MX 时有效，范围1-20, mx记录必选</li>
+<li>ttl {1-604800} TTL，范围1-604800，不同等级域名最小值不同，可选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;value=3.2.2.2&amp;record_type=A&amp;record_line=默认'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-24 16:53:23&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">16894439</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
+        <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;3.2.2.2&quot;</span><span class="p">,</span><span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enable&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id48">
+<h2>删除记录<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Remove">https://dnsapi.cn/Record.Remove</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 域名ID，必选</li>
+<li>record_id 记录ID，必选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-24 16:58:07&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="dns">
+<h2>更新动态DNS记录<a class="headerlink" href="#dns" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Ddns">https://dnsapi.cn/Record.Ddns</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 域名ID，必选</li>
+<li>record_id 记录ID，必选</li>
+<li>record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-24 17:23:58&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">16909160</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
+        <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;111.111.111.111&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id49">
+<h2>设置记录备注<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Remark">https://dnsapi.cn/Record.Remark</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 域名ID，必选</li>
+<li>record_id 记录ID，必选</li>
+<li>remark 域名备注，删除备注请提交空内容，必选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Remark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;remark=test'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 17:32:23&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id50">
+<h2>获取记录信息<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Info">https://dnsapi.cn/Record.Info</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 域名ID，必选</li>
+<li>record_id 记录ID，必选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Info -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 17:36:10&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2317346</span><span class="p">,</span>
+        <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain_grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Plus&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;16909160&quot;</span><span class="p">,</span>
+        <span class="s">&quot;sub_domain&quot;</span><span class="p">:</span> <span class="s">&quot;@&quot;</span><span class="p">,</span>
+        <span class="s">&quot;record_type&quot;</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span>
+        <span class="s">&quot;record_line&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;111.111.111.111&quot;</span><span class="p">,</span>
+        <span class="s">&quot;mx&quot;</span><span class="p">:</span> <span class="s">&quot;0&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;10&quot;</span><span class="p">,</span>
+        <span class="s">&quot;enabled&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+        <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 17:23:58&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain_id&quot;</span><span class="p">:</span> <span class="s">&quot;2317346&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id51">
+<h2>设置记录状态<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Status">https://dnsapi.cn/Record.Status</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain_id 域名ID，必选</li>
+<li>record_id 记录ID，必选</li>
+<li>status {enabled|disabled} 新的状态，必选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Info -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 20:07:29&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">16909160</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;@&quot;</span><span class="p">,</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;disable&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id52">
+<h1>宕机监控<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a">
+<h2>列出包含A记录的子域名<a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Listsubdomain">https://dnsapi.cn/Monitor.Listsubdomain</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain或domain_id, 必选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Listsubdomain -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 20:14:31&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2317346</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Plus&quot;</span><span class="p">,</span>
+        <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;subdomain&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;@&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id53">
+<h2>列出子域名的A记录<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Listsubvalue">https://dnsapi.cn/Monitor.Listsubvalue</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain或domain_id, 必选</li>
+<li>subdomain 子域名，必选</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Listsubvalue -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;subdomain=@'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 20:19:05&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2317346</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Plus&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;points&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;max&quot;</span><span class="p">:</span> <span class="mi">999</span><span class="p">,</span>
+        <span class="s">&quot;list&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;ctc&quot;</span><span class="p">:</span> <span class="s">&quot;电信&quot;</span><span class="p">,</span>
+            <span class="s">&quot;cuc&quot;</span><span class="p">:</span> <span class="s">&quot;联通&quot;</span><span class="p">,</span>
+            <span class="s">&quot;cmc&quot;</span><span class="p">:</span> <span class="s">&quot;移动&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;16909160&quot;</span><span class="p">,</span>
+            <span class="s">&quot;area&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;119.180.24.194&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id54">
+<h2>监控列表<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.List">https://dnsapi.cn/Monitor.List</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 20:48:02&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;total_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;down_count&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="s">&quot;monitors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;monitor_id&quot;</span><span class="p">:</span> <span class="s">&quot;281ecb9e-3635-11e2-bab7-0819a6248970&quot;</span><span class="p">,</span>
+            <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;domain_id&quot;</span><span class="p">:</span> <span class="s">&quot;2317346&quot;</span><span class="p">,</span>
+            <span class="s">&quot;domain_grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Plus&quot;</span><span class="p">,</span>
+            <span class="s">&quot;record_id&quot;</span><span class="p">:</span> <span class="s">&quot;16909160&quot;</span><span class="p">,</span>
+            <span class="s">&quot;sub_domain&quot;</span><span class="p">:</span> <span class="s">&quot;@&quot;</span><span class="p">,</span>
+            <span class="s">&quot;record_line&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ip&quot;</span><span class="p">:</span> <span class="s">&quot;119.180.24.194&quot;</span><span class="p">,</span>
+            <span class="s">&quot;now_ip&quot;</span><span class="p">:</span> <span class="s">&quot;119.180.24.194&quot;</span><span class="p">,</span>
+            <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;port&quot;</span><span class="p">:</span> <span class="s">&quot;80&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_type&quot;</span><span class="p">:</span> <span class="s">&quot;http&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_path&quot;</span><span class="p">:</span> <span class="s">&quot;/&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_interval&quot;</span><span class="p">:</span> <span class="s">&quot;360&quot;</span><span class="p">,</span>
+            <span class="s">&quot;points&quot;</span><span class="p">:</span> <span class="s">&quot;ctc,cuc,cmc&quot;</span><span class="p">,</span>
+            <span class="s">&quot;bak_ip&quot;</span><span class="p">:</span> <span class="s">&quot;auto&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Ok&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="s">&quot;200&quot;</span><span class="p">,</span>
+            <span class="s">&quot;sms_notice&quot;</span><span class="p">:</span> <span class="s">&quot;me&quot;</span><span class="p">,</span>
+            <span class="s">&quot;email_notice&quot;</span><span class="p">:</span> <span class="s">&quot;me&quot;</span><span class="p">,</span>
+            <span class="s">&quot;less_notice&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+            <span class="s">&quot;callback_url&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;callback_key&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 20:47:51&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 20:47:51&quot;</span><span class="p">,</span>
+            <span class="s">&quot;bak_ip_status&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id55">
+<h2>监控添加<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Create">https://dnsapi.cn/Monitor.Create</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last">
+<li><p class="first">公共参数</p>
+</li>
+<li><p class="first">domain_id 域名编号，必选</p>
+</li>
+<li><p class="first">record_id 记录编号，必选</p>
+</li>
+<li><p class="first">port 监控端口，比如80，必选</p>
+</li>
+<li><p class="first">monitor_interval 监控间隔，支持{60|180|360|}，必选</p>
+</li>
+<li><p class="first">host 监控主机头，比如 www.dnspod.cn，必选</p>
+</li>
+<li><p class="first">monitor_type 监控类型，支持{http|https}，必选</p>
+</li>
+<li><p class="first">monitor_path 监控路径，比如/，必选</p>
+</li>
+<li><p class="first">points 监控节点，用,分隔多个，只能选择列表中的节点，并且有数量限制，必选</p>
+</li>
+<li><dl class="first docutils">
+<dt>bak_ip 宕机备用，必选，支持任选以下选项中的一个：</dt>
+<dd><ol class="first last arabic simple">
+<li>pass 只监控，不切换</li>
+<li>pause 智能暂停</li>
+<li>auto 智能切换</li>
+<li>用逗号分隔的IP 设置备用IP</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">keep_ttl 宕机不修改ttl，可选</p>
+</li>
+<li><p class="first">sms_notice 短信通知，me域名所有者，share共享用户，用,分隔多选择，比如me,share, 可选</p>
+</li>
+<li><p class="first">email_notice 邮件通知，me域名所有者，share共享用户，用,分隔多选择，比如me,share，可选</p>
+</li>
+<li><p class="first">less_notice {yes|no}是否一个小时内只发一次通知，可选</p>
+</li>
+<li><p class="first">callback_url  可选，回调URL，宕机了会将相关的参数提交到此设置的URL，具体参考回调URL说明，可选</p>
+</li>
+<li><p class="first">callback_key 可选，回调密钥，如果设置了回调URL请设置此参数以保证安全，可选</p>
+</li>
+</ul>
+</dd>
+</dl>
+<p>响应代码：</p>
+<blockquote>
+<div><ul class="simple">
+<li>共通返回</li>
+<li>6 域名编号错误</li>
+<li>7 记录编号错误</li>
+<li>8 监控主机头错误</li>
+<li>9 监控端口错误，端口只能是正整数1~65535</li>
+<li>10 监控类型不正确</li>
+<li>11 监控路径不正确</li>
+<li>12  监控间隔不正确</li>
+<li>13 监控节点不正确</li>
+<li>14 监控节点数量超出限制</li>
+<li>15 备用IP不正确</li>
+<li>16 备用url不正确</li>
+<li>17 备用IP不正确</li>
+<li>18 短信设置不正确</li>
+<li>19 邮件设置不正确</li>
+<li>20 此记录已经存在监控</li>
+<li>21 监控数量超出限制</li>
+<li>22 回调URL不正确</li>
+</ul>
+</div></blockquote>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16909160&amp;port=80&amp;monitor_type=http&amp;monitor_path=/&amp;monitor_interval=360&amp;points=ctc,cuc,cmc&amp;bak_ip=pass&amp;host=testapi.com'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 21:25:30&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;monitor&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;monitor_id&quot;</span><span class="p">:</span> <span class="s">&quot;6aac176e-363a-11e2-bab7-0819a6248970&quot;</span><span class="p">,</span>
+        <span class="s">&quot;record_id&quot;</span><span class="p">:</span> <span class="mi">16909160</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id56">
+<h2>监控修改<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Modify">https://dnsapi.cn/Monitor.Modify</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last">
+<li><p class="first">公共参数</p>
+</li>
+<li><p class="first">monitor_id 监控编号，必选</p>
+</li>
+<li><p class="first">port 监控端口，比如80，必选</p>
+</li>
+<li><p class="first">monitor_interval 监控间隔，支持{60|180|360|}，必选</p>
+</li>
+<li><p class="first">monitor_type 监控类型，支持{http|https}，必选</p>
+</li>
+<li><p class="first">monitor_path 监控路径，比如/，必选</p>
+</li>
+<li><p class="first">points 监控节点，用,分隔多个，只能选择列表中的节点，并且有数量限制，必选</p>
+</li>
+<li><dl class="first docutils">
+<dt>bak_ip 宕机备用，必选，支持任选以下选项中的一个：</dt>
+<dd><ol class="first last arabic simple">
+<li>pass 只监控，不切换</li>
+<li>pause 智能暂停</li>
+<li>auto 智能切换</li>
+<li>用逗号分隔的IP 设置备用IP</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">host 监控主机头，比如 www.dnspod.cn，可选</p>
+</li>
+<li><p class="first">keep_ttl 宕机不修改ttl，可选</p>
+</li>
+<li><p class="first">sms_notice 短信通知，me域名所有者，share共享用户，用,分隔多选择，比如me,share, 可选</p>
+</li>
+<li><p class="first">email_notice 邮件通知，me域名所有者，share共享用户，用,分隔多选择，比如me,share，可选</p>
+</li>
+<li><p class="first">less_notice {yes|no}是否一个小时内只发一次通知，可选</p>
+</li>
+<li><p class="first">callback_url  可选，回调URL，宕机了会将相关的参数提交到此设置的URL，具体参考回调URL说明，可选</p>
+</li>
+<li><p class="first">callback_key 可选，回调密钥，如果设置了回调URL请设置此参数以保证安全，可选</p>
+</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>7 监控编号错误</li>
+<li>8 监控主机头错误</li>
+<li>9 监控端口错误，端口只能是正整数1~65535</li>
+<li>10 监控类型不正确</li>
+<li>11 监控路径不正确</li>
+<li>12  监控间隔不正确</li>
+<li>13 监控节点不正确</li>
+<li>14 监控节点数量超出限制</li>
+<li>15 备用IP不正确</li>
+<li>16 备用url不正确</li>
+<li>17 备用IP不正确</li>
+<li>18 短信设置不正确</li>
+<li>19 邮件设置不正确</li>
+<li>22 回调URL不正确</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970&amp;port=80&amp;monitor_type=http&amp;monitor_path=/&amp;monitor_interval=360&amp;points=ctc,cuc,cmc&amp;bak_ip=pass'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 21:41:31&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id57">
+<h2>监控删除<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Remove">https://dnsapi.cn/Monitor.Remove</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>monitor_id 监控编号</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 监控编号错误</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 21:51:49&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id58">
+<h2>获取监控信息<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://dnsapi.cn/Monitor.Info">https://dnsapi.cn/Monitor.Info</a></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>monitor_id 监控编号</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>7 监控编号错误</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Info -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=e91997aa-3641-11e2-bab7-0819a6248970'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:19:58&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;monitor_id&quot;</span><span class="p">:</span> <span class="s">&quot;e91997aa-3641-11e2-bab7-0819a6248970&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain_id&quot;</span><span class="p">:</span> <span class="s">&quot;2317346&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain_grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Plus&quot;</span><span class="p">,</span>
+        <span class="s">&quot;record_id&quot;</span><span class="p">:</span> <span class="s">&quot;16909160&quot;</span><span class="p">,</span>
+        <span class="s">&quot;sub_domain&quot;</span><span class="p">:</span> <span class="s">&quot;@&quot;</span><span class="p">,</span>
+        <span class="s">&quot;record_line&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ip&quot;</span><span class="p">:</span> <span class="s">&quot;119.180.24.194&quot;</span><span class="p">,</span>
+        <span class="s">&quot;now_ip&quot;</span><span class="p">:</span> <span class="s">&quot;119.180.24.194&quot;</span><span class="p">,</span>
+        <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;port&quot;</span><span class="p">:</span> <span class="s">&quot;80&quot;</span><span class="p">,</span>
+        <span class="s">&quot;monitor_type&quot;</span><span class="p">:</span> <span class="s">&quot;http&quot;</span><span class="p">,</span>
+        <span class="s">&quot;monitor_path&quot;</span><span class="p">:</span> <span class="s">&quot;/&quot;</span><span class="p">,</span>
+        <span class="s">&quot;monitor_interval&quot;</span><span class="p">:</span> <span class="s">&quot;180&quot;</span><span class="p">,</span>
+        <span class="s">&quot;points&quot;</span><span class="p">:</span> <span class="s">&quot;ctc,cuc,cmc&quot;</span><span class="p">,</span>
+        <span class="s">&quot;bak_ip&quot;</span><span class="p">:</span> <span class="s">&quot;pass&quot;</span><span class="p">,</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Ok&quot;</span><span class="p">,</span>
+        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="s">&quot;200&quot;</span><span class="p">,</span>
+        <span class="s">&quot;sms_notice&quot;</span><span class="p">:</span> <span class="s">&quot;me&quot;</span><span class="p">,</span>
+        <span class="s">&quot;email_notice&quot;</span><span class="p">:</span> <span class="s">&quot;me&quot;</span><span class="p">,</span>
+        <span class="s">&quot;less_notice&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+        <span class="s">&quot;callback_url&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;callback_key&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:19:09&quot;</span><span class="p">,</span>
+        <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:19:09&quot;</span><span class="p">,</span>
+        <span class="s">&quot;bak_ip_status&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id59">
+<h2>设置监控状态<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Setstatus">https://dnsapi.cn/Monitor.Setstatus</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>monitor_id 监控编号，必选</li>
+<li>status {enabled|disabled} 新的状态，必选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 监控编号错误</li>
+<li>7 新状态代码错误</li>
+<li>8 请先启用域名</li>
+<li>9 请先启用记录</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&amp;status=disable'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:33:20&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id60">
+<h2>获取监控历史<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Gethistory">https://dnsapi.cn/Monitor.Gethistory</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>monitor_id 监控编号，必选</li>
+<li>hours 获取最近多少个小时的记录，可选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 监控编号错误</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&amp;hours=1'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:40:02&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;2317346&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;domain_grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Plus&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;16909160&quot;</span><span class="p">,</span>
+        <span class="s">&quot;sub_domain&quot;</span><span class="p">:</span> <span class="s">&quot;@&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ip&quot;</span><span class="p">:</span> <span class="s">&quot;119.180.24.194&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;monitor_history&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;ok&quot;</span><span class="p">,</span>
+                <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:28:31&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:31:31&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:34:31&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">999</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:37:31&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s">&quot;point&quot;</span><span class="p">:</span> <span class="s">&quot;ctc&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;ok&quot;</span><span class="p">,</span>
+                <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:28:52&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:31:52&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:34:52&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:37:52&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s">&quot;point&quot;</span><span class="p">:</span> <span class="s">&quot;cuc&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;ok&quot;</span><span class="p">,</span>
+                <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:30:07&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:33:05&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:36:06&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;Down&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;status_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="s">&quot;createtime&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:39:06&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;responsetime&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s">&quot;point&quot;</span><span class="p">:</span> <span class="s">&quot;cmc&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id61">
+<h2>获取监控概况<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://dnsapi.cn/Monitor.Userdesc">https://dnsapi.cn/Monitor.Userdesc</a></li>
+</ul>
+</div></blockquote>
+<p>HTTP请求方式：</p>
+<blockquote>
+<div><ul class="simple">
+<li>POST</li>
+</ul>
+</div></blockquote>
+<p>请求参数：</p>
+<blockquote>
+<div><ul class="simple">
+<li>公共参数</li>
+</ul>
+</div></blockquote>
+<p>响应代码：</p>
+<blockquote>
+<div><ul class="simple">
+<li>共通返回</li>
+</ul>
+</div></blockquote>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Userdesc -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:50:14&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;desc&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;unmoniting_count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s">&quot;moniting_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;down_count&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;max_count&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
+        <span class="s">&quot;use_count&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id62">
+<h2>获取监控警告<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h2>
+<p>接口地址：</p>
+<blockquote>
+<div><ul class="simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Getdowns">https://dnsapi.cn/Monitor.Getdowns</a></li>
+</ul>
+</div></blockquote>
+<p>HTTP请求方式：</p>
+<blockquote>
+<div><ul class="simple">
+<li>POST</li>
+</ul>
+</div></blockquote>
+<p>请求参数：</p>
+<blockquote>
+<div><ul class="simple">
+<li>公共参数</li>
+<li>offset 记录开始的偏移，第一条记录为 0，依次类推，可选</li>
+<li>length 共要获取的记录的数量，比如获取20条，则为20，可选</li>
+</ul>
+</div></blockquote>
+<p>响应代码：</p>
+<blockquote>
+<div><ul class="simple">
+<li>共通返回</li>
+</ul>
+</div></blockquote>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Getdowns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;offset=0&amp;length=10'</pre>
+</div>
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:54:03&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;total_count&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;monitor_downs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;monitor_id&quot;</span><span class="p">:</span> <span class="s">&quot;03e3b268-3643-11e2-bab7-0819a6248970&quot;</span><span class="p">,</span>
+            <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;record_line&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ip&quot;</span><span class="p">:</span> <span class="s">&quot;119.180.24.194&quot;</span><span class="p">,</span>
+            <span class="s">&quot;warn_reason&quot;</span><span class="p">:</span> <span class="s">&quot;连接超时|访问您主机时连接超时，并且重试了5次后依然超时，建议您检查下你的服务器是否有网络不稳定的情况移动:timed out网通:timed out电信:timed out&quot;</span><span class="p">,</span>
+            <span class="s">&quot;switch_log&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">],</span>
+            <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 22:30:06&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;0000-00-00 00:00:00&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">DNSPod用户API文档</a><ul>
+<li><a class="reference internal" href="#api">API开发规范</a></li>
+<li><a class="reference internal" href="#id1">最近更新</a></li>
+<li><a class="reference internal" href="#id2">公共参数</a></li>
+<li><a class="reference internal" href="#id3">共通返回</a></li>
+<li><a class="reference internal" href="#d">D令牌验证相关</a></li>
+<li><a class="reference internal" href="#id4">获取API版本号</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">帐户相关</a><ul>
+<li><a class="reference internal" href="#id6">获取帐户信息</a></li>
+<li><a class="reference internal" href="#id7">修改资料</a></li>
+<li><a class="reference internal" href="#id8">修改密码</a></li>
+<li><a class="reference internal" href="#id9">修改邮箱</a></li>
+<li><a class="reference internal" href="#id10">获取手机验证码</a></li>
+<li><a class="reference internal" href="#id11">获取用户日志</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">域名相关</a><ul>
+<li><a class="reference internal" href="#id13">添加新域名</a></li>
+<li><a class="reference internal" href="#id14">获取域名列表</a></li>
+<li><a class="reference internal" href="#id15">删除域名</a></li>
+<li><a class="reference internal" href="#id16">设置域名状态</a></li>
+<li><a class="reference internal" href="#id17">获取域名信息</a></li>
+<li><a class="reference internal" href="#id18">获取域名日志</a></li>
+<li><a class="reference internal" href="#id19">设置域名搜索引擎推送</a></li>
+<li><a class="reference internal" href="#url">设置域名国内URL转发(废弃 不更新)</a></li>
+<li><a class="reference internal" href="#id20">添加域名共享</a></li>
+<li><a class="reference internal" href="#id21">域名共享列表</a></li>
+<li><a class="reference internal" href="#id22">修改域名共享</a></li>
+<li><a class="reference internal" href="#id23">删除域名共享</a></li>
+<li><a class="reference internal" href="#id24">域名过户</a></li>
+<li><a class="reference internal" href="#id25">锁定域名</a></li>
+<li><a class="reference internal" href="#id26">锁定状态</a></li>
+<li><a class="reference internal" href="#id27">锁定解锁</a></li>
+<li><a class="reference internal" href="#id28">域名绑定列表</a></li>
+<li><a class="reference internal" href="#id29">添加域名绑定</a></li>
+<li><a class="reference internal" href="#id30">删除域名绑定</a></li>
+<li><a class="reference internal" href="#id31">获取域名分组</a></li>
+<li><a class="reference internal" href="#id32">添加域名分组</a></li>
+<li><a class="reference internal" href="#id33">修改域名分组</a></li>
+<li><a class="reference internal" href="#id34">删除域名分组</a></li>
+<li><a class="reference internal" href="#id35">设置域名分组(更改域名所在分组)</a></li>
+<li><a class="reference internal" href="#id36">设置域名星标</a></li>
+<li><a class="reference internal" href="#id37">设置域名备注</a></li>
+<li><a class="reference internal" href="#id38">获取域名权限</a></li>
+<li><a class="reference internal" href="#id39">域名取回获取邮箱列表</a></li>
+<li><a class="reference internal" href="#id40">域名取回发送验证码</a></li>
+<li><a class="reference internal" href="#id41">验证域名取回的验证码</a></li>
+<li><a class="reference internal" href="#id42">获取等级允许的记录类型(修改)</a></li>
+<li><a class="reference internal" href="#id43">获取等级允许的记录线路</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id44">记录相关</a><ul>
+<li><a class="reference internal" href="#id45">添加记录</a></li>
+<li><a class="reference internal" href="#id46">记录列表</a></li>
+<li><a class="reference internal" href="#id47">修改记录</a></li>
+<li><a class="reference internal" href="#id48">删除记录</a></li>
+<li><a class="reference internal" href="#dns">更新动态DNS记录</a></li>
+<li><a class="reference internal" href="#id49">设置记录备注</a></li>
+<li><a class="reference internal" href="#id50">获取记录信息</a></li>
+<li><a class="reference internal" href="#id51">设置记录状态</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id52">宕机监控</a><ul>
+<li><a class="reference internal" href="#a">列出包含A记录的子域名</a></li>
+<li><a class="reference internal" href="#id53">列出子域名的A记录</a></li>
+<li><a class="reference internal" href="#id54">监控列表</a></li>
+<li><a class="reference internal" href="#id55">监控添加</a></li>
+<li><a class="reference internal" href="#id56">监控修改</a></li>
+<li><a class="reference internal" href="#id57">监控删除</a></li>
+<li><a class="reference internal" href="#id58">获取监控信息</a></li>
+<li><a class="reference internal" href="#id59">设置监控状态</a></li>
+<li><a class="reference internal" href="#id60">获取监控历史</a></li>
+<li><a class="reference internal" href="#id61">获取监控概况</a></li>
+<li><a class="reference internal" href="#id62">获取监控警告</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="#">DNSPod API 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, dnspod.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
