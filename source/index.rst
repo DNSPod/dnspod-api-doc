@@ -1380,6 +1380,7 @@ HTTP请求方式：
 响应代码：
     * 共通返回
     * 6 域名ID错误
+
 示例::
     
     curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&is_mark=yes'

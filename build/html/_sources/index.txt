@@ -124,6 +124,7 @@ HTTP请求方式：
     curl -X POST https://dnsapi.cn/Info.Version -d 'login_email=api@dnspod.com&login_password=password&format=json'
 
 返回参考：
+
     * JSON::
 
         {
@@ -133,6 +134,7 @@ HTTP请求方式：
                 "created_at": "2012-09-10 11:20:39"
             }
         }
+
 
 帐户相关
 ========
@@ -153,6 +155,7 @@ HTTP请求方式：
     curl -X POST https://dnsapi.cn/User.Detail -d 'login_email=api@dnspod.com&login_password=password&format=json'
 
 返回参考：
+
     * JSON::
         
         {
@@ -212,7 +215,6 @@ HTTP请求方式：
                 "created_at":"2012-08-24 13:34:56"
             }
         }
-
 
 修改密码
 ---------
@@ -337,6 +339,7 @@ HTTP请求方式：
     curl -X POST https://dnsapi.cn/User.Log -d 'login_email=api@dnspod.com&login_password=password&format=json'
 
 返回参考：
+
     * JSON::
         
         {
@@ -356,8 +359,8 @@ HTTP请求方式：
                 "2012-08-24 15:49:53: 111.111.111.111 登陆 成功",
             ]
         }
-
     
+
 域名相关
 ========
 
@@ -385,6 +388,7 @@ HTTP请求方式：
     curl -X POST https://dnsapi.cn/Domain.Create -d 'login_email=api@dnspod.com&login_password=password&domain=api2.com&format=json'
 
 返回参考：
+
     * JSON::
         
         {
@@ -478,8 +482,6 @@ HTTP请求方式：
                 }
             ]
         }    
-  
-
 
 删除域名
 ---------
@@ -504,7 +506,7 @@ HTTP请求方式：
     
 返回参考：
 
-    * JSON:: 
+    * JSON::
         
         {
             "status": {
@@ -524,12 +526,21 @@ HTTP请求方式：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * status {enable, disable} 域名状态
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 域名被锁定
+    * 8 非域名所有者
 
 示例::
 
     curl -X POST https://dnsapi.cn/Domain.Status -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2058967&status=disable'
 
 返回参考：
+
     * JSON::
             
         {
@@ -540,7 +551,6 @@ HTTP请求方式：
             }
         }
 
-
 获取域名信息
 -------------
 接口地址：
@@ -550,12 +560,19 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+响应代码：
+    * 共通返回
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 8 非域名所有者
 
 示例::
 
     curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
 
 返回参考：
+
     * JSON::
         
         {
@@ -597,12 +614,19 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+响应代码：
+    * 共通返回
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 8 非域名所有者
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
 
 返回参考：
+
     * JSON::
         
         {
@@ -628,7 +652,6 @@ HTTP请求方式：
             ]
         } 
 
-
 设置域名搜索引擎推送
 ---------------------
 接口地址：
@@ -639,12 +662,21 @@ HTTP请求方式：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * status {yes,no} 是否推送
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 域名被锁定
+    * 8 非域名所有者
 
 示例::
 
     curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&status=yes'
     
 返回参考：
+
     * JSON::
         
         {
@@ -655,7 +687,6 @@ HTTP请求方式：
             }
         }
 
-
 设置域名国内URL转发(废弃 不更新)
 ---------------------------------
 接口地址：
@@ -664,11 +695,9 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-
 示例
 
 返回参考：
-
 
 
 添加域名共享
@@ -683,6 +712,17 @@ HTTP请求方式：
     * email 要共享到的邮箱
     * mode {r,rw}共享模式，r (只读)　或 rw (读取、修改)，默认为 r
     * sub_domain 子域名共享，如：www、bbs等。如果要共享整个域名，则无需提交此参数
+
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 要共享到的邮箱错误
+    * 8 要共享到的邮箱不存在
+    * 9 共享已经存在
+    * 10 共享数量已经到达上限
 
 示例::
 
@@ -700,8 +740,6 @@ HTTP请求方式：
             }
         }
     
-
-
 域名共享列表
 -------------
 接口地址：
@@ -711,6 +749,18 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+响应代码：
+    * 共通返回
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 没有共享记录
+响应代码：
+    * 共通返回
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 没有共享记录
 
 示例::
     
@@ -735,8 +785,6 @@ HTTP请求方式：
             ],
             "owner": "api@dnspod.com"
         }
-    
-
 
 修改域名共享
 -------------
@@ -751,6 +799,15 @@ HTTP请求方式：
     * mode {r,rw}共享模式，r (只读)　或 rw (读取、修改)，默认为 r
     * old_sub_domain 已经成功共享的子域名，如果只修改主域名共享，则无需提交此参数
     * new_sub_domain 要修改到的共享子域名
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 要共享到的邮箱错误
+    * 8 要共享到的邮箱不存在
+    * 9 此邮箱的共享不存在
 
 示例
 
@@ -775,6 +832,7 @@ HTTP请求方式：
     curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=rw&old_sub_domain=www&new_sub_domain=bbs'
     
 返回参考：
+
    * JSON::
         
         {
@@ -784,7 +842,6 @@ HTTP请求方式：
                 "created_at": "2012-09-18 18:54:18"
             }
         } 
-
 
 删除域名共享
 -------------
@@ -796,6 +853,15 @@ HTTP请求方式：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * email 被共享者的邮箱，原来是什么就提交什么，不能修改
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 要共享到的邮箱错误
+    * 8 要共享到的邮箱不存在
+    * 9 此邮箱的共享不存在
 
 示例::
     
@@ -813,7 +879,6 @@ HTTP请求方式：
             }
         }
 
-
 域名过户
 ---------
 接口地址：
@@ -824,12 +889,24 @@ HTTP请求方式：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * email 被共享者的邮箱，原来是什么就提交什么，不能修改
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 要过户到的账号邮箱错误
+    * 8 要过户到的账号邮箱不存在
+    * 9 不能过户给自己
+    * 10 个人用户域名不能过户给企业账号
+    * 11 企业用户域名不能过户给个人账号
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com'
     
 返回参考：
+
     * JSON::    
     
         {
@@ -839,7 +916,6 @@ HTTP请求方式：
                 "created_at": "2012-09-18 20:21:33"
             }
         }
-
 
 锁定域名
 ---------
@@ -851,12 +927,23 @@ HTTP请求方式：
     * 公共参数
     * domain_id 域名ID
     * days 要锁定的天数
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 不是域名所有者或者没有权限
+    * 8 锁定天数错误
+    * 9 锁定天数超出限制
+    * 21 域名已经被锁定
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&days=3'
 
 返回参考：
+
     * JSON::
         
         {
@@ -872,7 +959,6 @@ HTTP请求方式：
             }
         }
 
-
 锁定状态
 ---------
 接口地址：
@@ -882,12 +968,20 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 域名没有锁定
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
     
 返回参考：
+
     * JSON::
         
         {
@@ -903,7 +997,6 @@ HTTP请求方式：
             }
         }
 
-
 锁定解锁
 ---------
 接口地址：
@@ -914,6 +1007,15 @@ HTTP请求方式：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * lock_code 域名解锁码，锁定的时候会返回
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 不是域名所有者或者没有权限
+    * 8 域名没有锁定
+    * 9 解锁码错误
 
 示例::
     
@@ -936,7 +1038,6 @@ HTTP请求方式：
             }
         }
 
-
 域名绑定列表
 -------------
 接口地址：
@@ -946,6 +1047,12 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+响应代码：
+    * 共通返回
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 没有绑定记录
 
 示例::
     
@@ -955,7 +1062,6 @@ HTTP请求方式：
 
    * JSON::
 
-    
         {
             "status": {
                 "code": "1",
@@ -981,6 +1087,16 @@ HTTP请求方式：
     * 公共参数
     * domain_id ，域名ID
     * domain 要绑定的域名，不带www.
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 要绑定的域名错误
+    * 8 要绑定的域名已经被添加
+    * 9 要绑定的域名已经被绑定
+    * 10 绑定数量已经到达上限
 
 示例::
     
@@ -1002,7 +1118,6 @@ HTTP请求方式：
             }
         }
 
-
 删除域名绑定
 -------------
 接口地址：
@@ -1013,6 +1128,13 @@ HTTP请求方式：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * alias_id 绑定ID，绑定域名的时候会返回
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 绑定ID错误
 
 示例::
     
@@ -1038,6 +1160,8 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
+响应代码：
+    * 共通返回
 
 示例::
     
@@ -1117,12 +1241,18 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * group_name 分组名称
+响应代码：
+    * 共通返回
+    * 7 分组名称错误
+    * 8 分组名称已经存在
+    * 9 分组数量超出限制
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&login_password=password&format=json&group_name=dnspod'
 
 返回参考：
+
     * JSON::
         
         {
@@ -1149,6 +1279,12 @@ HTTP请求方式：
     * 公共参数
     * group_id 分组ID
     * group_name 分组名称
+响应代码：
+    * 共通返回
+    * 6 分组ID错误
+    * 7 分组名称错误
+    * 8 分组名称已经存在
+    * 9 分组数量超出限制
 
 示例::
     
@@ -1175,6 +1311,9 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * group_id 分组ID
+响应代码：
+    * 共通返回
+    * 6 分组ID错误
 
 示例::
     
@@ -1202,6 +1341,10 @@ HTTP请求方式：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * group_id 分组ID
+响应代码：
+    * 共通返回
+    * 6 域名ID错误
+    * 7 分组ID错误
 
 示例::
     
@@ -1224,18 +1367,19 @@ HTTP请求方式：
     * 其它用户共享过来的域名全在“与我共享”系统分组下，不能更改
     * 只有域名所有者可以更改域名的分组，被共享者不能更改
 
-
 设置域名星标
 -------------
 接口地址：
     * https://dnsapi.cn/Domain.Ismark
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * is_mark {yes | no}, 是否星标域名
+响应代码：
+    * 共通返回
+    * 6 域名ID错误
 
 示例::
     
@@ -1253,24 +1397,26 @@ HTTP请求方式：
             }
         }
 
-
 设置域名备注
 -------------
 接口地址：
     * https://dnsapi.cn/Domain.Remark
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
     * remark 域名备注，删除备注请提交空内容
+响应代码：
+    * 共通返回
+    * 6 域名ID错误
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&remark=这个域名需要备注一下'
     
 返回参考：
+
     * JSON::
         
         {
@@ -1281,17 +1427,18 @@ HTTP请求方式：
             }
         }
 
-
 获取域名权限
 -------------
 接口地址：
     * https://dnsapi.cn/Domain.Purview
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+响应代码：
+    * 共通返回
+    * 6 域名ID不正确
 
 示例::
     
@@ -1383,12 +1530,25 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain 要取回的域名
+响应代码：
+    * 共通返回
+    * 6 域名不正确
+    * 7 不支持中文域名
+    * 8  域名不正确
+    * 9 不支持免费.tk域名
+    * 10 域名不存在
+    * 11 域名已被封禁，不能取回
+    * 12 锁定的域名不能取回
+    * 13 个人用户不能取回企业用户域名
+    * 14 企业用户不能取回个人用户域名
+    * 15 获取不到邮箱，可能是网络错误或域名不支持
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_email=api@dnspod.com&login_password=password&format=json&domain=api4.com'
     
 返回参考：
+
     * JSON::
         
         {
@@ -1403,7 +1563,6 @@ HTTP请求方式：
             ]
         }
 
-
 域名取回发送验证码
 --------------------
 接口地址：
@@ -1414,6 +1573,19 @@ HTTP请求方式：
     * 公共参数
     * domain 要取回的域名
     * email 域名取回邮箱列表中的一个邮箱
+响应代码：
+    * 共通返回
+    * 6 域名不正确
+    * 7 不支持中文域名
+    * 8  域名不正确
+    * 9 不支持免费.tk域名
+    * 10 域名不存在
+    * 11 域名已被封禁，不能取回
+    * 12 锁定的域名不能取回
+    * 13 个人用户不能取回企业用户域名
+    * 14 企业用户不能取回个人用户域名
+    * 15 获取不到邮箱，可能是网络错误或域名不支持
+    * 16 邮箱参数错误
 
 示例::
     
@@ -1430,7 +1602,6 @@ HTTP请求方式：
             }
         }
 
-
 验证域名取回的验证码
 ---------------------
 接口地址：
@@ -1441,12 +1612,26 @@ HTTP请求方式：
     * 公共参数
     * domain 要取回的域名
     * code  发送到邮箱的验证码
+响应代码：
+    * 共通返回
+    * 6 域名不正确
+    * 7 不支持中文域名
+    * 8  域名不正确
+    * 9 不支持免费.tk域名
+    * 10 域名不存在
+    * 11 域名已被封禁，不能取回
+    * 12 锁定的域名不能取回
+    * 13 个人用户不能取回企业用户域名
+    * 14 企业用户不能取回个人用户域名
+    * 15 验证码不正确
+    * 16 邮箱参数错误
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&login_password=password&format=json&domain=api4.com&code=111000'
     
 返回参考：
+
     * JSON::
             
         {
@@ -1457,7 +1642,6 @@ HTTP请求方式：
             }
         }
 
-
 获取等级允许的记录类型(修改)
 ----------------------------
 接口地址：
@@ -1467,12 +1651,16 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3
+响应代码：
+    * 共通返回
+    * 6 等级代码不正确
 
 示例::
     
     curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_grade=D_Free'
 
 返回参考：
+
     * JSON::
         
         {
@@ -1493,18 +1681,19 @@ HTTP请求方式：
             ]
         }    
 
-
 获取等级允许的记录线路
 -----------------------
 接口地址：
     *  https://dnsapi.cn/Record.Line
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+响应代码：
+    * 共通返回
+    * 6 等级代码不正确
 
 示例::
     
@@ -1546,9 +1735,7 @@ HTTP请求方式：
 添加记录
 ---------
 接口地址：
-
     * https://dnsapi.cn/Record.Create
-
 HTTP请求方式：
     * POST
 请求参数：
@@ -1560,6 +1747,26 @@ HTTP请求方式：
     * value  记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com., 必选
     * mx {1-20}  MX优先级, 当记录类型是 MX 时有效，范围1-20, MX记录必选
     * ttl {1-604800}  TTL，范围1-604800，不同等级域名最小值不同, 可选
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 缺少参数或者参数错误
+    * 7 不是域名所有者或者没有权限
+    * 21 域名被锁定
+    * 22 子域名不合法
+    * 23 子域名级数超出限制
+    * 24 泛解析子域名错误
+    * 25 轮循记录数量超出限制
+    * 26 记录线路错误
+    * 27 记录类型错误
+    * 30 MX 值错误，1-20
+    * 31 URL记录数超出限制
+    * 32 NS 记录数超出限制
+    * 33 AAAA 记录数超出限制
+    * 34 记录值非法
+    * 36 @主机的NS纪录只能添加默认线路
 
 示例::
 
@@ -1582,29 +1789,30 @@ HTTP请求方式：
             }
         }
 
-
 记录列表
 ---------
 接口地址：
-
     * https://dnsapi.cn/Record.List
-
 HTTP请求方式：
-
     * POST
-
 请求参数：
-
     * 公共参数
     * domain_id 域名ID，必选
     * offset 记录开始的偏移，第一条记录为 0，依次类推，可选
     * length 共要获取的记录的数量，比如获取20条，则为20，可选
     * sub_domain 子域名，如果指定则只返回此子域名的记录，可选
+响应代码：
+    * 共通返回
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 记录开始的偏移无效
+    * 8 共要获取的记录的数量无效
+    * 9 不是域名所有者
+    * 10 没有记录
 
 注意事项：
-
     * 如果域名的记录数量超过了3000，将会强制分页并且只返回前3000条，这时需要通过 offset 和 length 参数去获取其它记录。
-
 
 示例::
 
@@ -1679,12 +1887,10 @@ HTTP请求方式：
             ]
         }
 
-
 修改记录
 ---------
 接口地址：
     *  https://dnsapi.cn/Record.Modify
-
 HTTP请求方式：
     * POST
 请求参数：
@@ -1697,7 +1903,29 @@ HTTP请求方式：
     * value 记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com.，必选
     * mx {1-20} MX优先级, 当记录类型是 MX 时有效，范围1-20, mx记录必选
     * ttl {1-604800} TTL，范围1-604800，不同等级域名最小值不同，可选
-
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 不是域名所有者或没有权限
+    * 8 记录ID错误
+    * 21 域名被锁定
+    * 22 子域名不合法
+    * 23 子域名级数超出限制
+    * 24 泛解析子域名错误
+    * 25 轮循记录数量超出限制
+    * 26 记录线路错误
+    * 27 记录类型错误
+    * 29 TTL 值太小
+    * 30 MX 值错误，1-20
+    * 31 URL记录数超出限制
+    * 32 NS 记录数超出限制
+    * 33 AAAA 记录数超出限制
+    * 34 记录值非法
+    * 35 添加的IP不允许
+    * 36 @主机的NS纪录只能添加默认线路
 
 示例::
 
@@ -1720,19 +1948,25 @@ HTTP请求方式：
             }
         }
 
-
 删除记录
 ---------
 接口地址：
-
     *  https://dnsapi.cn/Record.Remove
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * domain_id 域名ID，必选
     * record_id 记录ID，必选
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 不是域名所有者或没有权限
+    * 8 记录ID错误
+    * 21 域名被锁定
 
 示例::
 
@@ -1761,6 +1995,20 @@ HTTP请求方式：
     * domain_id 域名ID，必选
     * record_id 记录ID，必选
     * record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 不是域名所有者或没有权限
+    * 8 记录ID错误
+    * 21 域名被锁定
+    * 22 子域名不合法
+    * 23 子域名级数超出限制，比如免费套餐域名不支持三级域名
+    * 24 泛解析子域名错误，比如免费套餐载名不支持 a*
+    * 25 轮循记录数量超出限制，比如免费套餐域名只能存在两条轮循记录
+    * 26 记录线路错误，比如免费套餐域名不支持移动、国外
 
 示例::
 
@@ -1786,9 +2034,7 @@ HTTP请求方式：
 设置记录备注
 -------------
 接口地址：
-
     *  https://dnsapi.cn/Record.Remark
-
 HTTP请求方式：
     * POST
 请求参数：
@@ -1796,6 +2042,10 @@ HTTP请求方式：
     * domain_id 域名ID，必选
     * record_id 记录ID，必选
     * remark 域名备注，删除备注请提交空内容，必选
+响应代码：
+    * 共通返回
+    * 6 域名ID错误
+    * 8 记录 ID 错误
 
 示例::
 
@@ -1817,15 +2067,21 @@ HTTP请求方式：
 获取记录信息
 -------------
 接口地址：
-
     *  https://dnsapi.cn/Record.Info
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * domain_id 域名ID，必选
     * record_id 记录ID，必选
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 不是域名所有者或没有权限
+    * 8 记录ID错误
 
 示例::
 
@@ -1866,9 +2122,7 @@ HTTP请求方式：
 设置记录状态
 -------------
 接口地址：
-
     *  https://dnsapi.cn/Record.Status
-
 HTTP请求方式：
     * POST
 请求参数：
@@ -1876,13 +2130,21 @@ HTTP请求方式：
     * domain_id 域名ID，必选
     * record_id 记录ID，必选
     * status {enabled|disabled} 新的状态，必选
+响应代码：
+    * 共通返回
+    * -15 域名已被封禁
+    * -7 企业账号的域名需要升级才能设置
+    * -8 代理名下用户的域名需要升级才能设置
+    * 6 域名ID错误
+    * 7 不是域名所有者或没有权限
+    * 8 记录ID错误
+    * 21 域名被锁定
 
 示例::
 
     curl -X POST https://dnsapi.cn/Record.Info -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439&status=disable'
     
 返回参考：
-
 
     * JSON::
 
@@ -1899,19 +2161,23 @@ HTTP请求方式：
             }
         }
 
+
 宕机监控
 =========
 列出包含A记录的子域名
 -----------------------
 接口地址：
-
     *  https://dnsapi.cn/Monitor.Listsubdomain
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * domain或domain_id, 必选
+响应代码：
+    * 共通返回
+    * 6 域名不存在
+    * 7 域名编号错误
+    * 8 此域名没有任何记录
 
 示例::
 
@@ -1939,19 +2205,20 @@ HTTP请求方式：
             ]
         }
 
-
 列出子域名的A记录
 ------------------
 接口地址：
-
     *  https://dnsapi.cn/Monitor.Listsubvalue
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * domain或domain_id, 必选
     * subdomain 子域名，必选
+响应代码：
+    * 共通返回
+    * 6 域名不存在
+    * 7 域名编号错误
 
 示例::
 
@@ -1990,17 +2257,16 @@ HTTP请求方式：
             ]
         }
 
-
 监控列表
 ---------
 接口地址：
-
     *  https://dnsapi.cn/Monitor.List
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
+响应代码：
+    * 共通返回
 
 示例::
 
@@ -2053,13 +2319,10 @@ HTTP请求方式：
             ]
         }
 
-
 监控添加
 ---------
 接口地址：
-
     *  https://dnsapi.cn/Monitor.Create
-
 HTTP请求方式：
     * POST
 请求参数：
@@ -2084,9 +2347,7 @@ HTTP请求方式：
     * less_notice {yes|no}是否一个小时内只发一次通知，可选
     * callback_url  可选，回调URL，宕机了会将相关的参数提交到此设置的URL，具体参考回调URL说明，可选
     * callback_key 可选，回调密钥，如果设置了回调URL请设置此参数以保证安全，可选
-
 响应代码：
-
     * 共通返回
     * 6 域名编号错误
     * 7 记录编号错误
@@ -2105,7 +2366,6 @@ HTTP请求方式：
     * 20 此记录已经存在监控
     * 21 监控数量超出限制
     * 22 回调URL不正确
-
 
 示例::
 
@@ -2127,13 +2387,10 @@ HTTP请求方式：
             }
         }
 
-
 监控修改
 ---------
 接口地址：
-
     *  https://dnsapi.cn/Monitor.Modify
-
 HTTP请求方式：
     * POST
 请求参数：
@@ -2157,8 +2414,6 @@ HTTP请求方式：
     * less_notice {yes|no}是否一个小时内只发一次通知，可选
     * callback_url  可选，回调URL，宕机了会将相关的参数提交到此设置的URL，具体参考回调URL说明，可选
     * callback_key 可选，回调密钥，如果设置了回调URL请设置此参数以保证安全，可选
-
-
 响应代码：
     * 共通返回
     * 7 监控编号错误
@@ -2192,23 +2447,18 @@ HTTP请求方式：
             }
         }
 
-
 监控删除
 ---------
 接口地址：
-
     *  https://dnsapi.cn/Monitor.Remove
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * monitor_id 监控编号
-
 响应代码：
     * 共通返回
     * 6 监控编号错误
-
 
 示例::
 
@@ -2230,19 +2480,15 @@ HTTP请求方式：
 获取监控信息
 -------------
 接口地址：
-
     * https://dnsapi.cn/Monitor.Info
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * monitor_id 监控编号
-
 响应代码：
     * 共通返回
     * 7 监控编号错误
-
 
 示例::
         
@@ -2293,21 +2539,21 @@ HTTP请求方式：
 -------------
 接口地址：
     *  https://dnsapi.cn/Monitor.Setstatus
-
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
     * monitor_id 监控编号，必选
     * status {enabled|disabled} 新的状态，必选
-
 响应代码：
     * 共通返回
     * 6 监控编号错误
     * 7 新状态代码错误
     * 8 请先启用域名
     * 9 请先启用记录
-
+响应代码：
+    * 共通返回
+    * 6 监控编号错误
 
 示例::
 
@@ -2325,21 +2571,16 @@ HTTP请求方式：
             }
         }
 
-
 获取监控历史
 -------------
-
 接口地址：
     *  https://dnsapi.cn/Monitor.Gethistory
-
 HTTP请求方式：
     * POST
-
 请求参数：
     * 公共参数
     * monitor_id 监控编号，必选
     * hours 获取最近多少个小时的记录，可选
-
 响应代码：
     * 共通返回
     * 6 监控编号错误
@@ -2471,26 +2712,16 @@ HTTP请求方式：
             ]
         }
 
-
 获取监控概况
 -------------
-
 接口地址：
-
     * https://dnsapi.cn/Monitor.Userdesc
-
 HTTP请求方式：
-
     * POST
-
 请求参数：
-
     * 公共参数
-
 响应代码：
-
     * 共通返回
-
 
 示例::
 
@@ -2521,21 +2752,14 @@ HTTP请求方式：
 获取监控警告
 -------------
 接口地址：
-
     *  https://dnsapi.cn/Monitor.Getdowns
-
 HTTP请求方式：
-
     * POST
-
 请求参数：
-
     * 公共参数
     * offset 记录开始的偏移，第一条记录为 0，依次类推，可选
     * length 共要获取的记录的数量，比如获取20条，则为20，可选
-
 响应代码：
-
     * 共通返回
 
 示例::

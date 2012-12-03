@@ -245,9 +245,9 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Info.Version -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -260,8 +260,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="id5">
@@ -293,9 +292,9 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Detail -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -325,8 +324,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id7">
 <h2>修改资料<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
@@ -562,9 +560,9 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Log -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -587,8 +585,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="id12">
@@ -628,9 +625,9 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;domain=api2.com&amp;format=json'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -648,8 +645,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id14">
 <h2>获取域名列表<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
@@ -829,13 +825,24 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>status {enable, disable} 域名状态</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 域名被锁定</li>
+<li>8 非域名所有者</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Status -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2058967&amp;status=disable'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -848,8 +855,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id17">
 <h2>获取域名信息<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
@@ -870,13 +876,22 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>8 非域名所有者</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -910,8 +925,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id18">
 <h2>获取域名日志<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
@@ -932,13 +946,22 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>8 非域名所有者</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -966,8 +989,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id19">
 <h2>设置域名搜索引擎推送<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
@@ -989,13 +1011,24 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>status {yes,no} 是否推送</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 域名被锁定</li>
+<li>8 非域名所有者</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;status=yes'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1008,8 +1041,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="url">
 <h2>设置域名国内URL转发(废弃 不更新)<a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h2>
@@ -1051,6 +1083,19 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>sub_domain 子域名共享，如：www、bbs等。如果要共享整个域名，则无需提交此参数</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 要共享到的邮箱错误</li>
+<li>8 要共享到的邮箱不存在</li>
+<li>9 共享已经存在</li>
+<li>10 共享数量已经到达上限</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=otheruser@dnspod.com&amp;mode=rw'</pre>
@@ -1089,6 +1134,24 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <dd><ul class="first last simple">
 <li>公共参数</li>
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 没有共享记录</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 没有共享记录</li>
 </ul>
 </dd>
 </dl>
@@ -1143,6 +1206,18 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>new_sub_domain 要修改到的共享子域名</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 要共享到的邮箱错误</li>
+<li>8 要共享到的邮箱不存在</li>
+<li>9 此邮箱的共享不存在</li>
+</ul>
+</dd>
 </dl>
 <p>示例</p>
 <ol class="arabic">
@@ -1167,9 +1242,9 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ol>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1182,8 +1257,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id23">
 <h2>删除域名共享<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
@@ -1203,6 +1277,18 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
 <li>email 被共享者的邮箱，原来是什么就提交什么，不能修改</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 要共享到的邮箱错误</li>
+<li>8 要共享到的邮箱不存在</li>
+<li>9 此邮箱的共享不存在</li>
 </ul>
 </dd>
 </dl>
@@ -1246,13 +1332,27 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>email 被共享者的邮箱，原来是什么就提交什么，不能修改</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 要过户到的账号邮箱错误</li>
+<li>8 要过户到的账号邮箱不存在</li>
+<li>9 不能过户给自己</li>
+<li>10 个人用户域名不能过户给企业账号</li>
+<li>11 企业用户域名不能过户给个人账号</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1265,8 +1365,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id25">
 <h2>锁定域名<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
@@ -1288,13 +1387,26 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>days 要锁定的天数</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 不是域名所有者或者没有权限</li>
+<li>8 锁定天数错误</li>
+<li>9 锁定天数超出限制</li>
+<li>21 域名已经被锁定</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;days=3'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1312,8 +1424,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id26">
 <h2>锁定状态<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
@@ -1334,13 +1445,23 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 域名没有锁定</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1358,8 +1479,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id27">
 <h2>锁定解锁<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
@@ -1379,6 +1499,18 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
 <li>lock_code 域名解锁码，锁定的时候会返回</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 不是域名所有者或者没有权限</li>
+<li>8 域名没有锁定</li>
+<li>9 解锁码错误</li>
 </ul>
 </dd>
 </dl>
@@ -1424,6 +1556,15 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <dd><ul class="first last simple">
 <li>公共参数</li>
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 没有绑定记录</li>
 </ul>
 </dd>
 </dl>
@@ -1473,6 +1614,19 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>domain 要绑定的域名，不带www.</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 要绑定的域名错误</li>
+<li>8 要绑定的域名已经被添加</li>
+<li>9 要绑定的域名已经被绑定</li>
+<li>10 绑定数量已经到达上限</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;domain=dnspodapi.com'</pre>
@@ -1518,6 +1672,16 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>alias_id 绑定ID，绑定域名的时候会返回</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 绑定ID错误</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;alias_id=18737'</pre>
@@ -1555,6 +1719,11 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
 </ul>
 </dd>
 </dl>
@@ -1651,13 +1820,21 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>group_name 分组名称</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>7 分组名称错误</li>
+<li>8 分组名称已经存在</li>
+<li>9 分组数量超出限制</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_name=dnspod'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1673,7 +1850,8 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
+</div></blockquote>
+<dl class="docutils">
 <dt>说明：</dt>
 <dd><ul class="first last simple">
 <li>该接口只对VPI帐户有效，免费用户无法获取域名分组，免费用户会返回错误提示。</li>
@@ -1696,6 +1874,15 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>group_id 分组ID</li>
 <li>group_name 分组名称</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 分组ID错误</li>
+<li>7 分组名称错误</li>
+<li>8 分组名称已经存在</li>
+<li>9 分组数量超出限制</li>
 </ul>
 </dd>
 </dl>
@@ -1738,6 +1925,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>group_id 分组ID</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 分组ID错误</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985'</pre>
@@ -1777,6 +1970,13 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
 <li>group_id 分组ID</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名ID错误</li>
+<li>7 分组ID错误</li>
 </ul>
 </dd>
 </dl>
@@ -1827,6 +2027,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>is_mark {yes | no}, 是否星标域名</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名ID错误</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;is_mark=yes'</pre>
@@ -1868,13 +2074,19 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>remark 域名备注，删除备注请提交空内容</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名ID错误</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;remark=这个域名需要备注一下'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1887,8 +2099,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id38">
 <h2>获取域名权限<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
@@ -1907,6 +2118,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <dd><ul class="first last simple">
 <li>公共参数</li>
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名ID不正确</li>
 </ul>
 </dd>
 </dl>
@@ -2018,13 +2235,28 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>domain 要取回的域名</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名不正确</li>
+<li>7 不支持中文域名</li>
+<li>8  域名不正确</li>
+<li>9 不支持免费.tk域名</li>
+<li>10 域名不存在</li>
+<li>11 域名已被封禁，不能取回</li>
+<li>12 锁定的域名不能取回</li>
+<li>13 个人用户不能取回企业用户域名</li>
+<li>14 企业用户不能取回个人用户域名</li>
+<li>15 获取不到邮箱，可能是网络错误或域名不支持</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -2041,8 +2273,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id40">
 <h2>域名取回发送验证码<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h2>
@@ -2062,6 +2293,22 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>domain 要取回的域名</li>
 <li>email 域名取回邮箱列表中的一个邮箱</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名不正确</li>
+<li>7 不支持中文域名</li>
+<li>8  域名不正确</li>
+<li>9 不支持免费.tk域名</li>
+<li>10 域名不存在</li>
+<li>11 域名已被封禁，不能取回</li>
+<li>12 锁定的域名不能取回</li>
+<li>13 个人用户不能取回企业用户域名</li>
+<li>14 企业用户不能取回个人用户域名</li>
+<li>15 获取不到邮箱，可能是网络错误或域名不支持</li>
+<li>16 邮箱参数错误</li>
 </ul>
 </dd>
 </dl>
@@ -2106,13 +2353,29 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>code  发送到邮箱的验证码</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名不正确</li>
+<li>7 不支持中文域名</li>
+<li>8  域名不正确</li>
+<li>9 不支持免费.tk域名</li>
+<li>10 域名不存在</li>
+<li>11 域名已被封禁，不能取回</li>
+<li>12 锁定的域名不能取回</li>
+<li>13 个人用户不能取回企业用户域名</li>
+<li>14 企业用户不能取回个人用户域名</li>
+<li>15 验证码不正确</li>
+<li>16 邮箱参数错误</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;code=111000'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -2125,8 +2388,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id42">
 <h2>获取等级允许的记录类型(修改)<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
@@ -2147,13 +2409,19 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 等级代码不正确</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free'</pre>
 </div>
-<dl class="docutils">
-<dt>返回参考：</dt>
-<dd><ul class="first last">
+<p>返回参考：</p>
+<blockquote>
+<div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -2176,8 +2444,7 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id43">
 <h2>获取等级允许的记录线路<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h2>
@@ -2197,6 +2464,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3</li>
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 等级代码不正确</li>
 </ul>
 </dd>
 </dl>
@@ -2243,13 +2516,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <h1>记录相关<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id45">
 <h2>添加记录<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li><a class="reference external" href="https://dnsapi.cn/Record.Create">https://dnsapi.cn/Record.Create</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2265,6 +2537,29 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>value  记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com., 必选</li>
 <li>mx {1-20}  MX优先级, 当记录类型是 MX 时有效，范围1-20, MX记录必选</li>
 <li>ttl {1-604800}  TTL，范围1-604800，不同等级域名最小值不同, 可选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 缺少参数或者参数错误</li>
+<li>7 不是域名所有者或者没有权限</li>
+<li>21 域名被锁定</li>
+<li>22 子域名不合法</li>
+<li>23 子域名级数超出限制</li>
+<li>24 泛解析子域名错误</li>
+<li>25 轮循记录数量超出限制</li>
+<li>26 记录线路错误</li>
+<li>27 记录类型错误</li>
+<li>30 MX 值错误，1-20</li>
+<li>31 URL记录数超出限制</li>
+<li>32 NS 记录数超出限制</li>
+<li>33 AAAA 记录数超出限制</li>
+<li>34 记录值非法</li>
+<li>36 &#64;主机的NS纪录只能添加默认线路</li>
 </ul>
 </dd>
 </dl>
@@ -2295,34 +2590,44 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id46">
 <h2>记录列表<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li><a class="reference external" href="https://dnsapi.cn/Record.List">https://dnsapi.cn/Record.List</a></li>
 </ul>
-</div></blockquote>
-<p>HTTP请求方式：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
 <li>POST</li>
 </ul>
-</div></blockquote>
-<p>请求参数：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
 <li>公共参数</li>
 <li>domain_id 域名ID，必选</li>
 <li>offset 记录开始的偏移，第一条记录为 0，依次类推，可选</li>
 <li>length 共要获取的记录的数量，比如获取20条，则为20，可选</li>
 <li>sub_domain 子域名，如果指定则只返回此子域名的记录，可选</li>
 </ul>
-</div></blockquote>
-<p>注意事项：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 记录开始的偏移无效</li>
+<li>8 共要获取的记录的数量无效</li>
+<li>9 不是域名所有者</li>
+<li>10 没有记录</li>
+</ul>
+</dd>
+<dt>注意事项：</dt>
+<dd><ul class="first last simple">
 <li>如果域名的记录数量超过了3000，将会强制分页并且只返回前3000条，这时需要通过 offset 和 length 参数去获取其它记录。</li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346'</pre>
 </div>
@@ -2426,6 +2731,32 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>ttl {1-604800} TTL，范围1-604800，不同等级域名最小值不同，可选</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 不是域名所有者或没有权限</li>
+<li>8 记录ID错误</li>
+<li>21 域名被锁定</li>
+<li>22 子域名不合法</li>
+<li>23 子域名级数超出限制</li>
+<li>24 泛解析子域名错误</li>
+<li>25 轮循记录数量超出限制</li>
+<li>26 记录线路错误</li>
+<li>27 记录类型错误</li>
+<li>29 TTL 值太小</li>
+<li>30 MX 值错误，1-20</li>
+<li>31 URL记录数超出限制</li>
+<li>32 NS 记录数超出限制</li>
+<li>33 AAAA 记录数超出限制</li>
+<li>34 记录值非法</li>
+<li>35 添加的IP不允许</li>
+<li>36 &#64;主机的NS纪录只能添加默认线路</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;value=3.2.2.2&amp;record_type=A&amp;record_line=默认'</pre>
@@ -2454,13 +2785,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id48">
 <h2>删除记录<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Remove">https://dnsapi.cn/Record.Remove</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2471,6 +2801,18 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>domain_id 域名ID，必选</li>
 <li>record_id 记录ID，必选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 不是域名所有者或没有权限</li>
+<li>8 记录ID错误</li>
+<li>21 域名被锁定</li>
 </ul>
 </dd>
 </dl>
@@ -2515,6 +2857,23 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选</li>
 </ul>
 </dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 不是域名所有者或没有权限</li>
+<li>8 记录ID错误</li>
+<li>21 域名被锁定</li>
+<li>22 子域名不合法</li>
+<li>23 子域名级数超出限制，比如免费套餐域名不支持三级域名</li>
+<li>24 泛解析子域名错误，比如免费套餐载名不支持 a*</li>
+<li>25 轮循记录数量超出限制，比如免费套餐域名只能存在两条轮循记录</li>
+<li>26 记录线路错误，比如免费套餐域名不支持移动、国外</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认'</pre>
@@ -2543,13 +2902,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id49">
 <h2>设置记录备注<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Remark">https://dnsapi.cn/Record.Remark</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2561,6 +2919,13 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>domain_id 域名ID，必选</li>
 <li>record_id 记录ID，必选</li>
 <li>remark 域名备注，删除备注请提交空内容，必选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名ID错误</li>
+<li>8 记录 ID 错误</li>
 </ul>
 </dd>
 </dl>
@@ -2586,13 +2951,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id50">
 <h2>获取记录信息<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Info">https://dnsapi.cn/Record.Info</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2603,6 +2967,17 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>domain_id 域名ID，必选</li>
 <li>record_id 记录ID，必选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 不是域名所有者或没有权限</li>
+<li>8 记录ID错误</li>
 </ul>
 </dd>
 </dl>
@@ -2647,13 +3022,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id51">
 <h2>设置记录状态<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Record.Status">https://dnsapi.cn/Record.Status</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2665,6 +3039,18 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>domain_id 域名ID，必选</li>
 <li>record_id 记录ID，必选</li>
 <li>status {enabled|disabled} 新的状态，必选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>-15 域名已被封禁</li>
+<li>-7 企业账号的域名需要升级才能设置</li>
+<li>-8 代理名下用户的域名需要升级才能设置</li>
+<li>6 域名ID错误</li>
+<li>7 不是域名所有者或没有权限</li>
+<li>8 记录ID错误</li>
+<li>21 域名被锁定</li>
 </ul>
 </dd>
 </dl>
@@ -2698,13 +3084,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <h1>宕机监控<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="a">
 <h2>列出包含A记录的子域名<a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Listsubdomain">https://dnsapi.cn/Monitor.Listsubdomain</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2714,6 +3099,14 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <dd><ul class="first last simple">
 <li>公共参数</li>
 <li>domain或domain_id, 必选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名不存在</li>
+<li>7 域名编号错误</li>
+<li>8 此域名没有任何记录</li>
 </ul>
 </dd>
 </dl>
@@ -2749,13 +3142,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id53">
 <h2>列出子域名的A记录<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Listsubvalue">https://dnsapi.cn/Monitor.Listsubvalue</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2766,6 +3158,13 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>公共参数</li>
 <li>domain或domain_id, 必选</li>
 <li>subdomain 子域名，必选</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名不存在</li>
+<li>7 域名编号错误</li>
 </ul>
 </dd>
 </dl>
@@ -2812,13 +3211,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id54">
 <h2>监控列表<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.List">https://dnsapi.cn/Monitor.List</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2827,6 +3225,11 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
 </ul>
 </dd>
 </dl>
@@ -2887,13 +3290,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id55">
 <h2>监控添加<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Create">https://dnsapi.cn/Monitor.Create</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -2944,10 +3346,8 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </li>
 </ul>
 </dd>
-</dl>
-<p>响应代码：</p>
-<blockquote>
-<div><ul class="simple">
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
 <li>共通返回</li>
 <li>6 域名编号错误</li>
 <li>7 记录编号错误</li>
@@ -2967,7 +3367,8 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>21 监控数量超出限制</li>
 <li>22 回调URL不正确</li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16909160&amp;port=80&amp;monitor_type=http&amp;monitor_path=/&amp;monitor_interval=360&amp;points=ctc,cuc,cmc&amp;bak_ip=pass&amp;host=testapi.com'</pre>
 </div>
@@ -2994,13 +3395,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id56">
 <h2>监控修改<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Modify">https://dnsapi.cn/Monitor.Modify</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -3091,13 +3491,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id57">
 <h2>监控删除<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Remove">https://dnsapi.cn/Monitor.Remove</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -3138,13 +3537,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id58">
 <h2>获取监控信息<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li><a class="reference external" href="https://dnsapi.cn/Monitor.Info">https://dnsapi.cn/Monitor.Info</a></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
+</dd>
 <dt>HTTP请求方式：</dt>
 <dd><ul class="first last simple">
 <li>POST</li>
@@ -3239,6 +3637,12 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 <li>7 新状态代码错误</li>
 <li>8 请先启用域名</li>
 <li>9 请先启用记录</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 监控编号错误</li>
 </ul>
 </dd>
 </dl>
@@ -3422,30 +3826,28 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id61">
 <h2>获取监控概况<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li><a class="reference external" href="https://dnsapi.cn/Monitor.Userdesc">https://dnsapi.cn/Monitor.Userdesc</a></li>
 </ul>
-</div></blockquote>
-<p>HTTP请求方式：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
 <li>POST</li>
 </ul>
-</div></blockquote>
-<p>请求参数：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
 <li>公共参数</li>
 </ul>
-</div></blockquote>
-<p>响应代码：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
 <li>共通返回</li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Userdesc -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
 </div>
@@ -3477,32 +3879,30 @@ UserAgent的格式必须为：程序英文名称/版本 (联系邮箱)
 </div>
 <div class="section" id="id62">
 <h2>获取监控警告<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h2>
-<p>接口地址：</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
 <li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Monitor.Getdowns">https://dnsapi.cn/Monitor.Getdowns</a></li>
 </ul>
-</div></blockquote>
-<p>HTTP请求方式：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
 <li>POST</li>
 </ul>
-</div></blockquote>
-<p>请求参数：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
 <li>公共参数</li>
 <li>offset 记录开始的偏移，第一条记录为 0，依次类推，可选</li>
 <li>length 共要获取的记录的数量，比如获取20条，则为20，可选</li>
 </ul>
-</div></blockquote>
-<p>响应代码：</p>
-<blockquote>
-<div><ul class="simple">
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
 <li>共通返回</li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Getdowns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;offset=0&amp;length=10'</pre>
 </div>
