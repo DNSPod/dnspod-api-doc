@@ -40,8 +40,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'DNSPod API'
-copyright = u'2012, dnspod'
+project = u'DNSPod API Doc'
+copyright = u'DNSPod Inc.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -121,7 +121,7 @@ html_theme_options = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = None
+html_logo = "static/logo.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -175,7 +175,7 @@ html_static_path = ['static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'DNSPodAPIdoc'
+htmlhelp_basename = 'DNSPodAPIDoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -194,8 +194,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('DNSPod API', 'DNSPodAPI.tex', u'DNSPod API Documentation',
-   u'dnspod', 'manual'),
+  ('index.rst', 'DNSPodAPIDoc.tex', u'DNSPod API Doc',
+   u'DNSPod Inc.', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -224,8 +224,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('DNSPod API', 'dnspodapi', u'DNSPod API Documentation',
-     [u'dnspod'], 1)
+    ('index.rst', 'dnspodapidoc', u'DNSPod API Documentation',
+     [u'DNSPod Inc.'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -238,8 +238,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('DNSPod API', 'DNSPodAPI', u'DNSPod API Documentation',
-   u'dnspod', 'DNSPodAPI', 'One line description of project.',
+  ('index.rst', 'DNSPodAPIDoc', u'DNSPod API Doc',
+   u'DNSPod Inc.', 'DNSPodAPI', 'DNSPod API Doc',
    'Miscellaneous'),
 ]
 
@@ -256,10 +256,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'DNSPod API'
-epub_author = u'dnspod'
-epub_publisher = u'dnspod'
-epub_copyright = u'2012, dnspod'
+epub_title = u'DNSPod API Doc'
+epub_author = u'DNSPod Inc.'
+epub_publisher = u'DNSPod Inc.'
+epub_copyright = u'DNSPod Inc.'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
