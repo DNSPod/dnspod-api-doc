@@ -2129,7 +2129,7 @@ HTTP请求方式：
     * 公共参数
     * domain_id 域名ID，必选
     * record_id 记录ID，必选
-    * status {enabled|disabled} 新的状态，必选
+    * status {enable|disable} 新的状态，必选
 响应代码：
     * 共通返回
     * -15 域名已被封禁
