@@ -1276,6 +1276,7 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3
+                        新套餐：DP_Free DP_Plus DP_Extra DP_Expert DP_Ultra, 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版
 响应代码：
     * 共通返回
     * 6 等级代码不正确
@@ -1314,7 +1315,8 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3
+    * domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3。
+                    新套餐：DP_Free, DP_Plus, DP_Extra, DP_Expert, DP_Ultra, 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版
     * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
 响应代码：
     * 共通返回
