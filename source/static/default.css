@@ -22,10 +22,6 @@ body {
     padding: 0;
 }
 
-ol, ul {
-    list-style: none;
-}
-
 ul li {
     margin:2px 0 2px 0;
 }
@@ -35,7 +31,7 @@ dd {
 }
 dd ul, dd table {
     margin-bottom: 10px;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 div.document {
