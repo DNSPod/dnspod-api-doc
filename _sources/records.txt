@@ -263,6 +263,7 @@ HTTP请求方式：
     * 公共参数
     * domain_id 域名ID，必选
     * record_id 记录ID，必选
+    * sub_domain 主机记录，如 www
     * record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
     * value IP地址，例如：6.6.6.6，可选
 响应代码：
