@@ -37,13 +37,18 @@
             
   <div class="section" id="api">
 <h1>API说明<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>DNSPod 用户 API 仅限于个人用户使用，使用户能更方便、更灵活的管理自己的域名和记录。</li>
+<li>域名注册商等代理用户请使用代理 API，申请成为代理用户请点击：<a class="reference external" href="https://www.dnspod.cn/Service#/account/agent">https://www.dnspod.cn/Service#/account/agent</a> 。</li>
+<li>不允许任何第三方使用本 API 获取、操作用户数据，如有类似需求，欢迎联系合作：<a class="reference external" href="https://www.dnspod.cn/About/Aboutus">https://www.dnspod.cn/About/Aboutus</a> 。</li>
+</ol>
 <div class="section" id="id1">
 <h2>API开发规范<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
 <dt>关于滥用：</dt>
 <dd><dl class="first docutils">
-<dt>以下这些，但并不限于以下这些行为都被视为滥用：</dt>
+<dt>包括但不限于以下情形都被视为滥用：</dt>
 <dd><ul class="first last simple">
 <li>短时间内大量添加、删除、修改、刷新域名或者记录，或者设置记录状态。</li>
 <li>记录内容没有任何改变的刷新，比如动态DNS中IP没变也请求修改记录。</li>
@@ -69,20 +74,12 @@
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>请求地址：</dt>
-<dd><p class="first last">请求的地址为 <a class="reference external" href="https://dnsapi.cn/">https://dnsapi.cn/</a> 开头的地址，基于SSL安全传输。为了安全必须用https开头的地址，否则将有可能被封禁。</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>请求方法：</dt>
-<dd><p class="first last">只支持POST方法请求数据，用其它方法会提示相关错误。</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>关于编码：</dt>
-<dd><p class="first last">请用UTF-8编码进行数据传输，返回的数据也是UTF-8编码的。</p>
+<dt>关于请求：</dt>
+<dd><ul class="first last simple">
+<li>请求的地址为 <a class="reference external" href="https://dnsapi.cn/">https://dnsapi.cn/</a> 开头的地址，基于SSL安全传输。为了安全必须用https开头的地址，否则将有可能被封禁。</li>
+<li>只支持POST方法请求数据，用其它方法会提示错误。</li>
+<li>请用UTF-8编码进行数据传输，返回的数据也是UTF-8编码的。</li>
+</ul>
 </dd>
 </dl>
 </li>

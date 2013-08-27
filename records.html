@@ -401,7 +401,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认&amp;sub_domain=www'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -580,7 +580,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Info -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Status -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
