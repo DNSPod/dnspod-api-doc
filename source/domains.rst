@@ -1283,7 +1283,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_grade=D_Free'
+    curl -X POST https://dnsapi.cn/Record.Type -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_grade=D_Free'
 
 返回参考：
 
@@ -1324,7 +1324,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_grade=D_Free&domain_id=2059079'
+    curl -X POST https://dnsapi.cn/Record.Line -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_grade=D_Free&domain_id=2059079'
 
 返回参考：
 
