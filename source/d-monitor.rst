@@ -174,7 +174,8 @@ HTTP请求方式：
     * points 监控节点，用,分隔多个，只能选择列表中的节点，并且有数量限制，必选
     * bak_ip 宕机备用，必选，支持任选以下选项中的一个：
         #. pass 只监控，不切换
-        #. pause 智能暂停
+        #. pause 老版智能暂停功能，详见https://support.dnspod.cn/Kb/showarticle/tsid/179
+        #. pause2 智能暂停v2, 发现ip宕机后直接暂停该记录，无其它规则
         #. auto 智能切换
         #. 用逗号分隔的IP 设置备用IP
 
@@ -240,7 +241,8 @@ HTTP请求方式：
     * points 监控节点，用,分隔多个，只能选择列表中的节点，并且有数量限制，必选
     * bak_ip 宕机备用，必选，支持任选以下选项中的一个：
         #. pass 只监控，不切换
-        #. pause 智能暂停
+        #. pause 老版智能暂停功能，详见https://support.dnspod.cn/Kb/showarticle/tsid/179
+        #. pause2 智能暂停v2, 发现ip宕机后直接暂停该记录，无其它规则
         #. auto 智能切换
         #. 用逗号分隔的IP 设置备用IP
 
