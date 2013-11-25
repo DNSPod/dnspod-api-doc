@@ -63,13 +63,13 @@
 </li>
 <li><dl class="first docutils">
 <dt>禁止登录：</dt>
-<dd><p class="first last">如果账号尝试登录错误次数在5分钟内超过30次则会被禁止登录一个小时，写程序的时候特别是动态客户端的时候必须判断是否登录成功，如果不成功必须马上停止尝试。如果使用动态客户端，在网页上修改了密码后务必到客户端修改，否则将不可用。</p>
+<dd><p class="first last">如果帐号尝试登录错误次数在5分钟内超过30次则会被禁止登录一个小时，写程序的时候特别是动态客户端的时候必须判断是否登录成功，如果不成功必须马上停止尝试。如果使用动态客户端，在网页上修改了密码后务必到客户端修改，否则将不可用。</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>关于封禁：</dt>
-<dd><p class="first last">由于滥用API将会导致账号在API中封禁，但并不影响在官方网站上的使用，封禁一定的时间后会自动解除，一般需要一个小时后才会解封，所以请小心操作，不要拿API进行大量测试。</p>
+<dd><p class="first last">由于滥用API将会导致帐号在API中封禁，但并不影响在官方网站上的使用，封禁一定的时间后会自动解除，一般需要一个小时后才会解封，所以请小心操作，不要拿API进行大量测试。</p>
 </dd>
 </dl>
 </li>
@@ -86,7 +86,7 @@
 <li><dl class="first docutils">
 <dt>关于UserAgent：</dt>
 <dd><ul class="first last simple">
-<li>请求的时候必须设置UserAgent，如果不设置或者设置为不合法的（比如设置为浏览器的）也会导致账号被封禁API。</li>
+<li>请求的时候必须设置UserAgent，如果不设置或者设置为不合法的（比如设置为浏览器的）也会导致帐号被封禁API。</li>
 <li>UserAgent的格式必须为：程序英文名称/版本(联系邮箱)，比如：MJJ DDNS Client/1.0.0 (<a class="reference external" href="mailto:shallwedance&#37;&#52;&#48;126&#46;com">shallwedance<span>&#64;</span>126<span>&#46;</span>com</a>)。</li>
 </ul>
 </dd>
@@ -134,7 +134,8 @@
 <li>-3 不是合法代理 (仅用于代理接口)</li>
 <li>-4 不在代理名下 (仅用于代理接口)</li>
 <li>-7 无权使用此接口</li>
-<li>-8 登录失败次数过多，账号被暂时封禁</li>
+<li>-8 登录失败次数过多，帐号被暂时封禁</li>
+<li>85 帐号异地登录，请求被拒绝</li>
 <li>-99 此功能暂停开放，请稍候重试</li>
 <li>1 操作成功</li>
 <li>2 只允许POST方法</li>

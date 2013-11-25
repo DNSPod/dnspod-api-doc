@@ -198,7 +198,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439&value=3.2.2.2&record_type=A&record_line=默认'
+    curl -X POST https://dnsapi.cn/Record.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439&sub_domain=www&value=3.2.2.2&record_type=A&record_line=默认'
    
 返回参考：
 
