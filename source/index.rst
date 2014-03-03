@@ -38,3 +38,4 @@ DNSPod用户API文档
     domains
     records
     d-monitor
+    custom-monitoring
