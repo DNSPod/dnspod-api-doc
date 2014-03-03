@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>自定义监控相关 &mdash; DNSPod API Doc 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="DNSPod API Doc 1.0.0 documentation" href="index.html" />
+    <link rel="prev" title="D监控相关" href="d-monitor.html" /> 
+  </head>
+  <body>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>自定义监控相关<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="collectd">
+<h2>使用开源软件 collectd 上报系统指标<a class="headerlink" href="#collectd" title="Permalink to this headline">¶</a></h2>
+<p>collectd 下载页： <a class="reference external" href="http://collectd.org/download.shtml">http://collectd.org/download.shtml</a></p>
+<p>以源码安装 collectd 为例:</p>
+<div class="highlight-python"><pre>wget http://collectd.org/files/collectd-5.4.1.tar.gz
+tar -xvzf collectd-5.4.1.tar.gz
+cd collectd-5.4.1
+./configure &amp;&amp; make all install</pre>
+</div>
+<p>修改配置文件，指定上报服务器:</p>
+<div class="highlight-python"><pre>sudo vim /opt/collectd/etc/collectd.conf</pre>
+</div>
+<p>替换:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#LoadPlugin write_graphite</span>
+</pre></div>
+</div>
+<p>为:</p>
+<div class="highlight-python"><pre>LoadPlugin write_graphite</pre>
+</div>
+<p>搜索 Plugin write_graphite 对应的配置块, 取消注释，并做相应的修改:</p>
+<div class="highlight-python"><pre>&lt;Plugin write_graphite&gt;
+  &lt;Node "example"&gt;
+    Host "collector.monitor.dnspod.cn"
+    Port "2003"
+    Protocol "tcp"
+    LogSendErrors true
+    Prefix "授权码/域名/IP"   # 例如："xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111
+    Postfix ""
+    StoreRates true
+    AlwaysAppendDS false
+    EscapeCharacter "_"
+  &lt;/Node&gt;
+&lt;/Plugin&gt;</pre>
+</div>
+<p>启动 collectd:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">sudo</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">collectd</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">collectd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>如何使用 collectd 收集更多的服务器指标<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>例如，我想监控服务器的磁盘空间使用情况:</p>
+<div class="highlight-python"><pre>sudo vim /opt/collectd/etc/collectd.conf</pre>
+</div>
+<p>替换:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#LoadPlugin df</span>
+</pre></div>
+</div>
+<p>为:</p>
+<div class="highlight-python"><pre>LoadPlugin df</pre>
+</div>
+<p>搜索 LoadPlugin df 对应的配置块，取消注释，并做相应的修改:</p>
+<div class="highlight-python"><pre>&lt;Plugin df&gt;
+        Device "/dev/xvda1"    # 需根据系统配置做相应修改
+        MountPoint "/"         # 需根据系统配置做相应修改
+        FSType "ext4"          # 需根据系统配置做相应修改
+        IgnoreSelected false
+        ReportByDevice false
+        ReportReserved false
+        ReportInodes false
+        ValuesAbsolute false
+        ValuesPercentage true
+&lt;/Plugin&gt;</pre>
+</div>
+<p>了解更多指标收集插件，请参考 <a class="reference external" href="https://collectd.org/wiki/index.php/Table_of_Plugins">https://collectd.org/wiki/index.php/Table_of_Plugins</a></p>
+</div>
+<div class="section" id="shell">
+<h2>使用 Shell 上报数据<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
+<p>TCP 方式:</p>
+<div class="highlight-python"><pre>echo "此处替换为授权码/test.com/192.168.1.111/active-users 200 $(date +%s)" | nc collector.monitor.dnspod.cn 2003 -q 1; echo</pre>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>一些有爱的上报脚本<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/onlytiancai/codesnip/blob/master/shell/collect.sh">https://github.com/onlytiancai/codesnip/blob/master/shell/collect.sh</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">自定义监控相关</a><ul>
+<li><a class="reference internal" href="#collectd">使用开源软件 collectd 上报系统指标</a></li>
+<li><a class="reference internal" href="#id2">如何使用 collectd 收集更多的服务器指标</a></li>
+<li><a class="reference internal" href="#shell">使用 Shell 上报数据</a></li>
+<li><a class="reference internal" href="#id3">一些有爱的上报脚本</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="d-monitor.html"
+                        title="previous chapter">D监控相关</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/custom-monitoring.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+        &copy; Copyright DNSPod Inc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
