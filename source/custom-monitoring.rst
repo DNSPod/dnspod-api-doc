@@ -10,7 +10,7 @@ collectd 下载页： http://collectd.org/download.shtml
     wget http://collectd.org/files/collectd-5.4.1.tar.gz
     tar -xvzf collectd-5.4.1.tar.gz
     cd collectd-5.4.1
-    ./configure && make all install
+    ./configure && make && sudo make install
 
 修改配置文件，指定上报服务器::
 
@@ -32,7 +32,7 @@ collectd 下载页： http://collectd.org/download.shtml
         Port "2003"
         Protocol "tcp"
         LogSendErrors true
-        Prefix "授权码/域名/IP"   # 例如："xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111
+        Prefix "授权码/域名/IP/"   # 例如："xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111
         Postfix ""
         StoreRates true
         AlwaysAppendDS false
@@ -80,9 +80,8 @@ collectd 下载页： http://collectd.org/download.shtml
 -------------------
 TCP 方式::
 
-   echo "此处替换为授权码/test.com/192.168.1.111/active-users 200 $(date +%s)" | nc collector.monitor.dnspod.cn 2003 -q 1; echo
+   echo "YOUR_API_KEY/test.com/192.168.1.111/active-users 200 $(date +%s)" | nc collector.monitor.dnspod.cn 2003 -q 1; echo
 
-    
 
 一些有爱的上报脚本
 ------------------
