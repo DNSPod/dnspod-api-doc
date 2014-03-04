@@ -43,7 +43,7 @@
 <div class="highlight-python"><pre>wget http://collectd.org/files/collectd-5.4.1.tar.gz
 tar -xvzf collectd-5.4.1.tar.gz
 cd collectd-5.4.1
-./configure &amp;&amp; make all install</pre>
+./configure &amp;&amp; make &amp;&amp; sudo make install</pre>
 </div>
 <p>修改配置文件，指定上报服务器:</p>
 <div class="highlight-python"><pre>sudo vim /opt/collectd/etc/collectd.conf</pre>
@@ -62,7 +62,7 @@ cd collectd-5.4.1
     Port "2003"
     Protocol "tcp"
     LogSendErrors true
-    Prefix "授权码/域名/IP"   # 例如："xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111
+    Prefix "授权码/域名/IP/"   # 例如："xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111
     Postfix ""
     StoreRates true
     AlwaysAppendDS false
@@ -105,7 +105,7 @@ cd collectd-5.4.1
 <div class="section" id="shell">
 <h2>使用 Shell 上报数据<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
 <p>TCP 方式:</p>
-<div class="highlight-python"><pre>echo "此处替换为授权码/test.com/192.168.1.111/active-users 200 $(date +%s)" | nc collector.monitor.dnspod.cn 2003 -q 1; echo</pre>
+<div class="highlight-python"><pre>echo "YOUR_API_KEY/test.com/192.168.1.111/active-users 200 $(date +%s)" | nc collector.monitor.dnspod.cn 2003 -q 1; echo</pre>
 </div>
 </div>
 <div class="section" id="id3">
