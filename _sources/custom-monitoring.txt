@@ -12,6 +12,10 @@ collectd 下载页： http://collectd.org/download.shtml
     cd collectd-5.4.1
     ./configure && make && sudo make install
 
+若您在 CentOS 5 上安装失败，请尝试::
+        
+    ./configure --disable-iptables && make && sudo make install
+
 修改配置文件，指定上报服务器::
 
     sudo vim /opt/collectd/etc/collectd.conf

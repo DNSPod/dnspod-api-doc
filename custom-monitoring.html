@@ -45,6 +45,9 @@ tar -xvzf collectd-5.4.1.tar.gz
 cd collectd-5.4.1
 ./configure &amp;&amp; make &amp;&amp; sudo make install</pre>
 </div>
+<p>若您在 CentOS 5 上安装失败，请尝试:</p>
+<div class="highlight-python"><pre>./configure --disable-iptables &amp;&amp; make &amp;&amp; sudo make install</pre>
+</div>
 <p>修改配置文件，指定上报服务器:</p>
 <div class="highlight-python"><pre>sudo vim /opt/collectd/etc/collectd.conf</pre>
 </div>
