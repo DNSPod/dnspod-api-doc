@@ -36,7 +36,7 @@ collectd 下载页： http://collectd.org/download.shtml
         Port "2003"
         Protocol "tcp"
         LogSendErrors true
-        Prefix "授权码/域名/IP/"   # 例如："xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111
+        Prefix "授权码/域名/IP/"   # 例如："xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111/"
         Postfix ""
         StoreRates true
         AlwaysAppendDS false
