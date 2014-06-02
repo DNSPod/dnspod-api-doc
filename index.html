@@ -37,9 +37,15 @@
   <div class="section" id="dnspodapi">
 <h1>DNSPod用户API文档<a class="headerlink" href="#dnspodapi" title="Permalink to this headline">¶</a></h1>
 <p class="centered">
-<strong>DNSPod Documentation 1.0 released March 03, 2014</strong></p><div class="section" id="id1">
+<strong>DNSPod Documentation 1.0 released June 02, 2014</strong></p><div class="section" id="id1">
 <h2>最近更新<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
+<dt>2014-06-02</dt>
+<dd><ul class="first last simple">
+<li>新增了帐号安全、记录安全、域名过户相关的错误码</li>
+<li>修正部分错误码说明文字</li>
+</ul>
+</dd>
 <dt>2013-05-14</dt>
 <dd><ul class="first last simple">
 <li>Record.Ddns 增加可选的value参数，允许用户提交自己的IP地址</li>
@@ -88,79 +94,79 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="info.html">API说明</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="info.html#id1">API开发规范</a></li>
-<li class="toctree-l2"><a class="reference internal" href="info.html#id2">公共参数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="info.html#id3">共通返回</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#specification">API开发规范</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#common-parameters">公共参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#common-response">共通返回</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html#d">D令牌验证相关</a></li>
-<li class="toctree-l2"><a class="reference internal" href="info.html#id4">获取API版本号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#info-version">获取API版本号</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="accounts.html">帐户相关</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="accounts.html#id2">获取帐户信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accounts.html#id3">修改资料</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accounts.html#id4">修改密码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accounts.html#id5">修改邮箱</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accounts.html#id6">获取手机验证码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accounts.html#id7">获取用户日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#user-detail">获取帐户信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#user-modify">修改资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#userpasswd-modify">修改密码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#useremail-modify">修改邮箱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#user-telephoneverify">获取手机验证码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#user-log">获取用户日志</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="domains.html">域名相关</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id2">添加新域名</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id3">获取域名列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id4">删除域名</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id5">设置域名状态</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id6">获取域名信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id7">获取域名日志</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id8">设置搜索引擎推送</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id9">添加域名共享</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id10">域名共享列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id11">修改域名共享</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id12">删除域名共享</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id13">域名过户</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id14">锁定域名</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id15">锁定状态</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id16">锁定解锁</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id17">域名绑定列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id18">添加域名绑定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id19">删除域名绑定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id20">获取域名分组</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id21">添加域名分组</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id22">修改域名分组</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id23">删除域名分组</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id24">设置域名分组</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id25">设置域名星标</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id26">设置域名备注</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id27">获取域名权限</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id28">域名取回获取邮箱列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id29">域名取回发送验证码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id30">验证域名取回的验证码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id31">获取等级允许的记录类型</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#id32">获取等级允许的线路线路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-create">添加新域名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-list">获取域名列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-remove">删除域名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-status">设置域名状态</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-info">获取域名信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-log">获取域名日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-searchenginepush">设置搜索引擎推送</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domainshare-create">添加域名共享</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domainshare-list">域名共享列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domainshare-modify">修改域名共享</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domainshare-remove">删除域名共享</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-transfer">域名过户</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-lock">锁定域名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-lockstatus">锁定状态</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-unlock">锁定解锁</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domainalias-list">域名绑定列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domainalias-create">添加域名绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domainalias-remove">删除域名绑定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domaingroup-list">获取域名分组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domaingroup-create">添加域名分组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domaingroup-modify">修改域名分组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domaingroup-remove">删除域名分组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-changegroup">设置域名分组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-ismark">设置域名星标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-remark">设置域名备注</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-purview">获取域名权限</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-acquire">域名取回获取邮箱列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-acquiresend">域名取回发送验证码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-acquirevalidate">验证域名取回的验证码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#record-type">获取等级允许的记录类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#record-line">获取等级允许的线路线路</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="records.html">记录相关</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="records.html#id2">添加记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="records.html#id3">记录列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="records.html#id4">修改记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="records.html#id5">删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-create">添加记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-list">记录列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-modify">修改记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-remove">删除记录</a></li>
 <li class="toctree-l2"><a class="reference internal" href="records.html#dns">更新动态DNS记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="records.html#id6">设置记录备注</a></li>
-<li class="toctree-l2"><a class="reference internal" href="records.html#id7">获取记录信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="records.html#id8">设置记录状态</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-remark">设置记录备注</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-info">获取记录信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-status">设置记录状态</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="d-monitor.html">D监控相关</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="d-monitor.html#a">列出包含A记录的子域名</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id1">列出子域名的A记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id2">监控列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id3">监控添加</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id4">监控修改</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id5">监控删除</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id6">获取监控信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id7">设置监控状态</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id8">获取监控历史</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id9">获取监控概况</a></li>
-<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#id10">获取监控警告</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-listsubvalue">列出子域名的A记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-list">监控列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-create">监控添加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-modify">监控修改</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-remove">监控删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-info">获取监控信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-setstatus">设置监控状态</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-gethistory">获取监控历史</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-userdesc">获取监控概况</a></li>
+<li class="toctree-l2"><a class="reference internal" href="d-monitor.html#monitor-getdowns">获取监控警告</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="custom-monitoring.html">自定义监控相关</a><ul>
@@ -188,9 +194,7 @@
   <ul>
 <li><a class="reference internal" href="#">DNSPod用户API文档</a><ul>
 <li><a class="reference internal" href="#id1">最近更新</a></li>
-<li><a class="reference internal" href="#id2">目录</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#id2">目录</a></li>
 </ul>
 </li>
 </ul>
@@ -222,7 +226,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

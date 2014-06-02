@@ -37,8 +37,8 @@
             
   <div class="section" id="id1">
 <h1>帐户相关<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>获取帐户信息<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-detail">
+<span id="id2"></span><h2>获取帐户信息<a class="headerlink" href="#user-detail" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -62,7 +62,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Detail -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/User.Detail -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -98,8 +99,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
-<h2>修改资料<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-modify">
+<span id="id3"></span><h2>修改资料<a class="headerlink" href="#user-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -129,7 +130,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;im=10000000'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/User.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;im=10000000&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -148,8 +150,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h2>修改密码<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="userpasswd-modify">
+<span id="id4"></span><h2>修改密码<a class="headerlink" href="#userpasswd-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -173,11 +175,14 @@
 <li>共通返回</li>
 <li>8 旧密码错误</li>
 <li>9 新密码错误</li>
+<li>87 新密码不能和之前用过的密码一样</li>
+<li>88 新密码不安全，请使用另外的密码</li>
 </ul>
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Userpassword.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;old_password=old_password&amp;new_password=new_password'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Userpassword.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;old_password=old_password&amp;new_password=new_password&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -196,8 +201,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id5">
-<h2>修改邮箱<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="useremail-modify">
+<span id="id5"></span><h2>修改邮箱<a class="headerlink" href="#useremail-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -227,7 +232,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Useremail.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;old_email=api1@dnspod.com&amp;new_email=api@dnspod.com&amp;password=password'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Useremail.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;old_email=api1@dnspod.com&amp;new_email=api@dnspod.com&amp;password=password&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -246,8 +252,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h2>获取手机验证码<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-telephoneverify">
+<span id="id6"></span><h2>获取手机验证码<a class="headerlink" href="#user-telephoneverify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -274,7 +280,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Telephoneverify.Code -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;telephone=18600000000'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Telephoneverify.Code -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;telephone=18600000000&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -305,8 +312,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id7">
-<h2>获取用户日志<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-log">
+<span id="id7"></span><h2>获取用户日志<a class="headerlink" href="#user-log" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -330,7 +337,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Log -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/User.Log -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -373,12 +381,12 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">帐户相关</a><ul>
-<li><a class="reference internal" href="#id2">获取帐户信息</a></li>
-<li><a class="reference internal" href="#id3">修改资料</a></li>
-<li><a class="reference internal" href="#id4">修改密码</a></li>
-<li><a class="reference internal" href="#id5">修改邮箱</a></li>
-<li><a class="reference internal" href="#id6">获取手机验证码</a></li>
-<li><a class="reference internal" href="#id7">获取用户日志</a></li>
+<li><a class="reference internal" href="#user-detail">获取帐户信息</a></li>
+<li><a class="reference internal" href="#user-modify">修改资料</a></li>
+<li><a class="reference internal" href="#userpasswd-modify">修改密码</a></li>
+<li><a class="reference internal" href="#useremail-modify">修改邮箱</a></li>
+<li><a class="reference internal" href="#user-telephoneverify">获取手机验证码</a></li>
+<li><a class="reference internal" href="#user-log">获取用户日志</a></li>
 </ul>
 </li>
 </ul>
@@ -413,7 +421,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

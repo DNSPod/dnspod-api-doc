@@ -25,6 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="DNSPod API Doc 1.0.0 documentation" href="index.html" />
+    <link rel="next" title="自定义监控相关" href="custom-monitoring.html" />
     <link rel="prev" title="记录相关" href="records.html" /> 
   </head>
   <body>  
@@ -37,7 +38,7 @@
   <div class="section" id="d">
 <h1>D监控相关<a class="headerlink" href="#d" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="a">
-<h2>列出包含A记录的子域名<a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h2>
+<span id="monitor-listsubdomain"></span><h2>列出包含A记录的子域名<a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -65,7 +66,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Listsubdomain -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Listsubdomain -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -94,8 +96,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id1">
-<h2>列出子域名的A记录<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-listsubvalue">
+<span id="id1"></span><h2>列出子域名的A记录<a class="headerlink" href="#monitor-listsubvalue" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -123,7 +125,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Listsubvalue -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;subdomain=@'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Listsubvalue -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;subdomain=@&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -163,8 +166,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id2">
-<h2>监控列表<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-list">
+<span id="id2"></span><h2>监控列表<a class="headerlink" href="#monitor-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -188,7 +191,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.List -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -242,8 +246,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
-<h2>监控添加<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-create">
+<span id="id3"></span><h2>监控添加<a class="headerlink" href="#monitor-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -325,7 +329,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16909160&amp;port=80&amp;monitor_type=http&amp;monitor_path=/&amp;monitor_interval=360&amp;points=ctc,cuc,cmc&amp;bak_ip=pass&amp;host=testapi.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Create -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16909160&amp;port=80&amp;monitor_type=http&amp;monitor_path=/&amp;monitor_interval=360&amp;points=ctc,cuc,cmc&amp;bak_ip=pass&amp;host=testapi.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -348,8 +353,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h2>监控修改<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-modify">
+<span id="id4"></span><h2>监控修改<a class="headerlink" href="#monitor-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -426,7 +431,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970&amp;port=80&amp;monitor_type=http&amp;monitor_path=/&amp;monitor_interval=360&amp;points=ctc,cuc,cmc&amp;bak_ip=pass'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970&amp;port=80&amp;monitor_type=http&amp;monitor_path=/&amp;monitor_interval=360&amp;points=ctc,cuc,cmc&amp;bak_ip=pass&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -445,8 +451,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id5">
-<h2>监控删除<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-remove">
+<span id="id5"></span><h2>监控删除<a class="headerlink" href="#monitor-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -472,7 +478,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -491,8 +498,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h2>获取监控信息<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-info">
+<span id="id6"></span><h2>获取监控信息<a class="headerlink" href="#monitor-info" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -518,7 +525,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Info -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=e91997aa-3641-11e2-bab7-0819a6248970'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Info -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=e91997aa-3641-11e2-bab7-0819a6248970&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -566,8 +574,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id7">
-<h2>设置监控状态<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-setstatus">
+<span id="id7"></span><h2>设置监控状态<a class="headerlink" href="#monitor-setstatus" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -603,7 +611,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&amp;status=disable'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Setstatus -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&amp;status=disable&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -622,8 +631,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h2>获取监控历史<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-gethistory">
+<span id="id8"></span><h2>获取监控历史<a class="headerlink" href="#monitor-gethistory" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -650,7 +659,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&amp;hours=1'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Setstatus -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&amp;hours=1&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -780,8 +790,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id9">
-<h2>获取监控概况<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-userdesc">
+<span id="id9"></span><h2>获取监控概况<a class="headerlink" href="#monitor-userdesc" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -805,7 +815,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Userdesc -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Userdesc -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -833,8 +844,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id10">
-<h2>获取监控警告<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitor-getdowns">
+<span id="id10"></span><h2>获取监控警告<a class="headerlink" href="#monitor-getdowns" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -860,7 +871,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Monitor.Getdowns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;offset=0&amp;length=10'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Monitor.Getdowns -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;offset=0&amp;length=10&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -909,16 +921,16 @@
   <ul>
 <li><a class="reference internal" href="#">D监控相关</a><ul>
 <li><a class="reference internal" href="#a">列出包含A记录的子域名</a></li>
-<li><a class="reference internal" href="#id1">列出子域名的A记录</a></li>
-<li><a class="reference internal" href="#id2">监控列表</a></li>
-<li><a class="reference internal" href="#id3">监控添加</a></li>
-<li><a class="reference internal" href="#id4">监控修改</a></li>
-<li><a class="reference internal" href="#id5">监控删除</a></li>
-<li><a class="reference internal" href="#id6">获取监控信息</a></li>
-<li><a class="reference internal" href="#id7">设置监控状态</a></li>
-<li><a class="reference internal" href="#id8">获取监控历史</a></li>
-<li><a class="reference internal" href="#id9">获取监控概况</a></li>
-<li><a class="reference internal" href="#id10">获取监控警告</a></li>
+<li><a class="reference internal" href="#monitor-listsubvalue">列出子域名的A记录</a></li>
+<li><a class="reference internal" href="#monitor-list">监控列表</a></li>
+<li><a class="reference internal" href="#monitor-create">监控添加</a></li>
+<li><a class="reference internal" href="#monitor-modify">监控修改</a></li>
+<li><a class="reference internal" href="#monitor-remove">监控删除</a></li>
+<li><a class="reference internal" href="#monitor-info">获取监控信息</a></li>
+<li><a class="reference internal" href="#monitor-setstatus">设置监控状态</a></li>
+<li><a class="reference internal" href="#monitor-gethistory">获取监控历史</a></li>
+<li><a class="reference internal" href="#monitor-userdesc">获取监控概况</a></li>
+<li><a class="reference internal" href="#monitor-getdowns">获取监控警告</a></li>
 </ul>
 </li>
 </ul>
@@ -926,6 +938,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="records.html"
                         title="previous chapter">记录相关</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="custom-monitoring.html"
+                        title="next chapter">自定义监控相关</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/d-monitor.txt"
@@ -950,7 +965,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

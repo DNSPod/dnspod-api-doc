@@ -37,8 +37,8 @@
             
   <div class="section" id="id1">
 <h1>域名相关<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>添加新域名<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-create">
+<span id="id2"></span><h2>添加新域名<a class="headerlink" href="#domain-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -70,7 +70,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;domain=api2.com&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Create -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;domain=api2.com&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -94,8 +95,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
-<h2>获取域名列表<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-list">
+<span id="id3"></span><h2>获取域名列表<a class="headerlink" href="#domain-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -149,7 +150,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.List -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -202,8 +204,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h2>删除域名<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-remove">
+<span id="id4"></span><h2>删除域名<a class="headerlink" href="#domain-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -233,7 +235,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=1992403'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Remove -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=1992403&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -252,8 +255,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id5">
-<h2>设置域名状态<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-status">
+<span id="id5"></span><h2>设置域名状态<a class="headerlink" href="#domain-status" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -285,7 +288,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Status -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2058967&amp;status=disable'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Status -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2058967&amp;status=disable&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -304,8 +308,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h2>获取域名信息<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-info">
+<span id="id6"></span><h2>获取域名信息<a class="headerlink" href="#domain-info" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -334,7 +338,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Info  -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -374,8 +379,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id7">
-<h2>获取域名日志<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-log">
+<span id="id7"></span><h2>获取域名日志<a class="headerlink" href="#domain-log" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -404,7 +409,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Log  -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -438,8 +444,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h2>设置搜索引擎推送<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-searchenginepush">
+<span id="id8"></span><h2>设置搜索引擎推送<a class="headerlink" href="#domain-searchenginepush" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -471,7 +477,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;status=yes'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;status=yes&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -490,8 +497,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id9">
-<h2>添加域名共享<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domainshare-create">
+<span id="id9"></span><h2>添加域名共享<a class="headerlink" href="#domainshare-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -527,7 +534,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=otheruser@dnspod.com&amp;mode=rw'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Create -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=otheruser@dnspod.com&amp;mode=rw&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -546,8 +554,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id10">
-<h2>域名共享列表<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domainshare-list">
+<span id="id10"></span><h2>域名共享列表<a class="headerlink" href="#domainshare-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -585,7 +593,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.List -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -612,8 +621,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id11">
-<h2>修改域名共享<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domainshare-modify">
+<span id="id11"></span><h2>修改域名共享<a class="headerlink" href="#domainshare-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -651,23 +660,28 @@
 <p>示例</p>
 <ol class="arabic">
 <li><p class="first">修改主域名共享状态，从 rw 修改为 r:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&#39;
+</pre></div>
 </div>
 </li>
 <li><p class="first">修改子域名的共享状态，从rw 修改为 r:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&amp;old_sub_domain=www&amp;new_sub_domain=www'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&amp;old_sub_domain=www&amp;new_sub_domain=www&#39;
+</pre></div>
 </div>
 </li>
 <li><p class="first">将主域名共享修改为子域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;new_sub_domain=www'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;new_sub_domain=www&#39;
+</pre></div>
 </div>
 </li>
 <li><p class="first">将子域名共享修改为主域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&#39;
+</pre></div>
 </div>
 </li>
 <li><p class="first">将www的子域名共享修改为bbs的子主域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&amp;new_sub_domain=bbs'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&amp;new_sub_domain=bbs&#39;
+</pre></div>
 </div>
 </li>
 </ol>
@@ -688,8 +702,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id12">
-<h2>删除域名共享<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domainshare-remove">
+<span id="id12"></span><h2>删除域名共享<a class="headerlink" href="#domainshare-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -722,7 +736,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Remove -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -741,8 +756,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id13">
-<h2>域名过户<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-transfer">
+<span id="id13"></span><h2>域名过户<a class="headerlink" href="#domain-transfer" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -777,7 +792,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Transfer -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -796,8 +812,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id14">
-<h2>锁定域名<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-lock">
+<span id="id14"></span><h2>锁定域名<a class="headerlink" href="#domain-lock" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -831,7 +847,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;days=3'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Lock -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;days=3&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -855,8 +872,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id15">
-<h2>锁定状态<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-lockstatus">
+<span id="id15"></span><h2>锁定状态<a class="headerlink" href="#domain-lockstatus" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -886,7 +903,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Lockstatus -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -910,8 +928,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id16">
-<h2>锁定解锁<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-unlock">
+<span id="id16"></span><h2>锁定解锁<a class="headerlink" href="#domain-unlock" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -944,7 +962,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Unlock -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;lock_code=fdd638'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Unlock -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;lock_code=fdd638&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -968,8 +987,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id17">
-<h2>域名绑定列表<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domainalias-list">
+<span id="id17"></span><h2>域名绑定列表<a class="headerlink" href="#domainalias-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -998,7 +1017,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainalias.List -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1023,8 +1043,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id18">
-<h2>添加域名绑定<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domainalias-create">
+<span id="id18"></span><h2>添加域名绑定<a class="headerlink" href="#domainalias-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1058,7 +1078,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;domain=dnspodapi.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainalias.Create -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;domain=dnspodapi.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1081,8 +1102,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id19">
-<h2>删除域名绑定<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domainalias-remove">
+<span id="id19"></span><h2>删除域名绑定<a class="headerlink" href="#domainalias-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1113,7 +1134,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;alias_id=18737'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainalias.Remove -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;alias_id=18737&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1132,8 +1154,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id20">
-<h2>获取域名分组<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domaingroup-list">
+<span id="id20"></span><h2>获取域名分组<a class="headerlink" href="#domaingroup-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1157,7 +1179,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1233,8 +1256,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id21">
-<h2>添加域名分组<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domaingroup-create">
+<span id="id21"></span><h2>添加域名分组<a class="headerlink" href="#domaingroup-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><a class="reference external" href="https://dnsapi.cn/Domaingroup.Create">https://dnsapi.cn/Domaingroup.Create</a></dd>
@@ -1259,7 +1282,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_name=dnspod'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_name=dnspod&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1288,8 +1312,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id22">
-<h2>修改域名分组<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domaingroup-modify">
+<span id="id22"></span><h2>修改域名分组<a class="headerlink" href="#domaingroup-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><a class="reference external" href="https://dnsapi.cn/Domaingroup.Modify">https://dnsapi.cn/Domaingroup.Modify</a></dd>
@@ -1316,7 +1340,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985&amp;group_name=dnspodgroup'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985&amp;group_name=dnspodgroup&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1335,8 +1360,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id23">
-<h2>删除域名分组<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domaingroup-remove">
+<span id="id23"></span><h2>删除域名分组<a class="headerlink" href="#domaingroup-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1362,7 +1387,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Remove -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1381,8 +1407,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id24">
-<h2>设置域名分组<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-changegroup">
+<span id="id24"></span><h2>设置域名分组<a class="headerlink" href="#domain-changegroup" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1410,7 +1436,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Changegroup -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;group_id=1985'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Changegroup -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;group_id=1985&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1436,8 +1463,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id25">
-<h2>设置域名星标<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-ismark">
+<span id="id25"></span><h2>设置域名星标<a class="headerlink" href="#domain-ismark" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1464,7 +1491,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;is_mark=yes'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Ismark -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;is_mark=yes&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1483,8 +1511,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id26">
-<h2>设置域名备注<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-remark">
+<span id="id26"></span><h2>设置域名备注<a class="headerlink" href="#domain-remark" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1511,7 +1539,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;remark=这个域名需要备注一下'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Remark -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;remark=这个域名需要备注一下&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1530,8 +1559,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id27">
-<h2>获取域名权限<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-purview">
+<span id="id27"></span><h2>获取域名权限<a class="headerlink" href="#domain-purview" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1557,7 +1586,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Purview -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Purview -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1645,8 +1675,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id28">
-<h2>域名取回获取邮箱列表<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-acquire">
+<span id="id28"></span><h2>域名取回获取邮箱列表<a class="headerlink" href="#domain-acquire" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1677,11 +1707,13 @@
 <li>13 个人用户不能取回企业用户域名</li>
 <li>14 企业用户不能取回个人用户域名</li>
 <li>15 获取不到邮箱，可能是网络错误或域名不支持</li>
+<li>86 不能取回 VIP 域名</li>
 </ul>
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Acquire -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1704,8 +1736,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id29">
-<h2>域名取回发送验证码<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-acquiresend">
+<span id="id29"></span><h2>域名取回发送验证码<a class="headerlink" href="#domain-acquiresend" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1742,7 +1774,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;email=support@namecheap.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;email=support@namecheap.com&#39;
+</pre></div>
 </div>
 <dl class="docutils">
 <dt>返回参考：</dt>
@@ -1762,8 +1795,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id30">
-<h2>验证域名取回的验证码<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="domain-acquirevalidate">
+<span id="id30"></span><h2>验证域名取回的验证码<a class="headerlink" href="#domain-acquirevalidate" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1800,7 +1833,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;code=111000'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;code=111000&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1819,8 +1853,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id31">
-<h2>获取等级允许的记录类型<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-type">
+<span id="id31"></span><h2>获取等级允许的记录类型<a class="headerlink" href="#record-type" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1852,7 +1886,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Type -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Type -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1881,8 +1916,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id32">
-<h2>获取等级允许的线路线路<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-line">
+<span id="id32"></span><h2>获取等级允许的线路线路<a class="headerlink" href="#record-line" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1916,7 +1951,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Line -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Line -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1967,37 +2003,37 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">域名相关</a><ul>
-<li><a class="reference internal" href="#id2">添加新域名</a></li>
-<li><a class="reference internal" href="#id3">获取域名列表</a></li>
-<li><a class="reference internal" href="#id4">删除域名</a></li>
-<li><a class="reference internal" href="#id5">设置域名状态</a></li>
-<li><a class="reference internal" href="#id6">获取域名信息</a></li>
-<li><a class="reference internal" href="#id7">获取域名日志</a></li>
-<li><a class="reference internal" href="#id8">设置搜索引擎推送</a></li>
-<li><a class="reference internal" href="#id9">添加域名共享</a></li>
-<li><a class="reference internal" href="#id10">域名共享列表</a></li>
-<li><a class="reference internal" href="#id11">修改域名共享</a></li>
-<li><a class="reference internal" href="#id12">删除域名共享</a></li>
-<li><a class="reference internal" href="#id13">域名过户</a></li>
-<li><a class="reference internal" href="#id14">锁定域名</a></li>
-<li><a class="reference internal" href="#id15">锁定状态</a></li>
-<li><a class="reference internal" href="#id16">锁定解锁</a></li>
-<li><a class="reference internal" href="#id17">域名绑定列表</a></li>
-<li><a class="reference internal" href="#id18">添加域名绑定</a></li>
-<li><a class="reference internal" href="#id19">删除域名绑定</a></li>
-<li><a class="reference internal" href="#id20">获取域名分组</a></li>
-<li><a class="reference internal" href="#id21">添加域名分组</a></li>
-<li><a class="reference internal" href="#id22">修改域名分组</a></li>
-<li><a class="reference internal" href="#id23">删除域名分组</a></li>
-<li><a class="reference internal" href="#id24">设置域名分组</a></li>
-<li><a class="reference internal" href="#id25">设置域名星标</a></li>
-<li><a class="reference internal" href="#id26">设置域名备注</a></li>
-<li><a class="reference internal" href="#id27">获取域名权限</a></li>
-<li><a class="reference internal" href="#id28">域名取回获取邮箱列表</a></li>
-<li><a class="reference internal" href="#id29">域名取回发送验证码</a></li>
-<li><a class="reference internal" href="#id30">验证域名取回的验证码</a></li>
-<li><a class="reference internal" href="#id31">获取等级允许的记录类型</a></li>
-<li><a class="reference internal" href="#id32">获取等级允许的线路线路</a></li>
+<li><a class="reference internal" href="#domain-create">添加新域名</a></li>
+<li><a class="reference internal" href="#domain-list">获取域名列表</a></li>
+<li><a class="reference internal" href="#domain-remove">删除域名</a></li>
+<li><a class="reference internal" href="#domain-status">设置域名状态</a></li>
+<li><a class="reference internal" href="#domain-info">获取域名信息</a></li>
+<li><a class="reference internal" href="#domain-log">获取域名日志</a></li>
+<li><a class="reference internal" href="#domain-searchenginepush">设置搜索引擎推送</a></li>
+<li><a class="reference internal" href="#domainshare-create">添加域名共享</a></li>
+<li><a class="reference internal" href="#domainshare-list">域名共享列表</a></li>
+<li><a class="reference internal" href="#domainshare-modify">修改域名共享</a></li>
+<li><a class="reference internal" href="#domainshare-remove">删除域名共享</a></li>
+<li><a class="reference internal" href="#domain-transfer">域名过户</a></li>
+<li><a class="reference internal" href="#domain-lock">锁定域名</a></li>
+<li><a class="reference internal" href="#domain-lockstatus">锁定状态</a></li>
+<li><a class="reference internal" href="#domain-unlock">锁定解锁</a></li>
+<li><a class="reference internal" href="#domainalias-list">域名绑定列表</a></li>
+<li><a class="reference internal" href="#domainalias-create">添加域名绑定</a></li>
+<li><a class="reference internal" href="#domainalias-remove">删除域名绑定</a></li>
+<li><a class="reference internal" href="#domaingroup-list">获取域名分组</a></li>
+<li><a class="reference internal" href="#domaingroup-create">添加域名分组</a></li>
+<li><a class="reference internal" href="#domaingroup-modify">修改域名分组</a></li>
+<li><a class="reference internal" href="#domaingroup-remove">删除域名分组</a></li>
+<li><a class="reference internal" href="#domain-changegroup">设置域名分组</a></li>
+<li><a class="reference internal" href="#domain-ismark">设置域名星标</a></li>
+<li><a class="reference internal" href="#domain-remark">设置域名备注</a></li>
+<li><a class="reference internal" href="#domain-purview">获取域名权限</a></li>
+<li><a class="reference internal" href="#domain-acquire">域名取回获取邮箱列表</a></li>
+<li><a class="reference internal" href="#domain-acquiresend">域名取回发送验证码</a></li>
+<li><a class="reference internal" href="#domain-acquirevalidate">验证域名取回的验证码</a></li>
+<li><a class="reference internal" href="#record-type">获取等级允许的记录类型</a></li>
+<li><a class="reference internal" href="#record-line">获取等级允许的线路线路</a></li>
 </ul>
 </li>
 </ul>
@@ -2032,7 +2068,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
