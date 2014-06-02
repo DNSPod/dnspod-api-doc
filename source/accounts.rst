@@ -82,7 +82,7 @@ HTTP请求方式：
             }
         }
 
-.. _User.Userpasswd.Modify:
+.. _Userpasswd.Modify:
 
 修改密码
 ---------
@@ -98,6 +98,8 @@ HTTP请求方式：
     * 共通返回
     * 8 旧密码错误
     * 9 新密码错误
+    * 87 新密码不能和之前用过的密码一样
+    * 88 新密码不安全，请使用另外的密码
 
 示例::
     
@@ -115,7 +117,7 @@ HTTP请求方式：
             }
         }
 
-.. _User.Useremail.Modify:
+.. _Useremail.Modify:
 
 修改邮箱
 ---------
