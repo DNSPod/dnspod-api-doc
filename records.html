@@ -284,6 +284,11 @@
 <li>82 不能添加黑名单中的IP</li>
 </ul>
 </dd>
+<dt>注意事项：</dt>
+<dd><ul class="first last simple">
+<li>如果1小时之内，提交了超过5次没有任何变动的记录修改请求，该记录会被系统锁定1小时，不允许再次修改。比如原记录值已经是 1.1.1.1，新的请求还要求修改为 1.1.1.1。</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line=默认&#39;
@@ -403,6 +408,12 @@
 <li>24 泛解析子域名错误，比如免费套餐载名不支持 a*</li>
 <li>25 轮循记录数量超出限制，比如免费套餐域名只能存在两条轮循记录</li>
 <li>26 记录线路错误，比如免费套餐域名不支持移动、国外</li>
+</ul>
+</dd>
+<dt>注意事项：</dt>
+<dd><ul class="first last simple">
+<li>如果1小时之内，提交了超过5次没有任何变动的记录修改请求，该记录会被系统锁定1小时，不允许再次修改，所以在开发和测试的过程中，请自行处理IP变动，仅在本地IP发生变动的情况下才调用本接口。</li>
+<li>如何理解没有任何变动的记录修改请求？比如原记录值已经是 1.1.1.1，新的请求还要求修改为 1.1.1.1。</li>
 </ul>
 </dd>
 </dl>
