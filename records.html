@@ -37,8 +37,8 @@
             
   <div class="section" id="id1">
 <h1>记录相关<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>添加记录<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-create">
+<span id="id2"></span><h2>添加记录<a class="headerlink" href="#record-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -78,11 +78,12 @@
 <li>26 记录线路错误</li>
 <li>27 记录类型错误</li>
 <li>30 MX 值错误，1-20</li>
-<li>31 URL记录数超出限制</li>
-<li>32 NS 记录数超出限制</li>
+<li>31 存在冲突的记录(A记录、CNAME记录、URL记录不能共存)</li>
+<li>32 记录的TTL值超出了限制</li>
 <li>33 AAAA 记录数超出限制</li>
 <li>34 记录值非法</li>
 <li>36 &#64;主机的NS纪录只能添加默认线路</li>
+<li>82 不能添加黑名单中的IP</li>
 </ul>
 </dd>
 </dl>
@@ -111,8 +112,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
-<h2>记录列表<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-list">
+<span id="id3"></span><h2>记录列表<a class="headerlink" href="#record-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -228,8 +229,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h2>修改记录<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-modify">
+<span id="id4"></span><h2>修改记录<a class="headerlink" href="#record-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -278,6 +279,12 @@
 <li>34 记录值非法</li>
 <li>35 添加的IP不允许</li>
 <li>36 &#64;主机的NS纪录只能添加默认线路</li>
+<li>82 不能添加黑名单中的IP</li>
+</ul>
+</dd>
+<dt>注意事项：</dt>
+<dd><ul class="first last simple">
+<li>如果1小时之内，提交了超过5次没有任何变动的记录修改请求，该记录会被系统锁定1小时，不允许再次修改。比如原记录值已经是 1.1.1.1，新的请求还要求修改为 1.1.1.1。</li>
 </ul>
 </dd>
 </dl>
@@ -306,8 +313,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id5">
-<h2>删除记录<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-remove">
+<span id="id5"></span><h2>删除记录<a class="headerlink" href="#record-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -360,7 +367,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="dns">
-<h2>更新动态DNS记录<a class="headerlink" href="#dns" title="Permalink to this headline">¶</a></h2>
+<span id="record-ddns"></span><h2>更新动态DNS记录<a class="headerlink" href="#dns" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -399,6 +406,12 @@
 <li>26 记录线路错误，比如免费套餐域名不支持移动、国外</li>
 </ul>
 </dd>
+<dt>注意事项：</dt>
+<dd><ul class="first last simple">
+<li>如果1小时之内，提交了超过5次没有任何变动的记录修改请求，该记录会被系统锁定1小时，不允许再次修改，所以在开发和测试的过程中，请自行处理IP变动，仅在本地IP发生变动的情况下才调用本接口。</li>
+<li>如何理解没有任何变动的记录修改请求？比如原记录值已经是 1.1.1.1，新的请求还要求修改为 1.1.1.1。</li>
+</ul>
+</dd>
 </dl>
 <p>示例:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认&amp;sub_domain=www'</pre>
@@ -425,8 +438,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h2>设置记录备注<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-remark">
+<span id="id6"></span><h2>设置记录备注<a class="headerlink" href="#record-remark" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -474,8 +487,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id7">
-<h2>获取记录信息<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-info">
+<span id="id7"></span><h2>获取记录信息<a class="headerlink" href="#record-info" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -545,8 +558,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h2>设置记录状态<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="record-status">
+<span id="id8"></span><h2>设置记录状态<a class="headerlink" href="#record-status" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -618,14 +631,14 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">记录相关</a><ul>
-<li><a class="reference internal" href="#id2">添加记录</a></li>
-<li><a class="reference internal" href="#id3">记录列表</a></li>
-<li><a class="reference internal" href="#id4">修改记录</a></li>
-<li><a class="reference internal" href="#id5">删除记录</a></li>
+<li><a class="reference internal" href="#record-create">添加记录</a></li>
+<li><a class="reference internal" href="#record-list">记录列表</a></li>
+<li><a class="reference internal" href="#record-modify">修改记录</a></li>
+<li><a class="reference internal" href="#record-remove">删除记录</a></li>
 <li><a class="reference internal" href="#dns">更新动态DNS记录</a></li>
-<li><a class="reference internal" href="#id6">设置记录备注</a></li>
-<li><a class="reference internal" href="#id7">获取记录信息</a></li>
-<li><a class="reference internal" href="#id8">设置记录状态</a></li>
+<li><a class="reference internal" href="#record-remark">设置记录备注</a></li>
+<li><a class="reference internal" href="#record-info">获取记录信息</a></li>
+<li><a class="reference internal" href="#record-status">设置记录状态</a></li>
 </ul>
 </li>
 </ul>
