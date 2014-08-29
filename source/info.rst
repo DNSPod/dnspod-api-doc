@@ -38,7 +38,7 @@ API开发规范
 
 7. 技术支持：
     * 帮助中心：https://support.dnspod.cn/
-    * DNSPod开发者讨论群：176455159
+    * DNSPod开发者讨论群：150138660
 
 
 
