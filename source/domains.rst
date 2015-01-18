@@ -12,15 +12,15 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain 域名, 没有 www, 如 dnspod.com
-    * group_id 域名分组ID，可选参数
-    * is_mark {yes|no} 是否星标域名，可选参数
+    * group_id 域名分组ID, 可选参数
+    * is_mark {yes|no} 是否星标域名, 可选参数
 响应代码：
     * 共通返回
     * 6 域名无效
     * 7 域名已存在
     * 11 域名已经存在并且是其它域名的别名
     * 12 域名已经存在并且您没有权限管理
-    * 41 网站内容不符合DNSPod解析服务条款，域名添加失败
+    * 41 网站内容不符合DNSPod解析服务条款, 域名添加失败
 
 示例::
 
@@ -34,7 +34,7 @@ HTTP请求方式：
             "status": {
                 "code":"1",
                 "message":"Action completed successful",
-                "created_at":"2012-08-29 22:12:35"
+                "created_at":"2015-01-18 22:12:35"
             },
             "domain": {
                 "id":"1992403",
@@ -42,6 +42,11 @@ HTTP请求方式：
                 "domain":"api2.com"
             }
         }
+
+    * 字段说明:
+        * id: 域名 ID, 即为 domain_id
+        * punycode: 使用 punycode 转码之后的域名
+        * domain: 添加的域名
 
 .. _Domain.List:
 
@@ -53,7 +58,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * type 域名权限种类，可选参数，默认为'all'。包含以下类型：
+    * type 域名权限种类, 可选参数, 默认为'all'. 包含以下类型：
         * all：所有域名
         * mine：我的域名
         * share：共享给我的域名
@@ -62,11 +67,12 @@ HTTP请求方式：
         * vip：VIP域名
         * recent：最近操作过的域名
         * share_out：我共享出去的域名
-    * offset 记录开始的偏移，第一条记录为 0，依次类推，可选参数
-    * length 共要获取的记录的数量，比如获取20条，则为20，可选参数
-    * group_id 分组ID，获取指定分组的域名，可选参数
+    * offset 记录开始的偏移, 第一条记录为 0, 依次类推, 可选参数
+    * length 共要获取的记录的数量, 比如获取20条, 则为20, 可选参数
+    * group_id 分组ID, 获取指定分组的域名, 可选参数
+    * keyword, 搜索的关键字, 如果指定则只返回符合该关键字的域名, 可选参数
 注意事项：
-    * 如果账户中的域名数量超过了3000，将会强制分页并且只返回前3000条，这时需要通过 offset 和 length 参数去获取其它域名。
+    * 如果账户中的域名数量超过了3000, 将会强制分页并且只返回前3000条, 这时需要通过 offset 和 length 参数去获取其它域名. 
 响应代码：
     * 共通返回
     * 6 记录开始的偏移无效
@@ -85,43 +91,129 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-10 11:51:31"
+                "created_at": "2015-01-18 16:21:28"
             },
             "info": {
-                "domain_total": 1,
-                "all_total": 1,
-                "mine_total": 1,
+                "domain_total": 2,
+                "all_total": 2,
+                "mine_total": 2,
                 "share_total": 0,
                 "vip_total": 0,
                 "ismark_total": 0,
                 "pause_total": 0,
-                "error_total": 1,
+                "error_total": 2,
                 "lock_total": 0,
                 "spam_total": 0,
+                "vip_expire": 0,
                 "share_out_total": 0
             },
             "domains": [
                 {
-                    "id": 1992403,
-                    "name": "api2.com",
-                    "grade": "D_Free",
-                    "grade_title": "免费套餐",
+                    "id": 2238269,
                     "status": "enable",
-                    "ext_status": "dnserror",
-                    "records": "2",
+                    "grade": "D_Free",
                     "group_id": "1",
-                    "is_mark": "no",
-                    "remark": "",
-                    "is_vip": "no",
                     "searchengine_push": "yes",
-                    "beian": "no",
-                    "created_on": "2012-08-29 22:12:35",
-                    "updated_on": "2012-08-29 22:12:35",
+                    "is_mark": "no",
+                    "ttl": "300",
+                    "cname_speedup": "disable",
+                    "remark": "",
+                    "created_on": "2015-01-19 08:20:03",
+                    "updated_on": "2015-01-19 18:54:35",
+                    "punycode": "xn--vnqp08b.cn",
+                    "ext_status": "dnserror",
+                    "name": "我们.cn",
+                    "grade_title": "免费套餐",
+                    "is_vip": "no",
+                    "owner": "api@dnspod.com",
+                    "records": "4",
+                    "auth_to_anquanbao": true
+                },
+                {
+                    "id": 10360095,
+                    "status": "enable",
+                    "grade": "DP_Free",
+                    "group_id": "1",
+                    "searchengine_push": "yes",
+                    "is_mark": "no",
                     "ttl": "600",
-                    "owner": "api@dnspod.com"
+                    "cname_speedup": "disable",
+                    "remark": "",
+                    "created_on": "2014-11-25 16:56:31",
+                    "updated_on": "2015-01-19 16:56:31",
+                    "punycode": "usertest.com",
+                    "ext_status": "dnserror",
+                    "name": "usertest.com",
+                    "grade_title": "新免费套餐",
+                    "is_vip": "no",
+                    "owner": "api@dnspod.com",
+                    "records": "2",
+                    "auth_to_anquanbao": true
                 }
             ]
-        }    
+        }
+
+
+    * 字段说明:
+        * info:
+            * domain_total: 域名总数
+            * all_total: 域名总数
+            * mine_total: 自己创建的域名总数(不包括共享得到的域名)
+            * share_total: 共享得到的域名总数
+            * vip_total: VIP 域名总数
+            * ismark_total: 星标域名的总数
+            * pause_total: 暂停解析的域名总数
+            * error_total: DNS 设置错误的域名总数(包括未注册的和 NS 地址没有改到 DNSPod 的域名)
+            * lock_total: 已锁定的域名总数
+            * spam_total: 已被封禁的域名总数
+            * vip_expire: VIP 即将到期的域名总数(30天之内)
+            * share_out_total: 共享出去的域名总数
+        * domains:
+            * id: 域名 ID, 即为 domain_id
+            * status: 域名状态
+                * "enable": 正常
+                * "pause": 已暂停解析
+                * "spam": 已被封禁
+                * "lock": 已被锁定
+            * grade: 域名等级
+                * "D_Free": 旧免费套餐 (旧套餐)
+                * "D_Plus": 个人豪华套餐 (旧套餐)
+                * "D_Extra": 企业Ⅰ (旧套餐)
+                * "D_Expert" 企业Ⅱ (旧套餐)
+                * "D_Ultra": 企业Ⅲ (旧套餐)
+                * "DP_Free" 免费套餐
+                * "DP_Plus": 个人专业版
+                * "DP_Extra": 企业创业版
+                * "DP_Expert": 企业标准版
+                * "DP_Ultra": 企业旗舰版
+            * group_id: 域名分组 ID
+            * searchengine_push:  是否开启搜索引擎推送功能
+                * "yes": 已开启
+                * "no": 未开启
+            * is_mark: 是否设置域名星标
+                * "yes": 已设置
+                * "no": 未设置
+            * ttl: 域名默认的 TTL 值
+            * cname_speedup: CNAME 加速状态
+                * "enable": 已启用
+                * "disable": 已禁用
+            * remark: 域名备注
+            * created_on: 添加域名的时间
+            * updated_on: 域名最后修改时间
+            * punycode: 使用 punycode 转码之后的域名
+            * ext_status: 域名扩展的状态
+                * "notexist": 域名没有注册
+                * "dnserror": DNS 设置错误
+                * "": 正常
+            * name: 域名
+            * grade_title: 域名等级(中文说明)
+            * is_vip: 是否是VIP 等级
+                * "yes": 是 VIP
+                * "no": 不是 VIP
+            * owner: 域名所有者
+            * records: 域名下记录总条数
+            * auth_to_anquanbao: 是否授权给安全中心(系统内部标识状态, 开发者可忽略)
+
 
 .. _Domain.Remove:
 
@@ -133,7 +225,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
 响应代码：
     * 共通返回
     * -15 域名已被封禁
@@ -154,7 +246,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-12 11:09:31"
+                "created_at": "2015-01-18 11:09:31"
             }
         }
 
@@ -168,7 +260,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * status {enable, disable} 域名状态
 响应代码：
     * 共通返回
@@ -191,7 +283,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-12 12:02:04"
+                "created_at": "2015-01-18 12:02:04"
             }
         }
 
@@ -205,7 +297,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
 响应代码：
     * 共通返回
     * -7 企业账号的域名需要升级才能设置
@@ -220,35 +312,83 @@ HTTP请求方式：
 返回参考：
 
     * JSON::
-        
+
         {
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-12 12:10:16"
+                "created_at": "2015-01-18 17:06:40"
             },
             "domain": {
-                "id": "2059079",
-                "name": "api4.com",
-                "punycode": "api4.com",
+                "id": "2238269",
+                "name": "我们.cn",
+                "punycode": "xn--vnqp08b.cn",
                 "grade": "D_Free",
                 "grade_title": "免费套餐",
-                "status": "pause",
+                "status": "enable",
                 "ext_status": "dnserror",
-                "records": "9",
+                "records": "4",
                 "group_id": "1",
                 "is_mark": "no",
-                "remark": "",
+                "remark": false,
                 "is_vip": "no",
                 "searchengine_push": "yes",
-                "beian": "no",
                 "user_id": "625033",
-                "created_on": "2012-09-12 12:05:46",
-                "updated_on": "2012-09-12 12:06:12",
-                "ttl": "600",
-                "owner": "api@dnspod.com"
+                "created_on": "2015-01-19 07:23:03",
+                "updated_on": "2015-01-19 18:54:35",
+                "ttl": "300",
+                "cname_speedup": "disable",
+                "owner": "api@dnspod.com",
+                "auth_to_anquanbao": true
             }
-        } 
+        }
+
+    * 字段说明:
+        * id: 域名 ID, 即为 domain_id
+        * status: 域名状态
+            * "enable": 正常
+            * "pause": 已暂停解析
+            * "spam": 已被封禁
+            * "lock": 已被锁定
+        * grade: 域名等级
+            * "D_Free": 旧免费套餐 (旧套餐)
+            * "D_Plus": 个人豪华套餐 (旧套餐)
+            * "D_Extra": 企业Ⅰ (旧套餐)
+            * "D_Expert" 企业Ⅱ (旧套餐)
+            * "D_Ultra": 企业Ⅲ (旧套餐)
+            * "DP_Free" 免费套餐
+            * "DP_Plus": 个人专业版
+            * "DP_Extra": 企业创业版
+            * "DP_Expert": 企业标准版
+            * "DP_Ultra": 企业旗舰版
+        * group_id: 域名分组 ID
+        * searchengine_push:  是否开启搜索引擎推送功能
+            * "yes": 已开启
+            * "no": 未开启
+        * is_mark: 是否设置域名星标
+            * "yes": 已设置
+            * "no": 未设置
+        * ttl: 域名默认的 TTL 值
+        * cname_speedup: CNAME 加速状态
+            * "enable": 已启用
+            * "disable": 已禁用
+        * remark: 域名备注
+        * created_on: 添加域名的时间
+        * updated_on: 域名最后修改时间
+        * punycode: 使用 punycode 转码之后的域名
+        * ext_status: 域名扩展的状态
+            * "notexist": 域名没有注册
+            * "dnserror": DNS 设置错误
+            * "": 正常
+        * name: 域名
+        * grade_title: 域名等级(中文说明)
+        * is_vip: 是否是VIP 等级
+            * "yes": 是 VIP
+            * "no": 不是 VIP
+        * owner: 域名所有者
+        * records: 域名下记录总条数
+        * auth_to_anquanbao: 是否授权给安全中心(系统内部标识状态, 开发者可忽略)
+        
 
 .. _Domain.Log:
 
@@ -260,7 +400,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
 响应代码：
     * 共通返回
     * -7 企业账号的域名需要升级才能设置
@@ -280,22 +420,20 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 17:24:23"
+                "created_at": "2015-01-18 17:24:23"
             },
             "log": [
-                "2012-09-12 12:07:05: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net.",
-                "2012-09-12 12:07:04: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. ",
-                "2012-09-12 12:07:02: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. ",
-                "2012-09-12 12:06:57: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net. ",
-                "2012-09-12 12:06:33(API): (111.111.111.111) 暂停 域名解析",
-                "2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 pop 值 mail.api4.com. ",
-                "2012-09-12 12:06:12: (111.111.111.111) 添加 A 记录 默认 线路 shop 值 64.144.7.55 ",
-                "2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 smtp 值 mail.api4.com. ",
-                "2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 webmail 值 webmail.secureserver.net. ",
-                "2012-09-12 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 www 值 64.144.7.51 ",
-                "2012-09-12 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 ftp 值 64.144.7.51 ",
-                "2012-09-12 12:06:11: (111.111.111.111) 添加 CNAME 记录 默认 线路 e 值 email.secureserver.net. ",
-                "2012-09-12 12:05:46: (111.111.111.111) 添加新域名 api4.com api@dnspod.com(625033)"
+                "2015-01-18 12:07:05: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net.",
+                "2015-01-18 12:07:04: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. ",
+                "2015-01-18 12:07:02: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. ",
+                "2015-01-18 12:06:57: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net. ",
+                "2015-01-18 12:06:33(API): (111.111.111.111) 暂停 域名解析",
+                "2015-01-18 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 pop 值 mail.api4.com. ",
+                "2015-01-18 12:06:12: (111.111.111.111) 添加 A 记录 默认 线路 shop 值 64.144.7.55 ",
+                "2015-01-18 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 smtp 值 mail.api4.com. ",
+                "2015-01-18 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 ftp 值 64.144.7.51 ",
+                "2015-01-18 12:06:11: (111.111.111.111) 添加 CNAME 记录 默认 线路 e 值 email.secureserver.net. ",
+                "2015-01-18 12:05:46: (111.111.111.111) 添加新域名 api4.com api@dnspod.com(625033)"
             ]
         } 
 
@@ -309,7 +447,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * status {yes,no} 是否推送
 响应代码：
     * 共通返回
@@ -332,7 +470,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 17:28:44"
+                "created_at": "2015-01-18 17:28:44"
             }
         }
 
@@ -346,10 +484,10 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * email 要共享到的邮箱
-    * mode {r,rw}共享模式，r (只读)　或 rw (读取、修改)，默认为 r
-    * sub_domain 子域名共享，如：www、bbs等。如果要共享整个域名，则无需提交此参数
+    * mode {r,rw}共享模式, r (只读)　或 rw (读取、修改), 默认为 r
+    * sub_domain 子域名共享, 如：www、bbs等. 如果要共享整个域名, 则无需提交此参数
 
 响应代码：
     * 共通返回
@@ -374,7 +512,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 17:47:21"
+                "created_at": "2015-01-18 17:47:21"
             }
         }
 
@@ -388,7 +526,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
 响应代码：
     * 共通返回
     * -7 企业账号的域名需要升级才能设置
@@ -414,7 +552,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 17:51:50"
+                "created_at": "2015-01-18 17:51:50"
             },
             "share": [
                 {
@@ -426,6 +564,17 @@ HTTP请求方式：
             "owner": "api@dnspod.com"
         }
 
+    * 字段说明:
+        * share, 域名的共享信息
+            * share_to: 共享给其他 DNSPod 的账号
+            * mode, 域名共享模式
+                * "rw": 可读写
+                * "r": 只读
+            * status: 域名的共享状态
+                * "enabled": 共享成功
+                * "pending": 共享到的账号不存在, 等待注册
+        * owner: 域名所有者的账号
+
 .. _Domainshare.Modify:
 
 修改域名共享
@@ -436,10 +585,10 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
-    * email 被共享者的邮箱，原来是什么就提交什么，不能修改
-    * mode {r,rw}共享模式，r (只读)　或 rw (读取、修改)，默认为 r
-    * old_sub_domain 已经成功共享的子域名，如果只修改主域名共享，则无需提交此参数
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
+    * email 被共享者的邮箱, 原来是什么就提交什么, 不能修改
+    * mode {r,rw}共享模式, r (只读)　或 rw (读取、修改), 默认为 r
+    * old_sub_domain 已经成功共享的子域名, 如果只修改主域名共享, 则无需提交此参数
     * new_sub_domain 要修改到的共享子域名
 响应代码：
     * 共通返回
@@ -453,11 +602,11 @@ HTTP请求方式：
 
 示例
 
-1. 修改主域名共享状态，从 rw 修改为 r::
+1. 修改主域名共享状态, 从 rw 修改为 r::
         
     curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=r'
     
-2. 修改子域名的共享状态，从rw 修改为 r::
+2. 修改子域名的共享状态, 从rw 修改为 r::
             
     curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=r&old_sub_domain=www&new_sub_domain=www'
     
@@ -481,7 +630,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 18:54:18"
+                "created_at": "2015-01-18 18:54:18"
             }
         } 
 
@@ -495,8 +644,8 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
-    * email 被共享者的邮箱，原来是什么就提交什么，不能修改
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
+    * email 被共享者的邮箱, 原来是什么就提交什么, 不能修改
 响应代码：
     * 共通返回
     * -15 域名已被封禁
@@ -519,7 +668,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 20:19:20"
+                "created_at": "2015-01-18 20:19:20"
             }
         }
 
@@ -533,8 +682,8 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
-    * email 被共享者的邮箱，原来是什么就提交什么，不能修改
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
+    * email 被共享者的邮箱, 原来是什么就提交什么, 不能修改
 响应代码：
     * 共通返回
     * -15 域名已被封禁
@@ -559,7 +708,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 20:21:33"
+                "created_at": "2015-01-18 20:21:33"
             }
         }
 
@@ -598,26 +747,31 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 20:31:13"
+                "created_at": "2015-01-18 20:31:13"
             },
             "lock": {
                 "domain_id": 2059079,
                 "lock_code": "fdd638",
-                "lock_end": "2012-09-21"
+                "lock_end": "2015-01-21"
             }
         }
 
+    * 字段说明:
+        * domain_id: 域名ID, 即为 domain_id
+        * lock_code: 域名解锁码
+        * lock_end: 域名自动解锁日期
+
 .. _Domain.Lockstatus:
 
-锁定状态
----------
+获取域名锁定状态
+----------------
 接口地址：
     * https://dnsapi.cn/Domain.Lockstatus
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
 响应代码：
     * 共通返回
     * -15 域名已被封禁
@@ -638,27 +792,34 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 20:35:04"
+                "created_at": "2015-01-18 20:35:04"
             },
             "lock": {
                 "lock_status": "yes",
-                "start_at": "2012-09-18",
-                "end_at": "2012-09-21"
+                "start_at": "2015-01-18",
+                "end_at": "2015-01-21"
             }
         }
 
+    * 字段说明:
+        * lock_status: 域名锁定的状态
+            * "yes": 已锁定
+            * "no": 未锁定
+        * start_at: 域名锁定的开始日期
+        * lock_end: 域名自动解锁日期
+
 .. _Domain.Unlock:
 
-锁定解锁
----------
+域名锁定解锁
+------------
 接口地址：
     * https://dnsapi.cn/Domain.Unlock
 HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
-    * lock_code 域名解锁码，锁定的时候会返回
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
+    * lock_code 域名解锁码, 锁定的时候会返回
 响应代码：
     * 共通返回
     * -15 域名已被封禁
@@ -681,12 +842,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 20:38:58"
-            },
-            "lock": {
-                "lock_status": "yes",
-                "start_at": "2012-09-18",
-                "end_at": "2012-09-21"
+                "created_at": "2015-01-18 20:21:33"
             }
         }
 
@@ -700,7 +856,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
 响应代码：
     * 共通返回
     * -7 企业账号的域名需要升级才能设置
@@ -720,7 +876,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 21:11:20"
+                "created_at": "2015-01-18 21:11:20"
             },
             "alias": [
                 {
@@ -729,6 +885,10 @@ HTTP请求方式：
                 }
             ]
         } 
+
+    * 字段说明:
+        * id: 域名别名绑定的ID
+        * domain: 绑定的域名
 
 
 .. _Domainalias.Create:
@@ -741,8 +901,8 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id ，域名ID
-    * domain 要绑定的域名，不带www.
+    * domain_id , 域名ID
+    * domain 要绑定的域名, 不带www.
 响应代码：
     * 共通返回
     * -15 域名已被封禁
@@ -766,13 +926,17 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 21:09:57"
+                "created_at": "2015-01-18 21:09:57"
             },
             "alias": {
                 "id": "18737",
                 "punycode": "dnspodapi.com"
             }
         }
+
+    * 字段说明:
+        * id: 域名别名绑定的 ID
+        * punycode: 别名绑定的域名
 
 .. _Domainalias.Remove:
 
@@ -784,8 +948,8 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
-    * alias_id 绑定ID，绑定域名的时候会返回
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
+    * alias_id 绑定ID, 绑定域名的时候会返回
 响应代码：
     * 共通返回
     * -15 域名已被封禁
@@ -806,7 +970,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 21:15:20"
+                "created_at": "2015-01-18 21:15:20"
             }
         }
 
@@ -830,67 +994,65 @@ HTTP请求方式：
 返回参考：
 
     * JSON::
-        
+
         {
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 21:33:33"
+                "created_at": "2015-01-18 17:44:54"
             },
             "groups": [
                 {
                     "group_id": 1,
                     "group_name": "默认分组",
                     "group_type": "system",
-                    "size": 1
+                    "size": 2
                 },
                 {
                     "group_id": 2,
                     "group_name": "经常修改",
                     "group_type": "system",
-                    "size": null
+                    "size": 0
                 },
                 {
                     "group_id": 3,
                     "group_name": "很少修改",
                     "group_type": "system",
-                    "size": null
+                    "size": 0
                 },
                 {
                     "group_id": 4,
                     "group_name": "即将到期",
                     "group_type": "system",
-                    "size": null
+                    "size": 0
                 },
                 {
                     "group_id": 5,
                     "group_name": "私人域名",
                     "group_type": "system",
-                    "size": null
+                    "size": 0
                 },
                 {
                     "group_id": 6,
                     "group_name": "公司域名",
                     "group_type": "system",
-                    "size": null
+                    "size": 0
                 },
                 {
                     "group_id": 7,
                     "group_name": "客户域名",
                     "group_type": "system",
-                    "size": null
+                    "size": 0
                 },
                 {
                     "group_id": 8,
                     "group_name": "与我共享",
                     "group_type": "system",
-                    "size": null
+                    "size": 0
                 }
             ]
         }
-
-说明：
-    * 该接口只对VIP帐户有效，免费用户无法获取域名分组，免费用户会返回错误提示。
+        
     
 .. _Domaingroup.Create:
 
@@ -921,15 +1083,18 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-18 21:41:00"
+                "created_at": "2015-01-18 21:41:00"
             },
             "groups": {
                 "id": "1985"
             }
         }
 
+    * 字段说明:
+        id: 域名分组的 ID
+
 说明：
-    * 该接口只对VIP帐户有效，免费用户无法获取域名分组，免费用户会返回错误提示。
+    * 该接口只对VIP帐户有效, 免费用户无法获取域名分组, 免费用户会返回错误提示. 
 
 .. _Domaingroup.Modify:
 
@@ -962,7 +1127,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-19 10:25:32"
+                "created_at": "2015-01-18 10:25:32"
             }
         }
     
@@ -993,7 +1158,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-19 10:45:45"
+                "created_at": "2015-01-18 10:45:45"
             }
         }
     
@@ -1007,7 +1172,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * group_id 分组ID
 响应代码：
     * 共通返回
@@ -1026,14 +1191,14 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 17:33:01"
+                "created_at": "2015-01-18 17:33:01"
             }
         } 
 
 说明：
 
-    * 其它用户共享过来的域名全在“与我共享”系统分组下，不能更改
-    * 只有域名所有者可以更改域名的分组，被共享者不能更改
+    * 其它用户共享过来的域名全在“与我共享”系统分组下, 不能更改
+    * 只有域名所有者可以更改域名的分组, 被共享者不能更改
 
 .. _Domain.Ismark:
 
@@ -1045,7 +1210,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * is_mark {yes | no}, 是否星标域名
 响应代码：
     * 共通返回
@@ -1063,7 +1228,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 17:42:02"
+                "created_at": "2015-01-18 17:42:02"
             }
         }
 
@@ -1077,8 +1242,8 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
-    * remark 域名备注，删除备注请提交空内容
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
+    * remark 域名备注, 删除备注请提交空内容
 响应代码：
     * 共通返回
     * 6 域名ID错误
@@ -1095,7 +1260,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 17:50:37"
+                "created_at": "2015-01-18 17:50:37"
             }
         }
 
@@ -1109,7 +1274,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
 响应代码：
     * 共通返回
     * 6 域名ID不正确
@@ -1126,7 +1291,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 17:51:25"
+                "created_at": "2015-01-18 17:51:25"
             },
             "purview": [
                 {
@@ -1193,7 +1358,7 @@ HTTP请求方式：
         }
 
 说明：
-    * 获取成功后要在本地保存一份，不要操作一次获取一次
+    * 获取成功后要在本地保存一份, 不要操作一次获取一次
 
 .. _Domain.Acquire:
 
@@ -1213,11 +1378,11 @@ HTTP请求方式：
     * 8  域名不正确
     * 9 不支持免费.tk域名
     * 10 域名不存在
-    * 11 域名已被封禁，不能取回
+    * 11 域名已被封禁, 不能取回
     * 12 锁定的域名不能取回
     * 13 个人用户不能取回企业用户域名
     * 14 企业用户不能取回个人用户域名
-    * 15 获取不到邮箱，可能是网络错误或域名不支持
+    * 15 获取不到邮箱, 可能是网络错误或域名不支持
     * 86 不能取回 VIP 域名
 
 示例::
@@ -1232,13 +1397,16 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 18:00:05"
+                "created_at": "2015-01-18 18:00:05"
             },
             "emails": [
                 "support@namecheap.com",
                 "e31d739cb2824a5f80d7b90848a195d8.protect@whoisguard.com"
             ]
         }
+
+    * 字段说明:
+        emails: 域名 WHOIS 的邮箱, 可能存在多个
 
 .. _Domain.Acquiresend:
 
@@ -1259,11 +1427,11 @@ HTTP请求方式：
     * 8  域名不正确
     * 9 不支持免费.tk域名
     * 10 域名不存在
-    * 11 域名已被封禁，不能取回
+    * 11 域名已被封禁, 不能取回
     * 12 锁定的域名不能取回
     * 13 个人用户不能取回企业用户域名
     * 14 企业用户不能取回个人用户域名
-    * 15 获取不到邮箱，可能是网络错误或域名不支持
+    * 15 获取不到邮箱, 可能是网络错误或域名不支持
     * 16 邮箱参数错误
 
 示例::
@@ -1277,7 +1445,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 18:07:44"
+                "created_at": "2015-01-18 18:07:44"
             }
         }
 
@@ -1300,7 +1468,7 @@ HTTP请求方式：
     * 8  域名不正确
     * 9 不支持免费.tk域名
     * 10 域名不存在
-    * 11 域名已被封禁，不能取回
+    * 11 域名已被封禁, 不能取回
     * 12 锁定的域名不能取回
     * 13 个人用户不能取回企业用户域名
     * 14 企业用户不能取回个人用户域名
@@ -1319,7 +1487,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 18:12:44"
+                "created_at": "2015-01-18 18:12:44"
             }
         }
 
@@ -1333,7 +1501,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3
+    * domain_grade 域名等级, 分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra, 分别对应免费套餐、个人豪华、企业1、企业2、企业3
                         新套餐：DP_Free DP_Plus DP_Extra DP_Expert DP_Ultra, 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版
 响应代码：
     * 共通返回
@@ -1351,7 +1519,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 18:23:40"
+                "created_at": "2015-01-18 18:23:40"
             },
             "types": [
                 "A",
@@ -1367,7 +1535,7 @@ HTTP请求方式：
 
 .. _Record.Line:
 
-获取等级允许的线路线路
+获取等级允许的线路
 -----------------------
 接口地址：
     *  https://dnsapi.cn/Record.Line
@@ -1375,9 +1543,9 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3。
+    * domain_grade 域名等级, 分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra, 分别对应免费套餐、个人豪华、企业Ⅰ、企业Ⅱ、企业Ⅲ. 
                     新套餐：DP_Free, DP_Plus, DP_Extra, DP_Expert, DP_Ultra, 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版
-    * domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
 响应代码：
     * 共通返回
     * 6 等级代码不正确
@@ -1394,7 +1562,7 @@ HTTP请求方式：
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2012-09-23 18:29:58"
+                "created_at": "2015-01-18 18:29:58"
             },
             "lines": [
                 "默认",
