@@ -52,7 +52,7 @@ HTTP请求方式：
             "status": {
                 "code":"1",
                 "message":"Action completed successful",
-                "created_at":"2012-11-23 22:17:47"
+                "created_at":"2015-01-19 22:17:47"
             },
             "record": {
                 "id":"16894439",
@@ -60,6 +60,11 @@ HTTP请求方式：
                 "status":"enable"
             }
         }
+
+    * 字段说明:
+        * id: 记录ID, 即为 record_id
+        * name: 添加的字域名 
+        * status: 域名记录的状态
 
 .. _Record.List:
 
@@ -99,68 +104,119 @@ HTTP请求方式：
 
         {
             "status": {
-                "code":"1",
-                "message":"Action completed successful",
-                "created_at":"2012-11-23 22:20:59"
+                "code": "1",
+                "message": "Action completed successful",
+                "created_at": "2015-01-18 18:41:42"
             },
             "domain": {
-                "id":2317346,
-                "name":"testapi.com",
-                "punycode":"testapi.com",
-                "grade":"D_Plus",
-                "owner":"api@dnspod.com"
+                "id": 2238269,
+                "name": "我们.cn",
+                "punycode": "xn--vnqp08b.cn",
+                "grade": "D_Free",
+                "owner": "api@dnspod.com"
             },
             "info": {
-                "sub_domains":"3",
-                "record_total":"3"
+                "sub_domains": "4",
+                "record_total": "4"
             },
             "records": [
                 {
-                    "id":"16894439",
-                    "name":"@",
-                    "line":"\u9ed8\u8ba4",
-                    "type":"A",
-                    "ttl":"600",
-                    "value":"1.1.1.1",
-                    "mx":"0",
-                    "enabled":"1",
-                    "status":"enabled",
-                    "monitor_status":"",
-                    "remark":"",
-                    "updated_on":"2012-11-23 22:17:47"
+                    "id": "55195163",
+                    "name": "@",
+                    "line": "默认",
+                    "type": "A",
+                    "ttl": "600",
+                    "value": "218.241.99.140",
+                    "mx": "0",
+                    "enabled": "1",
+                    "status": "enabled",
+                    "monitor_status": "",
+                    "remark": "",
+                    "updated_on": "2014-03-28 18:54:35",
+                    "use_aqb": "no"
                 },
                 {
-                    "id":"16662141",
-                    "name":"@",
-                    "line":"\u9ed8\u8ba4",
-                    "type":"NS",
-                    "ttl":"600",
-                    "value":"ns1.dnsv2.com.",
-                    "mx":"0",
-                    "enabled":"1",
-                    "status":"enabled",
-                    "monitor_status":"",
-                    "remark":"",
-                    "updated_on":"2012-11-16 15:52:56",
-                    "hold":"hold"
+                    "id": "16158908",
+                    "name": "@",
+                    "line": "默认",
+                    "type": "NS",
+                    "ttl": "600",
+                    "value": "f1g1ns1.dnspod.net.",
+                    "mx": "0",
+                    "enabled": "1",
+                    "status": "enabled",
+                    "monitor_status": "",
+                    "remark": "",
+                    "updated_on": "2015-01-18 20:59:03",
+                    "use_aqb": "no",
+                    "hold": "hold"
                 },
                 {
-                    "id":"16662142",
-                    "name":"@",
-                    "line":"\u9ed8\u8ba4",
-                    "type":"NS",
-                    "ttl":"600",
-                    "value":"ns2.dnsv2.com.",
-                    "mx":"0",
-                    "enabled":"1",
-                    "status":"enabled",
-                    "monitor_status":"",
-                    "remark":"",
-                    "updated_on":"2012-11-16 15:52:56",
-                    "hold":"hold"
+                    "id": "16158909",
+                    "name": "@",
+                    "line": "默认",
+                    "type": "NS",
+                    "ttl": "600",
+                    "value": "f1g1ns2.dnspod.net.",
+                    "mx": "0",
+                    "enabled": "1",
+                    "status": "enabled",
+                    "monitor_status": "",
+                    "remark": "",
+                    "updated_on": "2015-01-18 20:59:03",
+                    "use_aqb": "no",
+                    "hold": "hold"
+                },
+                {
+                    "id": "16158918",
+                    "name": "www",
+                    "line": "默认",
+                    "type": "A",
+                    "ttl": "600",
+                    "value": "218.241.99.140",
+                    "mx": "0",
+                    "enabled": "1",
+                    "status": "enabled",
+                    "monitor_status": "",
+                    "remark": "",
+                    "updated_on": "2015-01-18 20:59:25",
+                    "use_aqb": "no"
                 }
             ]
         }
+
+    * 字段说明:
+        * domain:
+            * id: 域名ID，即为 domain_id
+            * name: 域名
+            * punycode: punycode 转码之后的域名
+            * grade: 域名等级，详见 Domain.List 或 Domain.Info 接口
+            * owner: 域名所有者
+        * info:
+            * sub_domains: 域名记录条数
+            * record_total: 域名记录条数
+        * records:
+            * id: 记录ID编号
+            * name: 子域名(主机记录)
+            * line: 解析线路, 详见 Record.Line 接口
+            * type: 记录类型, 详见 Record.Type 接口
+            * ttl: 记录的 TTL 值
+            * value: 记录值
+            * mx: 记录的 MX 记录值, 非 MX 记录类型，默认为 0
+            * enabled: 记录状态
+                * "0": 禁用
+                * "1": 启用
+            * status: 系统内部标识状态, 开发者可忽略
+            * monitor_status: 该记录的D监控状态
+                * "Ok": 服务器正常
+                * "Warn": 该记录有报警, 服务器返回 4XX
+                * "Down": 服务器宕机
+                * "": 该记录未开启D监控
+            * remark: 记录备注
+            * updated_on: 记录最后更新时间
+            * use_aqb: 是否开通网站安全中心
+                * "yes": 已经开启
+                * "no": 未开启
 
 .. _Record.Modify:
 
@@ -220,14 +276,21 @@ HTTP请求方式：
             "status": {
                 "code":"1",
                 "message":"Action completed successful",
-                "created_at":"2012-11-24 16:53:23"
+                "created_at":"2015-01-18 16:53:23"
             },
             "record": {
                 "id":16894439,
                 "name":"@",
-                "value":"3.2.2.2","status":"enable"
+                "value":"3.2.2.2",
+                "status":"enable"
             }
         }
+
+    * 字段说明:
+        * id: 记录ID, 即为 record_id
+        * name: 子域名
+        * value": 记录值
+        * status": 记录状态
 
 .. _Record.Remove:
 
@@ -263,7 +326,7 @@ HTTP请求方式：
             "status": {
                 "code":"1",
                 "message":"Action completed successful",
-                "created_at":"2012-11-24 16:58:07"
+                "created_at":"2015-01-18 16:58:07"
             }
         }
 
@@ -313,7 +376,7 @@ HTTP请求方式：
             "status": {
                 "code":"1",
                 "message":"Action completed successful",
-                "created_at":"2012-11-24 17:23:58"
+                "created_at":"2015-01-18 17:23:58"
             },
             "record": {
                 "id":16909160,
@@ -321,6 +384,11 @@ HTTP请求方式：
                 "value":"111.111.111.111"
             }
         }
+
+    * 字段说明:
+        * id: 记录ID, 即为 record_id
+        * name: 子域名
+        * value": 记录值
 
 .. _Record.Remark:
 
@@ -352,7 +420,7 @@ HTTP请求方式：
             "status": {
                 "code": "1", 
                 "message": "Action completed successful", 
-                "created_at": "2012-11-24 17:32:23"
+                "created_at": "2015-01-18 17:32:23"
             }
         }
 
@@ -389,7 +457,7 @@ HTTP请求方式：
             "status": {
                 "code": "1", 
                 "message": "Action completed successful", 
-                "created_at": "2012-11-24 17:36:10"
+                "created_at": "2015-01-18 17:36:10"
             }, 
             "domain": {
                 "id": 2317346, 
@@ -407,10 +475,35 @@ HTTP请求方式：
                 "enabled": "1", 
                 "monitor_status": "", 
                 "remark": "test", 
-                "updated_on": "2012-11-24 17:23:58", 
+                "updated_on": "2015-01-18 17:23:58", 
                 "domain_id": "2317346"
             }
         }
+
+    * 字段说明:
+        * domain:
+            * id: 域名ID，即为 domain_id
+            * domain: 域名
+            * domain_grade: 域名等级，详见 Domain.List 或 Domain.Info 接口
+        * record:
+            * id: 记录ID编号
+            * sub_domain: 子域名(主机记录)
+            * record_type: 记录类型, 详见 Record.Type 接口
+            * record_line: 解析线路, 详见 Record.Line 接口
+            * value: 记录值
+            * mx: 记录的 MX 记录值, 非 MX 记录类型，默认为 0
+            * ttl: 记录的 TTL 值
+            * enabled: 记录状态
+                * "0": 禁用
+                * "1": 启用
+            * monitor_status: 该记录的D监控状态
+                * "Ok": 服务器正常
+                * "Warn": 该记录有报警, 服务器返回 4XX
+                * "Down": 服务器宕机
+                * "": 该记录未开启D监控
+            * remark: 记录备注
+            * updated_on: 记录最后更新时间
+            * domain_id: 域名ID, 即为 domain_id
 
 .. _Record.Status:
 
@@ -447,7 +540,7 @@ HTTP请求方式：
             "status": {
                 "code": "1", 
                 "message": "Action completed successful", 
-                "created_at": "2012-11-24 20:07:29"
+                "created_at": "2015-01-18 20:07:29"
             }, 
             "record": {
                 "id": 16909160, 
@@ -455,3 +548,8 @@ HTTP请求方式：
                 "status": "disable"
             }
         }
+
+    * 字段说明:
+        * id: 记录ID, 即为 record_id
+        * name: 子域名
+        * status: 记录状态
