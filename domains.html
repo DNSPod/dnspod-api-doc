@@ -54,8 +54,8 @@
 <dd><ul class="first last simple">
 <li>公共参数</li>
 <li>domain 域名, 没有 www, 如 dnspod.com</li>
-<li>group_id 域名分组ID，可选参数</li>
-<li>is_mark {yes|no} 是否星标域名，可选参数</li>
+<li>group_id 域名分组ID, 可选参数</li>
+<li>is_mark {yes|no} 是否星标域名, 可选参数</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -65,7 +65,7 @@
 <li>7 域名已存在</li>
 <li>11 域名已经存在并且是其它域名的别名</li>
 <li>12 域名已经存在并且您没有权限管理</li>
-<li>41 网站内容不符合DNSPod解析服务条款，域名添加失败</li>
+<li>41 网站内容不符合DNSPod解析服务条款, 域名添加失败</li>
 </ul>
 </dd>
 </dl>
@@ -80,7 +80,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-29 22:12:35&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2015-01-18 22:12:35&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;1992403&quot;</span><span class="p">,</span>
@@ -90,6 +90,16 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>id: 域名 ID, 即为 domain_id</li>
+<li>punycode: 使用 punycode 转码之后的域名</li>
+<li>domain: 添加的域名</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -112,7 +122,7 @@
 <li><p class="first">公共参数</p>
 </li>
 <li><dl class="first docutils">
-<dt>type 域名权限种类，可选参数，默认为&#8217;all&#8217;。包含以下类型：</dt>
+<dt>type 域名权限种类, 可选参数, 默认为&#8217;all&#8217;. 包含以下类型：</dt>
 <dd><ul class="first last simple">
 <li>all：所有域名</li>
 <li>mine：我的域名</li>
@@ -126,19 +136,19 @@
 </dd>
 </dl>
 </li>
-<li><p class="first">offset 记录开始的偏移，第一条记录为 0，依次类推，可选参数</p>
+<li><p class="first">offset 记录开始的偏移, 第一条记录为 0, 依次类推, 可选参数</p>
 </li>
-<li><p class="first">length 共要获取的记录的数量，比如获取20条，则为20，可选参数</p>
+<li><p class="first">length 共要获取的记录的数量, 比如获取20条, 则为20, 可选参数</p>
 </li>
-<li><p class="first">group_id 分组ID，获取指定分组的域名，可选参数</p>
+<li><p class="first">group_id 分组ID, 获取指定分组的域名, 可选参数</p>
 </li>
-<li><p class="first">keyword，搜索的关键字，如果指定则只返回符合该关键字的域名，可选参数</p>
+<li><p class="first">keyword, 搜索的关键字, 如果指定则只返回符合该关键字的域名, 可选参数</p>
 </li>
 </ul>
 </dd>
 <dt>注意事项：</dt>
 <dd><ul class="first last simple">
-<li>如果账户中的域名数量超过了3000，将会强制分页并且只返回前3000条，这时需要通过 offset 和 length 参数去获取其它域名。</li>
+<li>如果账户中的域名数量超过了3000, 将会强制分页并且只返回前3000条, 这时需要通过 offset 和 length 参数去获取其它域名.</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -161,40 +171,64 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-10 11:51:31&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 16:21:28&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;domain_total&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s">&quot;all_total&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s">&quot;mine_total&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;domain_total&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">&quot;all_total&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">&quot;mine_total&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="s">&quot;share_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s">&quot;vip_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s">&quot;ismark_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s">&quot;pause_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s">&quot;error_total&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;error_total&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="s">&quot;lock_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s">&quot;spam_total&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;vip_expire&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s">&quot;share_out_total&quot;</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">},</span>
     <span class="s">&quot;domains&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1992403</span><span class="p">,</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;api2.com&quot;</span><span class="p">,</span>
-            <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Free&quot;</span><span class="p">,</span>
-            <span class="s">&quot;grade_title&quot;</span><span class="p">:</span> <span class="s">&quot;免费套餐&quot;</span><span class="p">,</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2238269</span><span class="p">,</span>
             <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enable&quot;</span><span class="p">,</span>
-            <span class="s">&quot;ext_status&quot;</span><span class="p">:</span> <span class="s">&quot;dnserror&quot;</span><span class="p">,</span>
-            <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="s">&quot;2&quot;</span><span class="p">,</span>
+            <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Free&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
-            <span class="s">&quot;is_mark&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
-            <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;is_vip&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
             <span class="s">&quot;searchengine_push&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
-            <span class="s">&quot;beian&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
-            <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-08-29 22:12:35&quot;</span><span class="p">,</span>
-            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-08-29 22:12:35&quot;</span><span class="p">,</span>
+            <span class="s">&quot;is_mark&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;300&quot;</span><span class="p">,</span>
+            <span class="s">&quot;cname_speedup&quot;</span><span class="p">:</span> <span class="s">&quot;disable&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-19 08:20:03&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-19 18:54:35&quot;</span><span class="p">,</span>
+            <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;xn--vnqp08b.cn&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ext_status&quot;</span><span class="p">:</span> <span class="s">&quot;dnserror&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;我们.cn&quot;</span><span class="p">,</span>
+            <span class="s">&quot;grade_title&quot;</span><span class="p">:</span> <span class="s">&quot;免费套餐&quot;</span><span class="p">,</span>
+            <span class="s">&quot;is_vip&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="s">&quot;4&quot;</span><span class="p">,</span>
+            <span class="s">&quot;auth_to_anquanbao&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">10360095</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enable&quot;</span><span class="p">,</span>
+            <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;DP_Free&quot;</span><span class="p">,</span>
+            <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;searchengine_push&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+            <span class="s">&quot;is_mark&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
             <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;600&quot;</span><span class="p">,</span>
-            <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span>
+            <span class="s">&quot;cname_speedup&quot;</span><span class="p">:</span> <span class="s">&quot;disable&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2014-11-25 16:56:31&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-19 16:56:31&quot;</span><span class="p">,</span>
+            <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;usertest.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ext_status&quot;</span><span class="p">:</span> <span class="s">&quot;dnserror&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;usertest.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;grade_title&quot;</span><span class="p">:</span> <span class="s">&quot;新免费套餐&quot;</span><span class="p">,</span>
+            <span class="s">&quot;is_vip&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span><span class="p">,</span>
+            <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="s">&quot;2&quot;</span><span class="p">,</span>
+            <span class="s">&quot;auth_to_anquanbao&quot;</span><span class="p">:</span> <span class="n">true</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -202,6 +236,141 @@
 </div>
 </li>
 </ul>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>info:</dt>
+<dd><ul class="first last simple">
+<li>domain_total: 域名总数</li>
+<li>all_total: 域名总数</li>
+<li>mine_total: 自己创建的域名总数(不包括共享得到的域名)</li>
+<li>share_total: 共享得到的域名总数</li>
+<li>vip_total: VIP 域名总数</li>
+<li>ismark_total: 星标域名的总数</li>
+<li>pause_total: 暂停解析的域名总数</li>
+<li>error_total: DNS 设置错误的域名总数(包括未注册的和 NS 地址没有改到 DNSPod 的域名)</li>
+<li>lock_total: 已锁定的域名总数</li>
+<li>spam_total: 已被封禁的域名总数</li>
+<li>vip_expire: VIP 即将到期的域名总数(30天之内)</li>
+<li>share_out_total: 共享出去的域名总数</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>domains:</dt>
+<dd><ul class="first last">
+<li><p class="first">id: 域名 ID, 即为 domain_id</p>
+</li>
+<li><dl class="first docutils">
+<dt>status: 域名状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;enable&#8221;: 正常</li>
+<li>&#8220;pause&#8221;: 已暂停解析</li>
+<li>&#8220;spam&#8221;: 已被封禁</li>
+<li>&#8220;lock&#8221;: 已被锁定</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>grade: 域名等级</dt>
+<dd><ul class="first last simple">
+<li>&#8220;D_Free&#8221;: 旧免费套餐 (旧套餐)</li>
+<li>&#8220;D_Plus&#8221;: 个人豪华套餐 (旧套餐)</li>
+<li>&#8220;D_Extra&#8221;: 企业Ⅰ (旧套餐)</li>
+<li>&#8220;D_Expert&#8221; 企业Ⅱ (旧套餐)</li>
+<li>&#8220;D_Ultra&#8221;: 企业Ⅲ (旧套餐)</li>
+<li>&#8220;DP_Free&#8221; 免费套餐</li>
+<li>&#8220;DP_Plus&#8221;: 个人专业版</li>
+<li>&#8220;DP_Extra&#8221;: 企业创业版</li>
+<li>&#8220;DP_Expert&#8221;: 企业标准版</li>
+<li>&#8220;DP_Ultra&#8221;: 企业旗舰版</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">group_id: 域名分组 ID</p>
+</li>
+<li><dl class="first docutils">
+<dt>searchengine_push:  是否开启搜索引擎推送功能</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 已开启</li>
+<li>&#8220;no&#8221;: 未开启</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>is_mark: 是否设置域名星标</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 已设置</li>
+<li>&#8220;no&#8221;: 未设置</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">ttl: 域名默认的 TTL 值</p>
+</li>
+<li><dl class="first docutils">
+<dt>cname_speedup: CNAME 加速状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;enable&#8221;: 已启用</li>
+<li>&#8220;disable&#8221;: 已禁用</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">remark: 域名备注</p>
+</li>
+<li><p class="first">created_on: 添加域名的时间</p>
+</li>
+<li><p class="first">updated_on: 域名最后修改时间</p>
+</li>
+<li><p class="first">punycode: 使用 punycode 转码之后的域名</p>
+</li>
+<li><dl class="first docutils">
+<dt>ext_status: 域名扩展的状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;notexist&#8221;: 域名没有注册</li>
+<li>&#8220;dnserror&#8221;: DNS 设置错误</li>
+<li>&#8220;&#8221;: 正常</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">name: 域名</p>
+</li>
+<li><p class="first">grade_title: 域名等级(中文说明)</p>
+</li>
+<li><dl class="first docutils">
+<dt>is_vip: 是否是VIP 等级</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 是 VIP</li>
+<li>&#8220;no&#8221;: 不是 VIP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">owner: 域名所有者</p>
+</li>
+<li><p class="first">records: 域名下记录总条数</p>
+</li>
+<li><p class="first">auth_to_anquanbao: 是否授权给安全中心(系统内部标识状态, 开发者可忽略)</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="domain-remove">
@@ -220,7 +389,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -245,7 +414,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 11:09:31&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 11:09:31&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -270,7 +439,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 <li>status {enable, disable} 域名状态</li>
 </ul>
 </dd>
@@ -297,7 +466,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 12:02:04&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 12:02:04&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -322,7 +491,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -346,32 +515,138 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 12:10:16&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:06:40&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;2059079&quot;</span><span class="p">,</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;api4.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;api4.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;2238269&quot;</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;我们.cn&quot;</span><span class="p">,</span>
+        <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;xn--vnqp08b.cn&quot;</span><span class="p">,</span>
         <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Free&quot;</span><span class="p">,</span>
         <span class="s">&quot;grade_title&quot;</span><span class="p">:</span> <span class="s">&quot;免费套餐&quot;</span><span class="p">,</span>
-        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;pause&quot;</span><span class="p">,</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enable&quot;</span><span class="p">,</span>
         <span class="s">&quot;ext_status&quot;</span><span class="p">:</span> <span class="s">&quot;dnserror&quot;</span><span class="p">,</span>
-        <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="s">&quot;9&quot;</span><span class="p">,</span>
+        <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="s">&quot;4&quot;</span><span class="p">,</span>
         <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;is_mark&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
-        <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
         <span class="s">&quot;is_vip&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
         <span class="s">&quot;searchengine_push&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
-        <span class="s">&quot;beian&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
         <span class="s">&quot;user_id&quot;</span><span class="p">:</span> <span class="s">&quot;625033&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 12:05:46&quot;</span><span class="p">,</span>
-        <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-12 12:06:12&quot;</span><span class="p">,</span>
-        <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;600&quot;</span><span class="p">,</span>
-        <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span>
+        <span class="s">&quot;created_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-19 07:23:03&quot;</span><span class="p">,</span>
+        <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-19 18:54:35&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;300&quot;</span><span class="p">,</span>
+        <span class="s">&quot;cname_speedup&quot;</span><span class="p">:</span> <span class="s">&quot;disable&quot;</span><span class="p">,</span>
+        <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span><span class="p">,</span>
+        <span class="s">&quot;auth_to_anquanbao&quot;</span><span class="p">:</span> <span class="n">true</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last">
+<li><p class="first">id: 域名 ID, 即为 domain_id</p>
+</li>
+<li><dl class="first docutils">
+<dt>status: 域名状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;enable&#8221;: 正常</li>
+<li>&#8220;pause&#8221;: 已暂停解析</li>
+<li>&#8220;spam&#8221;: 已被封禁</li>
+<li>&#8220;lock&#8221;: 已被锁定</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>grade: 域名等级</dt>
+<dd><ul class="first last simple">
+<li>&#8220;D_Free&#8221;: 旧免费套餐 (旧套餐)</li>
+<li>&#8220;D_Plus&#8221;: 个人豪华套餐 (旧套餐)</li>
+<li>&#8220;D_Extra&#8221;: 企业Ⅰ (旧套餐)</li>
+<li>&#8220;D_Expert&#8221; 企业Ⅱ (旧套餐)</li>
+<li>&#8220;D_Ultra&#8221;: 企业Ⅲ (旧套餐)</li>
+<li>&#8220;DP_Free&#8221; 免费套餐</li>
+<li>&#8220;DP_Plus&#8221;: 个人专业版</li>
+<li>&#8220;DP_Extra&#8221;: 企业创业版</li>
+<li>&#8220;DP_Expert&#8221;: 企业标准版</li>
+<li>&#8220;DP_Ultra&#8221;: 企业旗舰版</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">group_id: 域名分组 ID</p>
+</li>
+<li><dl class="first docutils">
+<dt>searchengine_push:  是否开启搜索引擎推送功能</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 已开启</li>
+<li>&#8220;no&#8221;: 未开启</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>is_mark: 是否设置域名星标</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 已设置</li>
+<li>&#8220;no&#8221;: 未设置</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">ttl: 域名默认的 TTL 值</p>
+</li>
+<li><dl class="first docutils">
+<dt>cname_speedup: CNAME 加速状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;enable&#8221;: 已启用</li>
+<li>&#8220;disable&#8221;: 已禁用</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">remark: 域名备注</p>
+</li>
+<li><p class="first">created_on: 添加域名的时间</p>
+</li>
+<li><p class="first">updated_on: 域名最后修改时间</p>
+</li>
+<li><p class="first">punycode: 使用 punycode 转码之后的域名</p>
+</li>
+<li><dl class="first docutils">
+<dt>ext_status: 域名扩展的状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;notexist&#8221;: 域名没有注册</li>
+<li>&#8220;dnserror&#8221;: DNS 设置错误</li>
+<li>&#8220;&#8221;: 正常</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">name: 域名</p>
+</li>
+<li><p class="first">grade_title: 域名等级(中文说明)</p>
+</li>
+<li><dl class="first docutils">
+<dt>is_vip: 是否是VIP 等级</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 是 VIP</li>
+<li>&#8220;no&#8221;: 不是 VIP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">owner: 域名所有者</p>
+</li>
+<li><p class="first">records: 域名下记录总条数</p>
+</li>
+<li><p class="first">auth_to_anquanbao: 是否授权给安全中心(系统内部标识状态, 开发者可忽略)</p>
+</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -393,6 +668,8 @@
 <dd><ul class="first last simple">
 <li>公共参数</li>
 <li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>offset 记录开始的偏移，第一条记录为 0，依次类推，可选参数</li>
+<li>length 共要获取的日志条数，比如获取20条，则为20，可选参数。默认为500条，最大值为500</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -416,22 +693,20 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 17:24:23&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:24:23&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;log&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s">&quot;2012-09-12 12:07:05: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net.&quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:07:04: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:07:02: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:57: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net. &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:33(API): (111.111.111.111) 暂停 域名解析&quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 pop 值 mail.api4.com. &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:12: (111.111.111.111) 添加 A 记录 默认 线路 shop 值 64.144.7.55 &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 smtp 值 mail.api4.com. &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 webmail 值 webmail.secureserver.net. &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 www 值 64.144.7.51 &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 ftp 值 64.144.7.51 &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:06:11: (111.111.111.111) 添加 CNAME 记录 默认 线路 e 值 email.secureserver.net. &quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-09-12 12:05:46: (111.111.111.111) 添加新域名 api4.com api@dnspod.com(625033)&quot;</span>
+        <span class="s">&quot;2015-01-18 12:07:05: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net.&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:07:04: (111.111.111.111) 启用解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:07:02: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns2.dnspod.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:06:57: (111.111.111.111) 暂停解析 NS 记录 默认 线路 @ 值 f1g1ns1.dnspod.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:06:33(API): (111.111.111.111) 暂停 域名解析&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 pop 值 mail.api4.com. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:06:12: (111.111.111.111) 添加 A 记录 默认 线路 shop 值 64.144.7.55 &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:06:12: (111.111.111.111) 添加 CNAME 记录 默认 线路 smtp 值 mail.api4.com. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:06:11: (111.111.111.111) 添加 A 记录 默认 线路 ftp 值 64.144.7.51 &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:06:11: (111.111.111.111) 添加 CNAME 记录 默认 线路 e 值 email.secureserver.net. &quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-18 12:05:46: (111.111.111.111) 添加新域名 api4.com api@dnspod.com(625033)&quot;</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -456,7 +731,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 <li>status {yes,no} 是否推送</li>
 </ul>
 </dd>
@@ -483,7 +758,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 17:28:44&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:28:44&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -508,10 +783,10 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 <li>email 要共享到的邮箱</li>
-<li>mode {r,rw}共享模式，r (只读)　或 rw (读取、修改)，默认为 r</li>
-<li>sub_domain 子域名共享，如：www、bbs等。如果要共享整个域名，则无需提交此参数</li>
+<li>mode {r,rw}共享模式, r (只读)　或 rw (读取、修改), 默认为 r</li>
+<li>sub_domain 子域名共享, 如：www、bbs等. 如果要共享整个域名, 则无需提交此参数</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -539,7 +814,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 17:47:21&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:47:21&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -564,7 +839,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -597,7 +872,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 17:51:50&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:51:50&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;share&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -610,6 +885,42 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>share, 域名的共享信息</dt>
+<dd><ul class="first last">
+<li><p class="first">share_to: 共享给其他 DNSPod 的账号</p>
+</li>
+<li><dl class="first docutils">
+<dt>mode, 域名共享模式</dt>
+<dd><ul class="first last simple">
+<li>&#8220;rw&#8221;: 可读写</li>
+<li>&#8220;r&#8221;: 只读</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>status: 域名的共享状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;enabled&#8221;: 共享成功</li>
+<li>&#8220;pending&#8221;: 共享到的账号不存在, 等待注册</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">owner: 域名所有者的账号</p>
+</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -630,10 +941,10 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
-<li>email 被共享者的邮箱，原来是什么就提交什么，不能修改</li>
-<li>mode {r,rw}共享模式，r (只读)　或 rw (读取、修改)，默认为 r</li>
-<li>old_sub_domain 已经成功共享的子域名，如果只修改主域名共享，则无需提交此参数</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
+<li>email 被共享者的邮箱, 原来是什么就提交什么, 不能修改</li>
+<li>mode {r,rw}共享模式, r (只读)　或 rw (读取、修改), 默认为 r</li>
+<li>old_sub_domain 已经成功共享的子域名, 如果只修改主域名共享, 则无需提交此参数</li>
 <li>new_sub_domain 要修改到的共享子域名</li>
 </ul>
 </dd>
@@ -652,11 +963,11 @@
 </dl>
 <p>示例</p>
 <ol class="arabic">
-<li><p class="first">修改主域名共享状态，从 rw 修改为 r:</p>
+<li><p class="first">修改主域名共享状态, 从 rw 修改为 r:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r'</pre>
 </div>
 </li>
-<li><p class="first">修改子域名的共享状态，从rw 修改为 r:</p>
+<li><p class="first">修改子域名的共享状态, 从rw 修改为 r:</p>
 <div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&amp;old_sub_domain=www&amp;new_sub_domain=www'</pre>
 </div>
 </li>
@@ -681,7 +992,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 18:54:18&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:54:18&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -706,8 +1017,8 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
-<li>email 被共享者的邮箱，原来是什么就提交什么，不能修改</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
+<li>email 被共享者的邮箱, 原来是什么就提交什么, 不能修改</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -734,7 +1045,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:19:20&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:19:20&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -759,8 +1070,8 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
-<li>email 被共享者的邮箱，原来是什么就提交什么，不能修改</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
+<li>email 被共享者的邮箱, 原来是什么就提交什么, 不能修改</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -789,7 +1100,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:21:33&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:21:33&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -843,22 +1154,32 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:31:13&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:31:13&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;lock&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;domain_id&quot;</span><span class="p">:</span> <span class="mi">2059079</span><span class="p">,</span>
         <span class="s">&quot;lock_code&quot;</span><span class="p">:</span> <span class="s">&quot;fdd638&quot;</span><span class="p">,</span>
-        <span class="s">&quot;lock_end&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-21&quot;</span>
+        <span class="s">&quot;lock_end&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-21&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>domain_id: 域名ID, 即为 domain_id</li>
+<li>lock_code: 域名解锁码</li>
+<li>lock_end: 域名自动解锁日期</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="domain-lockstatus">
-<span id="id15"></span><h2>锁定状态<a class="headerlink" href="#domain-lockstatus" title="Permalink to this headline">¶</a></h2>
+<span id="id15"></span><h2>获取域名锁定状态<a class="headerlink" href="#domain-lockstatus" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -873,7 +1194,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -898,22 +1219,42 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:35:04&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:35:04&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;lock&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;lock_status&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
-        <span class="s">&quot;start_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18&quot;</span><span class="p">,</span>
-        <span class="s">&quot;end_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-21&quot;</span>
+        <span class="s">&quot;start_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18&quot;</span><span class="p">,</span>
+        <span class="s">&quot;end_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-21&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>lock_status: 域名锁定的状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 已锁定</li>
+<li>&#8220;no&#8221;: 未锁定</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">start_at: 域名锁定的开始日期</p>
+</li>
+<li><p class="first">lock_end: 域名自动解锁日期</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="domain-unlock">
-<span id="id16"></span><h2>锁定解锁<a class="headerlink" href="#domain-unlock" title="Permalink to this headline">¶</a></h2>
+<span id="id16"></span><h2>域名锁定解锁<a class="headerlink" href="#domain-unlock" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -928,8 +1269,8 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
-<li>lock_code 域名解锁码，锁定的时候会返回</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
+<li>lock_code 域名解锁码, 锁定的时候会返回</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -956,12 +1297,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 20:38:58&quot;</span>
-    <span class="p">},</span>
-    <span class="s">&quot;lock&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;lock_status&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
-        <span class="s">&quot;start_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18&quot;</span><span class="p">,</span>
-        <span class="s">&quot;end_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-21&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:21:33&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -986,7 +1322,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -1010,7 +1346,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:11:20&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 21:11:20&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;alias&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -1023,6 +1359,19 @@
 </div>
 </li>
 </ul>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>id: 域名别名绑定的ID</li>
+<li>domain: 绑定的域名</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="domainalias-create">
@@ -1041,8 +1390,8 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id ，域名ID</li>
-<li>domain 要绑定的域名，不带www.</li>
+<li>domain_id , 域名ID</li>
+<li>domain 要绑定的域名, 不带www.</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -1070,7 +1419,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:09:57&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 21:09:57&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;alias&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;18737&quot;</span><span class="p">,</span>
@@ -1079,6 +1428,15 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>id: 域名别名绑定的 ID</li>
+<li>punycode: 别名绑定的域名</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -1099,8 +1457,8 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
-<li>alias_id 绑定ID，绑定域名的时候会返回</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
+<li>alias_id 绑定ID, 绑定域名的时候会返回</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -1125,7 +1483,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:15:20&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 21:15:20&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1169,56 +1527,56 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:33:33&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:44:54&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;默认分组&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
-            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">2</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;经常修改&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
-            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
             <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;很少修改&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
-            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
             <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;即将到期&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
-            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
             <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;私人域名&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
-            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
             <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;公司域名&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
-            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
             <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;客户域名&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
-            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s">&quot;group_id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
             <span class="s">&quot;group_name&quot;</span><span class="p">:</span> <span class="s">&quot;与我共享&quot;</span><span class="p">,</span>
             <span class="s">&quot;group_type&quot;</span><span class="p">:</span> <span class="s">&quot;system&quot;</span><span class="p">,</span>
-            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="s">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -1227,13 +1585,6 @@
 </li>
 </ul>
 </div></blockquote>
-<dl class="docutils">
-<dt>说明：</dt>
-<dd><ul class="first last simple">
-<li>该接口只对VIP帐户有效，免费用户无法获取域名分组，免费用户会返回错误提示。</li>
-</ul>
-</dd>
-</dl>
 </div>
 <div class="section" id="domaingroup-create">
 <span id="id21"></span><h2>添加域名分组<a class="headerlink" href="#domaingroup-create" title="Permalink to this headline">¶</a></h2>
@@ -1271,7 +1622,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-18 21:41:00&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 21:41:00&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;groups&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;1985&quot;</span>
@@ -1280,12 +1631,18 @@
 </pre></div>
 </div>
 </li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><p class="first last">id: 域名分组的 ID</p>
+</dd>
+</dl>
+</li>
 </ul>
 </div></blockquote>
 <dl class="docutils">
 <dt>说明：</dt>
 <dd><ul class="first last simple">
-<li>该接口只对VIP帐户有效，免费用户无法获取域名分组，免费用户会返回错误提示。</li>
+<li>该接口只对VIP帐户有效, 免费用户无法获取域名分组, 免费用户会返回错误提示.</li>
 </ul>
 </dd>
 </dl>
@@ -1328,7 +1685,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-19 10:25:32&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 10:25:32&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1374,7 +1731,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-19 10:45:45&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 10:45:45&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1399,7 +1756,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 <li>group_id 分组ID</li>
 </ul>
 </dd>
@@ -1422,7 +1779,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 17:33:01&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:33:01&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1433,8 +1790,8 @@
 <p>说明：</p>
 <blockquote>
 <div><ul class="simple">
-<li>其它用户共享过来的域名全在“与我共享”系统分组下，不能更改</li>
-<li>只有域名所有者可以更改域名的分组，被共享者不能更改</li>
+<li>其它用户共享过来的域名全在“与我共享”系统分组下, 不能更改</li>
+<li>只有域名所有者可以更改域名的分组, 被共享者不能更改</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1454,7 +1811,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 <li>is_mark {yes | no}, 是否星标域名</li>
 </ul>
 </dd>
@@ -1476,7 +1833,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 17:42:02&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:42:02&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1501,8 +1858,8 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
-<li>remark 域名备注，删除备注请提交空内容</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
+<li>remark 域名备注, 删除备注请提交空内容</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -1523,7 +1880,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 17:50:37&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:50:37&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1548,7 +1905,7 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
+<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -1569,7 +1926,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 17:51:25&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:51:25&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;purview&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -1642,7 +1999,7 @@
 <dl class="docutils">
 <dt>说明：</dt>
 <dd><ul class="first last simple">
-<li>获取成功后要在本地保存一份，不要操作一次获取一次</li>
+<li>获取成功后要在本地保存一份, 不要操作一次获取一次</li>
 </ul>
 </dd>
 </dl>
@@ -1674,11 +2031,11 @@
 <li>8  域名不正确</li>
 <li>9 不支持免费.tk域名</li>
 <li>10 域名不存在</li>
-<li>11 域名已被封禁，不能取回</li>
+<li>11 域名已被封禁, 不能取回</li>
 <li>12 锁定的域名不能取回</li>
 <li>13 个人用户不能取回企业用户域名</li>
 <li>14 企业用户不能取回个人用户域名</li>
-<li>15 获取不到邮箱，可能是网络错误或域名不支持</li>
+<li>15 获取不到邮箱, 可能是网络错误或域名不支持</li>
 <li>86 不能取回 VIP 域名</li>
 </ul>
 </dd>
@@ -1694,7 +2051,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:00:05&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:00:05&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;emails&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s">&quot;support@namecheap.com&quot;</span><span class="p">,</span>
@@ -1703,6 +2060,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><p class="first last">emails: 域名 WHOIS 的邮箱, 可能存在多个</p>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -1735,11 +2098,11 @@
 <li>8  域名不正确</li>
 <li>9 不支持免费.tk域名</li>
 <li>10 域名不存在</li>
-<li>11 域名已被封禁，不能取回</li>
+<li>11 域名已被封禁, 不能取回</li>
 <li>12 锁定的域名不能取回</li>
 <li>13 个人用户不能取回企业用户域名</li>
 <li>14 企业用户不能取回个人用户域名</li>
-<li>15 获取不到邮箱，可能是网络错误或域名不支持</li>
+<li>15 获取不到邮箱, 可能是网络错误或域名不支持</li>
 <li>16 邮箱参数错误</li>
 </ul>
 </dd>
@@ -1755,7 +2118,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:07:44&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:07:44&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1793,7 +2156,7 @@
 <li>8  域名不正确</li>
 <li>9 不支持免费.tk域名</li>
 <li>10 域名不存在</li>
-<li>11 域名已被封禁，不能取回</li>
+<li>11 域名已被封禁, 不能取回</li>
 <li>12 锁定的域名不能取回</li>
 <li>13 个人用户不能取回企业用户域名</li>
 <li>14 企业用户不能取回个人用户域名</li>
@@ -1813,7 +2176,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:12:44&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:12:44&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1840,7 +2203,7 @@
 <li><p class="first">公共参数</p>
 </li>
 <li><dl class="first docutils">
-<dt>domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3</dt>
+<dt>domain_grade 域名等级, 分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra, 分别对应免费套餐、个人豪华、企业1、企业2、企业3</dt>
 <dd><p class="first last">新套餐：DP_Free DP_Plus DP_Extra DP_Expert DP_Ultra, 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版</p>
 </dd>
 </dl>
@@ -1865,7 +2228,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:23:40&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:23:40&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;types&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s">&quot;A&quot;</span><span class="p">,</span>
@@ -1885,7 +2248,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="record-line">
-<span id="id32"></span><h2>获取等级允许的线路线路<a class="headerlink" href="#record-line" title="Permalink to this headline">¶</a></h2>
+<span id="id32"></span><h2>获取等级允许的线路<a class="headerlink" href="#record-line" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1902,12 +2265,12 @@
 <li><p class="first">公共参数</p>
 </li>
 <li><dl class="first docutils">
-<dt>domain_grade 域名等级，分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra，分别对应免费套餐、个人豪华、企业1、企业2、企业3。</dt>
+<dt>domain_grade 域名等级, 分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra, 分别对应免费套餐、个人豪华、企业Ⅰ、企业Ⅱ、企业Ⅲ.</dt>
 <dd><p class="first last">新套餐：DP_Free, DP_Plus, DP_Extra, DP_Expert, DP_Ultra, 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版</p>
 </dd>
 </dl>
 </li>
-<li><p class="first">domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</p>
+<li><p class="first">domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</p>
 </li>
 </ul>
 </dd>
@@ -1929,7 +2292,7 @@
 <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
     <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-    <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-23 18:29:58&quot;</span>
+    <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:29:58&quot;</span>
 <span class="p">},</span>
 <span class="s">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s">&quot;默认&quot;</span><span class="p">,</span>
@@ -1983,8 +2346,8 @@
 <li><a class="reference internal" href="#domainshare-remove">删除域名共享</a></li>
 <li><a class="reference internal" href="#domain-transfer">域名过户</a></li>
 <li><a class="reference internal" href="#domain-lock">锁定域名</a></li>
-<li><a class="reference internal" href="#domain-lockstatus">锁定状态</a></li>
-<li><a class="reference internal" href="#domain-unlock">锁定解锁</a></li>
+<li><a class="reference internal" href="#domain-lockstatus">获取域名锁定状态</a></li>
+<li><a class="reference internal" href="#domain-unlock">域名锁定解锁</a></li>
 <li><a class="reference internal" href="#domainalias-list">域名绑定列表</a></li>
 <li><a class="reference internal" href="#domainalias-create">添加域名绑定</a></li>
 <li><a class="reference internal" href="#domainalias-remove">删除域名绑定</a></li>
@@ -2000,7 +2363,7 @@
 <li><a class="reference internal" href="#domain-acquiresend">域名取回发送验证码</a></li>
 <li><a class="reference internal" href="#domain-acquirevalidate">验证域名取回的验证码</a></li>
 <li><a class="reference internal" href="#record-type">获取等级允许的记录类型</a></li>
-<li><a class="reference internal" href="#record-line">获取等级允许的线路线路</a></li>
+<li><a class="reference internal" href="#record-line">获取等级允许的线路</a></li>
 </ul>
 </li>
 </ul>

@@ -72,28 +72,118 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-10 11:22:26&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 15:04:07&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;real_name&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;user_type&quot;</span><span class="p">:</span> <span class="s">&quot;personal&quot;</span><span class="p">,</span>
+            <span class="s">&quot;telephone&quot;</span><span class="p">:</span> <span class="s">&quot;18754553214&quot;</span><span class="p">,</span>
+            <span class="s">&quot;im&quot;</span><span class="p">:</span> <span class="s">&quot;10000000&quot;</span><span class="p">,</span>
+            <span class="s">&quot;nick&quot;</span><span class="p">:</span> <span class="s">&quot;DNSPod 先生&quot;</span><span class="p">,</span>
             <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;625033&quot;</span><span class="p">,</span>
             <span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span><span class="p">,</span>
             <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span><span class="p">,</span>
             <span class="s">&quot;email_verified&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
-            <span class="s">&quot;telephone_verified&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+            <span class="s">&quot;telephone_verified&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;weixin_binded&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
             <span class="s">&quot;agent_pending&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-            <span class="s">&quot;real_name&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;user_type&quot;</span><span class="p">:</span> <span class="s">&quot;personal&quot;</span><span class="p">,</span>
-            <span class="s">&quot;telephone&quot;</span><span class="p">:</span> <span class="s">&quot;15012345678&quot;</span><span class="p">,</span>
-            <span class="s">&quot;im&quot;</span><span class="p">:</span> <span class="s">&quot;10000000&quot;</span><span class="p">,</span>
-            <span class="s">&quot;nick&quot;</span><span class="p">:</span> <span class="s">&quot;DNSPod 先生&quot;</span><span class="p">,</span>
-            <span class="s">&quot;balance&quot;</span><span class="p">:</span> <span class="s">&quot;0&quot;</span><span class="p">,</span>
-            <span class="s">&quot;smsbalance&quot;</span><span class="p">:</span> <span class="s">&quot;4&quot;</span>
+            <span class="s">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s">&quot;smsbalance&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s">&quot;user_grade&quot;</span><span class="p">:</span> <span class="s">&quot;DP_Free&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last">
+<li><p class="first">real_name: 用户名称, 企业用户对应为公司名称</p>
+</li>
+<li><dl class="first docutils">
+<dt>user_type: 账号类型</dt>
+<dd><ul class="first last simple">
+<li>&#8220;personal&#8221;: 个人用户</li>
+<li>&#8220;enterprise&#8221;: 企业用户</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">telephone: 电话号码</p>
+</li>
+<li><p class="first">im: 用户 IM (已废弃)</p>
+</li>
+<li><p class="first">nick: 用户昵称</p>
+</li>
+<li><p class="first">id: 用户 ID, 即为 user_id</p>
+</li>
+<li><p class="first">email: 用户账号, 邮箱格式</p>
+</li>
+<li><dl class="first docutils">
+<dt>status: 账号状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;enabled&#8221;: 正常</li>
+<li>&#8220;disabled&#8221;: 被封禁</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>email_verified: 邮箱是否通过验证</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 通过</li>
+<li>&#8220;no&#8221;: 未通过</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>telephone_verified: 手机是否通过验证</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 通过</li>
+<li>&#8220;no&#8221;: 未通过</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>telephone_verified: 手机是否通过验证</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 通过</li>
+<li>&#8220;no&#8221;: 未通过</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>weixin_binded: 是否绑定微信</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 已绑定</li>
+<li>&#8220;no&#8221;: 未绑定</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>agent_pending: 是否正在申请成为代理</dt>
+<dd><ul class="first last simple">
+<li>true: 是</li>
+<li>false: 否</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">balance: 账号余额</p>
+</li>
+<li><p class="first">smsbalance: 剩余短信条数</p>
+</li>
+<li><p class="first">user_grade: 账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级</p>
+</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -114,8 +204,8 @@
 <dt>请求参数：</dt>
 <dd><ul class="first last simple">
 <li>公共参数</li>
-<li>real_name 真实姓名，如果用户类型是企业，则为公司名称</li>
-<li>nick 用户称呼，用于与用户联系时称呼用户</li>
+<li>real_name 真实姓名, 如果用户类型是企业, 则为公司名称</li>
+<li>nick 用户称呼, 用于与用户联系时称呼用户</li>
 <li>telephone 用户手机号码</li>
 <li>im 用户qq</li>
 </ul>
@@ -139,7 +229,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-24 13:34:56&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2015-01-18 13:34:56&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -174,7 +264,7 @@
 <li>8 旧密码错误</li>
 <li>9 新密码错误</li>
 <li>87 新密码不能和之前用过的密码一样</li>
-<li>88 新密码不安全，请使用另外的密码</li>
+<li>88 新密码不安全, 请使用另外的密码</li>
 </ul>
 </dd>
 </dl>
@@ -189,7 +279,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-24 13:45:27&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2015-01-18 13:45:27&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -239,7 +329,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-24 14:49:41&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2015-01-18 14:49:41&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -284,25 +374,26 @@
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;4&quot;</span><span class="p">,</span>
-        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Telephone is verified&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-08-24 15:57:21&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">{</span>
-    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
-        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-23 16:01:52&quot;</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 15:56:13&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;verify_code&quot;</span><span class="p">:</span><span class="s">&quot;676479&quot;</span><span class="p">,</span>
-        <span class="s">&quot;verify_desc&quot;</span><span class="p">:</span><span class="s">&quot;</span><span class="se">\u8bf7\u4f7f\u7528</span><span class="s"> 18600000000 </span><span class="se">\u7f16\u8f91\u77ed\u4fe1\uff0c\u5c06</span><span class="s"> 676479 </span><span class="se">\u53d1\u9001\u81f3\u53f7\u7801</span><span class="s">  159 6183 3568</span><span class="se">\u3002</span><span class="s">&quot;</span>
+        <span class="s">&quot;verify_code&quot;</span><span class="p">:</span> <span class="s">&quot;409752&quot;</span><span class="p">,</span>
+        <span class="s">&quot;verify_desc&quot;</span><span class="p">:</span> <span class="s">&quot;请使用 18601234321 编辑短信，将 409752 发送至号码  159 6183 3568。&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>verify_code: 验证码</li>
+<li>verify_desc: 描述文字</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -342,17 +433,18 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-09-10 11:29:36&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 15:57:30&quot;</span>
     <span class="p">},</span>
-    <span class="s">&quot;log&quot;</span><span class="p">:</span>
-    <span class="p">[</span>
-        <span class="s">&quot;2012-09-04 13:56:24: 111.111.111.111 登陆 成功&quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-08-30 17:01:47: 111.111.111.111 登陆 成功&quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-08-29 22:12:35(API): (111.111.111.111) 添加域名 api2.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-08-29 21:59:55: (111.111.111.111) 添加域名 api1.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-08-29 21:59:45: (111.111.111.111) 添加域名 apiapi.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-08-29 21:59:30: 111.111.111.111 登陆 成功&quot;</span><span class="p">,</span>
-        <span class="s">&quot;2012-08-24 15:49:53: 111.111.111.111 登陆 成功&quot;</span><span class="p">,</span>
+    <span class="s">&quot;log&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;2015-01-18 15:12:02: 122.5.32.226 [山东省烟台市] 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-15 23:13:25: (60.212.40.45) 添加域名 sssaavvvx.xyz (20690613)&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-10 09:38:50: 122.5.32.226 [山东省烟台市] 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2015-01-04 11:26:24: 122.5.32.226 [山东省烟台市] 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2014-12-23 15:39:36: (60.212.40.45) 添加域名 sssdadaa.com (20371179)&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2014-12-22 11:59:50: 60.212.40.45 [山东省烟台市] 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2014-12-18 16:53:29: 122.5.32.226 [山东省烟台市] 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2014-12-09 13:55:17: 60.212.40.45 [山东省烟台市] 登陆 成功&quot;</span><span class="p">,</span>
+        <span class="s">&quot;2014-12-08 15:53:12: 122.5.32.226 [山东省烟台市] 登陆 成功&quot;</span><span class="p">,</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>

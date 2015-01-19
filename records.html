@@ -98,7 +98,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-23 22:17:47&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2015-01-19 22:17:47&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;16894439&quot;</span><span class="p">,</span>
@@ -108,6 +108,16 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>id: 记录ID, 即为 record_id</li>
+<li>name: 添加的字域名</li>
+<li>status: 域名记录的状态</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -162,70 +172,172 @@
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
-        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-23 22:20:59&quot;</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:41:42&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">2317346</span><span class="p">,</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;punycode&quot;</span><span class="p">:</span><span class="s">&quot;testapi.com&quot;</span><span class="p">,</span>
-        <span class="s">&quot;grade&quot;</span><span class="p">:</span><span class="s">&quot;D_Plus&quot;</span><span class="p">,</span>
-        <span class="s">&quot;owner&quot;</span><span class="p">:</span><span class="s">&quot;api@dnspod.com&quot;</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2238269</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;我们.cn&quot;</span><span class="p">,</span>
+        <span class="s">&quot;punycode&quot;</span><span class="p">:</span> <span class="s">&quot;xn--vnqp08b.cn&quot;</span><span class="p">,</span>
+        <span class="s">&quot;grade&quot;</span><span class="p">:</span> <span class="s">&quot;D_Free&quot;</span><span class="p">,</span>
+        <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;api@dnspod.com&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;sub_domains&quot;</span><span class="p">:</span><span class="s">&quot;3&quot;</span><span class="p">,</span>
-        <span class="s">&quot;record_total&quot;</span><span class="p">:</span><span class="s">&quot;3&quot;</span>
+        <span class="s">&quot;sub_domains&quot;</span><span class="p">:</span> <span class="s">&quot;4&quot;</span><span class="p">,</span>
+        <span class="s">&quot;record_total&quot;</span><span class="p">:</span> <span class="s">&quot;4&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;records&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;16894439&quot;</span><span class="p">,</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
-            <span class="s">&quot;line&quot;</span><span class="p">:</span><span class="s">&quot;</span><span class="se">\u9ed8\u8ba4</span><span class="s">&quot;</span><span class="p">,</span>
-            <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;A&quot;</span><span class="p">,</span>
-            <span class="s">&quot;ttl&quot;</span><span class="p">:</span><span class="s">&quot;600&quot;</span><span class="p">,</span>
-            <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;1.1.1.1&quot;</span><span class="p">,</span>
-            <span class="s">&quot;mx&quot;</span><span class="p">:</span><span class="s">&quot;0&quot;</span><span class="p">,</span>
-            <span class="s">&quot;enabled&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
-            <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span>
-            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;remark&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-23 22:17:47&quot;</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;55195163&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;@&quot;</span><span class="p">,</span>
+            <span class="s">&quot;line&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;600&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;218.241.99.140&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mx&quot;</span><span class="p">:</span> <span class="s">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s">&quot;enabled&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2014-03-28 18:54:35&quot;</span><span class="p">,</span>
+            <span class="s">&quot;use_aqb&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;16662141&quot;</span><span class="p">,</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
-            <span class="s">&quot;line&quot;</span><span class="p">:</span><span class="s">&quot;</span><span class="se">\u9ed8\u8ba4</span><span class="s">&quot;</span><span class="p">,</span>
-            <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;NS&quot;</span><span class="p">,</span>
-            <span class="s">&quot;ttl&quot;</span><span class="p">:</span><span class="s">&quot;600&quot;</span><span class="p">,</span>
-            <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;ns1.dnsv2.com.&quot;</span><span class="p">,</span>
-            <span class="s">&quot;mx&quot;</span><span class="p">:</span><span class="s">&quot;0&quot;</span><span class="p">,</span>
-            <span class="s">&quot;enabled&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
-            <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span>
-            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;remark&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-16 15:52:56&quot;</span><span class="p">,</span>
-            <span class="s">&quot;hold&quot;</span><span class="p">:</span><span class="s">&quot;hold&quot;</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;16158908&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;@&quot;</span><span class="p">,</span>
+            <span class="s">&quot;line&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;NS&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;600&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;f1g1ns1.dnspod.net.&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mx&quot;</span><span class="p">:</span> <span class="s">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s">&quot;enabled&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:59:03&quot;</span><span class="p">,</span>
+            <span class="s">&quot;use_aqb&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;hold&quot;</span><span class="p">:</span> <span class="s">&quot;hold&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;16662142&quot;</span><span class="p">,</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
-            <span class="s">&quot;line&quot;</span><span class="p">:</span><span class="s">&quot;</span><span class="se">\u9ed8\u8ba4</span><span class="s">&quot;</span><span class="p">,</span>
-            <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;NS&quot;</span><span class="p">,</span>
-            <span class="s">&quot;ttl&quot;</span><span class="p">:</span><span class="s">&quot;600&quot;</span><span class="p">,</span>
-            <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;ns2.dnsv2.com.&quot;</span><span class="p">,</span>
-            <span class="s">&quot;mx&quot;</span><span class="p">:</span><span class="s">&quot;0&quot;</span><span class="p">,</span>
-            <span class="s">&quot;enabled&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
-            <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enabled&quot;</span><span class="p">,</span>
-            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;remark&quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-16 15:52:56&quot;</span><span class="p">,</span>
-            <span class="s">&quot;hold&quot;</span><span class="p">:</span><span class="s">&quot;hold&quot;</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;16158909&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;@&quot;</span><span class="p">,</span>
+            <span class="s">&quot;line&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;NS&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;600&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;f1g1ns2.dnspod.net.&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mx&quot;</span><span class="p">:</span> <span class="s">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s">&quot;enabled&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:59:03&quot;</span><span class="p">,</span>
+            <span class="s">&quot;use_aqb&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s">&quot;hold&quot;</span><span class="p">:</span> <span class="s">&quot;hold&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;16158918&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;www&quot;</span><span class="p">,</span>
+            <span class="s">&quot;line&quot;</span><span class="p">:</span> <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="s">&quot;600&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;218.241.99.140&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mx&quot;</span><span class="p">:</span> <span class="s">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s">&quot;enabled&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:59:25&quot;</span><span class="p">,</span>
+            <span class="s">&quot;use_aqb&quot;</span><span class="p">:</span> <span class="s">&quot;no&quot;</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>domain:</dt>
+<dd><ul class="first last simple">
+<li>id: 域名ID，即为 domain_id</li>
+<li>name: 域名</li>
+<li>punycode: punycode 转码之后的域名</li>
+<li>grade: 域名等级，详见 Domain.List 或 Domain.Info 接口</li>
+<li>owner: 域名所有者</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>info:</dt>
+<dd><ul class="first last simple">
+<li>sub_domains: 域名记录条数</li>
+<li>record_total: 域名记录条数</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>records:</dt>
+<dd><ul class="first last">
+<li><p class="first">id: 记录ID编号</p>
+</li>
+<li><p class="first">name: 子域名(主机记录)</p>
+</li>
+<li><p class="first">line: 解析线路, 详见 Record.Line 接口</p>
+</li>
+<li><p class="first">type: 记录类型, 详见 Record.Type 接口</p>
+</li>
+<li><p class="first">ttl: 记录的 TTL 值</p>
+</li>
+<li><p class="first">value: 记录值</p>
+</li>
+<li><p class="first">mx: 记录的 MX 记录值, 非 MX 记录类型，默认为 0</p>
+</li>
+<li><dl class="first docutils">
+<dt>enabled: 记录状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;0&#8221;: 禁用</li>
+<li>&#8220;1&#8221;: 启用</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">status: 系统内部标识状态, 开发者可忽略</p>
+</li>
+<li><dl class="first docutils">
+<dt>monitor_status: 该记录的D监控状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;Ok&#8221;: 服务器正常</li>
+<li>&#8220;Warn&#8221;: 该记录有报警, 服务器返回 4XX</li>
+<li>&#8220;Down&#8221;: 服务器宕机</li>
+<li>&#8220;&#8221;: 该记录未开启D监控</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">remark: 记录备注</p>
+</li>
+<li><p class="first">updated_on: 记录最后更新时间</p>
+</li>
+<li><dl class="first docutils">
+<dt>use_aqb: 是否开通网站安全中心</dt>
+<dd><ul class="first last simple">
+<li>&#8220;yes&#8221;: 已经开启</li>
+<li>&#8220;no&#8221;: 未开启</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -300,16 +412,28 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-24 16:53:23&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2015-01-18 16:53:23&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">16894439</span><span class="p">,</span>
         <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;@&quot;</span><span class="p">,</span>
-        <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;3.2.2.2&quot;</span><span class="p">,</span><span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enable&quot;</span>
+        <span class="s">&quot;value&quot;</span><span class="p">:</span><span class="s">&quot;3.2.2.2&quot;</span><span class="p">,</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span><span class="s">&quot;enable&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>id: 记录ID, 即为 record_id</li>
+<li>name: 子域名</li>
+<li>value&#8221;: 记录值</li>
+<li>status&#8221;: 记录状态</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -358,7 +482,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-24 16:58:07&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2015-01-18 16:58:07&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -425,7 +549,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2012-11-24 17:23:58&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span><span class="s">&quot;2015-01-18 17:23:58&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">16909160</span><span class="p">,</span>
@@ -435,6 +559,16 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>id: 记录ID, 即为 record_id</li>
+<li>name: 子域名</li>
+<li>value&#8221;: 记录值</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -479,7 +613,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 17:32:23&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:32:23&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -531,7 +665,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 17:36:10&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:36:10&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;domain&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2317346</span><span class="p">,</span>
@@ -549,12 +683,76 @@
         <span class="s">&quot;enabled&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;monitor_status&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
         <span class="s">&quot;remark&quot;</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-        <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 17:23:58&quot;</span><span class="p">,</span>
+        <span class="s">&quot;updated_on&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 17:23:58&quot;</span><span class="p">,</span>
         <span class="s">&quot;domain_id&quot;</span><span class="p">:</span> <span class="s">&quot;2317346&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>domain:</dt>
+<dd><ul class="first last simple">
+<li>id: 域名ID，即为 domain_id</li>
+<li>domain: 域名</li>
+<li>domain_grade: 域名等级，详见 Domain.List 或 Domain.Info 接口</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>record:</dt>
+<dd><ul class="first last">
+<li><p class="first">id: 记录ID编号</p>
+</li>
+<li><p class="first">sub_domain: 子域名(主机记录)</p>
+</li>
+<li><p class="first">record_type: 记录类型, 详见 Record.Type 接口</p>
+</li>
+<li><p class="first">record_line: 解析线路, 详见 Record.Line 接口</p>
+</li>
+<li><p class="first">value: 记录值</p>
+</li>
+<li><p class="first">mx: 记录的 MX 记录值, 非 MX 记录类型，默认为 0</p>
+</li>
+<li><p class="first">ttl: 记录的 TTL 值</p>
+</li>
+<li><dl class="first docutils">
+<dt>enabled: 记录状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;0&#8221;: 禁用</li>
+<li>&#8220;1&#8221;: 启用</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>monitor_status: 该记录的D监控状态</dt>
+<dd><ul class="first last simple">
+<li>&#8220;Ok&#8221;: 服务器正常</li>
+<li>&#8220;Warn&#8221;: 该记录有报警, 服务器返回 4XX</li>
+<li>&#8220;Down&#8221;: 服务器宕机</li>
+<li>&#8220;&#8221;: 该记录未开启D监控</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">remark: 记录备注</p>
+</li>
+<li><p class="first">updated_on: 记录最后更新时间</p>
+</li>
+<li><p class="first">domain_id: 域名ID, 即为 domain_id</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
@@ -604,7 +802,7 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2012-11-24 20:07:29&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:07:29&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;record&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">16909160</span><span class="p">,</span>
@@ -614,6 +812,16 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+</li>
+<li><dl class="first docutils">
+<dt>字段说明:</dt>
+<dd><ul class="first last simple">
+<li>id: 记录ID, 即为 record_id</li>
+<li>name: 子域名</li>
+<li>status: 记录状态</li>
+</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </div></blockquote>
