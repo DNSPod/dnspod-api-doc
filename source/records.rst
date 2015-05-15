@@ -18,6 +18,7 @@ HTTP请求方式：
     * value  记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com., 必选
     * mx {1-20}  MX优先级, 当记录类型是 MX 时有效，范围1-20, MX记录必选
     * ttl {1-604800}  TTL，范围1-604800，不同等级域名最小值不同, 可选
+    * status ["enable", "disable"]，记录初始状态，默认为"enable"，如果传入"disable"，解析不会生效，也不会验证负载均衡的限制，可选
 响应代码：
     * 共通返回
     * -15 域名已被封禁
@@ -236,6 +237,7 @@ HTTP请求方式：
     * value 记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com.，必选
     * mx {1-20} MX优先级, 当记录类型是 MX 时有效，范围1-20, mx记录必选
     * ttl {1-604800} TTL，范围1-604800，不同等级域名最小值不同，可选
+    * status ["enable", "disable"]，记录状态，默认为"enable"，如果传入"disable"，解析不会生效，也不会验证负载均衡的限制，可选
 响应代码：
     * 共通返回
     * -15 域名已被封禁
