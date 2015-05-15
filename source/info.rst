@@ -57,6 +57,13 @@ API开发规范
     * user_id 用户的ID，可选，仅代理接口需要， 用户接口不需要提交此参数
 
 
+.. _api_token:
+
+API Token
+----------
+增加 Token 的验证机制，https://support.dnspod.cn/Kb/showarticle/tsid/227/ ，后续新用户将全部使用 Token 来鉴权，具体时间会提前通知，也建议开发者们都采用 Token 来鉴权，不要再使用 "用户名 ＋ 密码" 的方式。
+
+
 .. _common_response:
 
 共通返回

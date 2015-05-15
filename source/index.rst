@@ -6,6 +6,9 @@ DNSPod用户API文档
 
 最近更新
 ---------
+2015-05-15
+    * 增加 Token 的验证机制说明
+    * Record.Create 和 Record.Modify 增加 status 参数，允许传入记录的初始状态
 2014-09-02
     * Domain.List 和 Record.List 增加 keyword 参数，实现搜索功能
 2014-08-29
