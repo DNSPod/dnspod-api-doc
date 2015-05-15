@@ -60,6 +60,7 @@
 <li>value  记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com., 必选</li>
 <li>mx {1-20}  MX优先级, 当记录类型是 MX 时有效，范围1-20, MX记录必选</li>
 <li>ttl {1-604800}  TTL，范围1-604800，不同等级域名最小值不同, 可选</li>
+<li>status [&#8220;enable&#8221;, &#8220;disable&#8221;]，记录初始状态，默认为&#8221;enable&#8221;，如果传入&#8221;disable&#8221;，解析不会生效，也不会验证负载均衡的限制，可选</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -88,7 +89,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line=默认&amp;value=1.1.1.1'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Create -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line=默认&amp;value=1.1.1.1&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -164,7 +166,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.List -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -366,6 +369,7 @@
 <li>value 记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com.，必选</li>
 <li>mx {1-20} MX优先级, 当记录类型是 MX 时有效，范围1-20, mx记录必选</li>
 <li>ttl {1-604800} TTL，范围1-604800，不同等级域名最小值不同，可选</li>
+<li>status [&#8220;enable&#8221;, &#8220;disable&#8221;]，记录状态，默认为&#8221;enable&#8221;，如果传入&#8221;disable&#8221;，解析不会生效，也不会验证负载均衡的限制，可选</li>
 </ul>
 </dd>
 <dt>响应代码：</dt>
@@ -402,7 +406,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line=默认'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line=默认&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -472,7 +477,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Remove -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -539,7 +545,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认&amp;sub_domain=www'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认&amp;sub_domain=www&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -603,7 +610,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Remark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;remark=test'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Remark -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;remark=test&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -655,7 +663,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Info -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Info -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -792,7 +801,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Status -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Status -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -882,7 +892,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

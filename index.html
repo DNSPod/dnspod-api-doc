@@ -37,9 +37,15 @@
   <div class="section" id="dnspodapi">
 <h1>DNSPod用户API文档<a class="headerlink" href="#dnspodapi" title="Permalink to this headline">¶</a></h1>
 <p class="centered">
-<strong>DNSPod Documentation 1.0 released September 02, 2014</strong></p><div class="section" id="id1">
+<strong>DNSPod Documentation 1.0 released May 15, 2015</strong></p><div class="section" id="id1">
 <h2>最近更新<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
+<dt>2015-05-15</dt>
+<dd><ul class="first last simple">
+<li>增加 Token 的验证机制说明</li>
+<li>Record.Create 和 Record.Modify 增加 status 参数，允许传入记录的初始状态</li>
+</ul>
+</dd>
 <dt>2014-09-02</dt>
 <dd><ul class="first last simple">
 <li>Domain.List 和 Record.List 增加 keyword 参数，实现搜索功能</li>
@@ -111,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="info.html">API说明</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="info.html#specification">API开发规范</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html#common-parameters">公共参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#api-token">API Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html#common-response">共通返回</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html#d">D令牌验证相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html#info-version">获取API版本号</a></li>
@@ -209,9 +216,7 @@
   <ul>
 <li><a class="reference internal" href="#">DNSPod用户API文档</a><ul>
 <li><a class="reference internal" href="#id1">最近更新</a></li>
-<li><a class="reference internal" href="#id2">目录</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#id2">目录</a></li>
 </ul>
 </li>
 </ul>
@@ -243,7 +248,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

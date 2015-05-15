@@ -40,38 +40,43 @@
 <h2>使用开源软件 collectd 上报系统指标<a class="headerlink" href="#collectd" title="Permalink to this headline">¶</a></h2>
 <p>collectd 下载页： <a class="reference external" href="http://collectd.org/download.shtml">http://collectd.org/download.shtml</a></p>
 <p>以源码安装 collectd 为例:</p>
-<div class="highlight-python"><pre>wget http://collectd.org/files/collectd-5.4.1.tar.gz
+<div class="highlight-python"><div class="highlight"><pre>wget http://collectd.org/files/collectd-5.4.1.tar.gz
 tar -xvzf collectd-5.4.1.tar.gz
 cd collectd-5.4.1
-./configure &amp;&amp; make &amp;&amp; sudo make install</pre>
+./configure &amp;&amp; make &amp;&amp; sudo make install
+</pre></div>
 </div>
 <p>若您在 CentOS 5 上安装失败，请尝试:</p>
-<div class="highlight-python"><pre>./configure --disable-iptables &amp;&amp; make &amp;&amp; sudo make install</pre>
+<div class="highlight-python"><div class="highlight"><pre>./configure --disable-iptables &amp;&amp; make &amp;&amp; sudo make install
+</pre></div>
 </div>
 <p>修改配置文件，指定上报服务器:</p>
-<div class="highlight-python"><pre>sudo vim /opt/collectd/etc/collectd.conf</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo vim /opt/collectd/etc/collectd.conf
+</pre></div>
 </div>
 <p>替换:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#LoadPlugin write_graphite</span>
 </pre></div>
 </div>
 <p>为:</p>
-<div class="highlight-python"><pre>LoadPlugin write_graphite</pre>
+<div class="highlight-python"><div class="highlight"><pre>LoadPlugin write_graphite
+</pre></div>
 </div>
 <p>搜索 Plugin write_graphite 对应的配置块, 取消注释，并做相应的修改:</p>
-<div class="highlight-python"><pre>&lt;Plugin write_graphite&gt;
-  &lt;Node "example"&gt;
-    Host "collector.monitor.dnspod.cn"
-    Port "2003"
-    Protocol "tcp"
+<div class="highlight-python"><div class="highlight"><pre>&lt;Plugin write_graphite&gt;
+  &lt;Node &quot;example&quot;&gt;
+    Host &quot;collector.monitor.dnspod.cn&quot;
+    Port &quot;2003&quot;
+    Protocol &quot;tcp&quot;
     LogSendErrors true
-    Prefix "授权码/域名/IP/"   # 例如："xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111/"
-    Postfix ""
+    Prefix &quot;授权码/域名/IP/&quot;   # 例如：&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/test.com/192.168.1.111/&quot;
+    Postfix &quot;&quot;
     StoreRates true
     AlwaysAppendDS false
-    EscapeCharacter "_"
+    EscapeCharacter &quot;_&quot;
   &lt;/Node&gt;
-&lt;/Plugin&gt;</pre>
+&lt;/Plugin&gt;
+</pre></div>
 </div>
 <p>启动 collectd:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">sudo</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">collectd</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">collectd</span>
@@ -81,34 +86,38 @@ cd collectd-5.4.1
 <div class="section" id="id2">
 <h2>如何使用 collectd 收集更多的服务器指标<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>例如，我想监控服务器的磁盘空间使用情况:</p>
-<div class="highlight-python"><pre>sudo vim /opt/collectd/etc/collectd.conf</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo vim /opt/collectd/etc/collectd.conf
+</pre></div>
 </div>
 <p>替换:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#LoadPlugin df</span>
 </pre></div>
 </div>
 <p>为:</p>
-<div class="highlight-python"><pre>LoadPlugin df</pre>
+<div class="highlight-python"><div class="highlight"><pre>LoadPlugin df
+</pre></div>
 </div>
 <p>搜索 LoadPlugin df 对应的配置块，取消注释，并做相应的修改:</p>
-<div class="highlight-python"><pre>&lt;Plugin df&gt;
-        Device "/dev/xvda1"    # 需根据系统配置做相应修改
-        MountPoint "/"         # 需根据系统配置做相应修改
-        FSType "ext4"          # 需根据系统配置做相应修改
+<div class="highlight-python"><div class="highlight"><pre>&lt;Plugin df&gt;
+        Device &quot;/dev/xvda1&quot;    # 需根据系统配置做相应修改
+        MountPoint &quot;/&quot;         # 需根据系统配置做相应修改
+        FSType &quot;ext4&quot;          # 需根据系统配置做相应修改
         IgnoreSelected false
         ReportByDevice false
         ReportReserved false
         ReportInodes false
         ValuesAbsolute false
         ValuesPercentage true
-&lt;/Plugin&gt;</pre>
+&lt;/Plugin&gt;
+</pre></div>
 </div>
 <p>了解更多指标收集插件，请参考 <a class="reference external" href="https://collectd.org/wiki/index.php/Table_of_Plugins">https://collectd.org/wiki/index.php/Table_of_Plugins</a></p>
 </div>
 <div class="section" id="shell">
 <h2>使用 Shell 上报数据<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
 <p>TCP 方式:</p>
-<div class="highlight-python"><pre>echo "YOUR_API_KEY/test.com/192.168.1.111/active-users 200 $(date +%s)" | nc collector.monitor.dnspod.cn 2003 -q 1; echo</pre>
+<div class="highlight-python"><div class="highlight"><pre>echo &quot;YOUR_API_KEY/test.com/192.168.1.111/active-users 200 $(date +%s)&quot; | nc collector.monitor.dnspod.cn 2003 -q 1; echo
+</pre></div>
 </div>
 </div>
 <div class="section" id="id3">
@@ -166,7 +175,7 @@ cd collectd-5.4.1
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
