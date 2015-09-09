@@ -6,6 +6,8 @@ DNSPod用户API文档
 
 最近更新
 ---------
+2015-09-09
+    * 增加批量操作的相关文档
 2015-05-15
     * 增加 Token 的验证机制说明
     * Record.Create 和 Record.Modify 增加 status 参数，允许传入记录的初始状态
@@ -49,5 +51,6 @@ DNSPod用户API文档
     accounts
     domains
     records
+    batch
     d-monitor
     custom-monitoring
