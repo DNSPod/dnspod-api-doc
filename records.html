@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="DNSPod API Doc 1.0.0 documentation" href="index.html" />
-    <link rel="next" title="D监控相关" href="d-monitor.html" />
+    <link rel="next" title="批量操作相关" href="batch.html" />
     <link rel="prev" title="域名相关" href="domains.html" /> 
   </head>
   <body>  
@@ -89,8 +89,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Create -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line=默认&amp;value=1.1.1.1&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line=默认&amp;value=1.1.1.1'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -166,8 +165,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.List -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -406,8 +404,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line=默认&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line=默认'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -477,8 +474,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Remove -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -545,8 +541,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认&amp;sub_domain=www&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line=默认&amp;sub_domain=www'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -610,8 +605,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Remark -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;remark=test&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Remark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;remark=test'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -663,8 +657,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Info -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Info -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -801,8 +794,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Status -d &#39;login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Status -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -866,8 +858,8 @@
   <p class="topless"><a href="domains.html"
                         title="previous chapter">域名相关</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="d-monitor.html"
-                        title="next chapter">D监控相关</a></p>
+  <p class="topless"><a href="batch.html"
+                        title="next chapter">批量操作相关</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/records.txt"
@@ -892,7 +884,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>
