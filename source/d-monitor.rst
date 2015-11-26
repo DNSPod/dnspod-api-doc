@@ -187,7 +187,7 @@ HTTP请求方式：
         #. auto 智能切换
         #. 用逗号分隔的IP 设置备用IP
 
-    * keep_ttl 宕机不修改ttl，可选
+    * keep_ttl {yes|no} 宕机切换后是否修改ttl，可选，默认为 no
     * sms_notice 短信通知，me域名所有者，share共享用户，用,分隔多选择，比如me,share, 可选
     * email_notice 邮件通知，me域名所有者，share共享用户，用,分隔多选择，比如me,share，可选
     * less_notice {yes|no}是否一个小时内只发一次通知，可选
@@ -257,7 +257,7 @@ HTTP请求方式：
         #. 用逗号分隔的IP 设置备用IP
 
     * host 监控主机头，比如 www.dnspod.cn，可选
-    * keep_ttl 宕机不修改ttl，可选
+    * keep_ttl {yes|no} 宕机切换后是否修改ttl，可选，默认为 no
     * sms_notice 短信通知，me域名所有者，share共享用户，用,分隔多选择，比如me,share, 可选
     * email_notice 邮件通知，me域名所有者，share共享用户，用,分隔多选择，比如me,share，可选
     * less_notice {yes|no}是否一个小时内只发一次通知，可选
