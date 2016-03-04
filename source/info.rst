@@ -49,12 +49,13 @@ API开发规范
 公共参数
 ---------
 所有的接口都需要这些参数，在此统一说明，下面的接口将不再列出。这些参数必须和接口参数一起提交。
-    * login_email 用户帐号，必选
-    * login_password 用户密码，必选
+    * login_token 用于鉴权的 API Token
     * format {json,xml} 返回的数据格式，可选，默认为xml，建议用json
     * lang {en,cn} 返回的错误语言，可选，默认为en，建议用cn
     * error_on_empty {yes,no} 没有数据时是否返回错误，可选，默认为yes，建议用no
     * user_id 用户的ID，可选，仅代理接口需要， 用户接口不需要提交此参数
+
+注：旧的 "用户名 + 密码" 的鉴权方式仍能继续使用，推荐开发者优先使用 login_token 来鉴权，Token 生成方法详见：https://www.dnspod.cn/docs/info.html#api-token
 
 
 .. _api_token:
@@ -119,7 +120,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Info.Version -d 'login_email=api@dnspod.com&login_password=password&format=json'
+    curl -X POST https://dnsapi.cn/Info.Version -d 'login_token=LOGIN_TOKEN&format=json'
 
 返回参考：
 

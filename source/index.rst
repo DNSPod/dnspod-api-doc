@@ -6,6 +6,9 @@ DNSPod用户API文档
 
 最近更新
 ---------
+2016-03-04
+    * 增加 Domain.Acquiresend.New 接口，直接将域名取回的验证链接发送至 WHOIS 邮箱，用户点击链接即可完成取回
+    * 将示例中的 login_email、login_password 参数更换为 login_token，推荐开发者们使用 API Token 进行鉴权
 2015-11-24
     * 增加解析记录权重
 2015-09-09

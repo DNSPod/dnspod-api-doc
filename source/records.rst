@@ -44,7 +44,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Create -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&sub_domain=@&record_type=A&record_line=默认&value=1.1.1.1'
+    curl -X POST https://dnsapi.cn/Record.Create -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&sub_domain=@&record_type=A&record_line=默认&value=1.1.1.1'
     
 返回参考：
 
@@ -98,7 +98,7 @@ HTTP请求方式：
 
 示例::
 
-     curl -X POST https://dnsapi.cn/Record.List -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346'
+     curl -X POST https://dnsapi.cn/Record.List -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346'
     
 返回参考：
 
@@ -270,7 +270,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439&sub_domain=www&value=3.2.2.2&record_type=A&record_line=默认'
+    curl -X POST https://dnsapi.cn/Record.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&sub_domain=www&value=3.2.2.2&record_type=A&record_line=默认'
    
 返回参考：
 
@@ -320,7 +320,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Remove -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439'
+    curl -X POST https://dnsapi.cn/Record.Remove -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439'
     
 返回参考：
 
@@ -370,7 +370,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439&record_line=默认&sub_domain=www'
+    curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&record_line=默认&sub_domain=www'
     
 返回参考：
 
@@ -414,7 +414,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Remark -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439&remark=test'
+    curl -X POST https://dnsapi.cn/Record.Remark -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&remark=test'
     
 返回参考：
 
@@ -451,7 +451,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Info -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439'
+    curl -X POST https://dnsapi.cn/Record.Info -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439'
     
 返回参考：
 
@@ -534,7 +534,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Status -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16894439&status=disable'
+    curl -X POST https://dnsapi.cn/Record.Status -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&status=disable'
     
 返回参考：
 

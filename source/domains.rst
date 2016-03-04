@@ -24,7 +24,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Domain.Create -d 'login_email=api@dnspod.com&login_password=password&domain=api2.com&format=json'
+    curl -X POST https://dnsapi.cn/Domain.Create -d 'login_token=LOGIN_TOKEN&domain=api2.com&format=json'
 
 返回参考：
 
@@ -81,7 +81,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.List -d 'login_email=api@dnspod.com&login_password=password&format=json'
+    curl -X POST https://dnsapi.cn/Domain.List -d 'login_token=LOGIN_TOKEN&format=json'
 
 返回参考：
 
@@ -236,7 +236,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Domain.Remove -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=1992403'
+    curl -X POST https://dnsapi.cn/Domain.Remove -d 'login_token=LOGIN_TOKEN&format=json&domain_id=1992403'
     
 返回参考：
 
@@ -273,7 +273,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Domain.Status -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2058967&status=disable'
+    curl -X POST https://dnsapi.cn/Domain.Status -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2058967&status=disable'
 
 返回参考：
 
@@ -307,7 +307,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
+    curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079'
 
 返回参考：
 
@@ -412,7 +412,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
+    curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079'
 
 返回参考：
 
@@ -462,7 +462,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&status=yes'
+    curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&status=yes'
     
 返回参考：
 
@@ -504,7 +504,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Domainshare.Create -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=otheruser@dnspod.com&mode=rw'
+    curl -X POST https://dnsapi.cn/Domainshare.Create -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&email=otheruser@dnspod.com&mode=rw'
     
 返回参考：
 
@@ -544,7 +544,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domainshare.List -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
+    curl -X POST https://dnsapi.cn/Domainshare.List -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079'
 
 返回参考：
 
@@ -606,23 +606,23 @@ HTTP请求方式：
 
 1. 修改主域名共享状态, 从 rw 修改为 r::
         
-    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=r'
+    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=r'
     
 2. 修改子域名的共享状态, 从rw 修改为 r::
             
-    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=r&old_sub_domain=www&new_sub_domain=www'
+    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=r&old_sub_domain=www&new_sub_domain=www'
     
 3. 将主域名共享修改为子域名共享::
 
-    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=rw&new_sub_domain=www'
+    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=rw&new_sub_domain=www'
     
 4. 将子域名共享修改为主域名共享::
 
-    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=rw&old_sub_domain=www'
+    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=rw&old_sub_domain=www'
     
 5. 将www的子域名共享修改为bbs的子主域名共享::
 
-    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=rw&old_sub_domain=www&new_sub_domain=bbs'
+    curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&email=yizerowu@dnspod.com&mode=rw&old_sub_domain=www&new_sub_domain=bbs'
     
 返回参考：
 
@@ -660,7 +660,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domainshare.Remove -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com'
+    curl -X POST https://dnsapi.cn/Domainshare.Remove -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&email=yizerowu@dnspod.com'
 
 返回参考：
 
@@ -700,7 +700,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&email=yizerowu@dnspod.com'
+    curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&email=yizerowu@dnspod.com'
     
 返回参考：
 
@@ -739,7 +739,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&days=3'
+    curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&days=3'
 
 返回参考：
 
@@ -784,7 +784,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
+    curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079'
     
 返回参考：
 
@@ -834,7 +834,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Unlock -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&lock_code=fdd638'
+    curl -X POST https://dnsapi.cn/Domain.Unlock -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&lock_code=fdd638'
 
 返回参考：
 
@@ -868,7 +868,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domainalias.List -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
+    curl -X POST https://dnsapi.cn/Domainalias.List -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079'
 
 返回参考：
 
@@ -918,7 +918,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domainalias.Create -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&domain=dnspodapi.com'
+    curl -X POST https://dnsapi.cn/Domainalias.Create -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&domain=dnspodapi.com'
 
 返回参考：
 
@@ -962,7 +962,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domainalias.Remove -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&alias_id=18737'
+    curl -X POST https://dnsapi.cn/Domainalias.Remove -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&alias_id=18737'
 
 返回参考：
 
@@ -991,7 +991,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&login_password=password&format=json'
+    curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_token=LOGIN_TOKEN&format=json'
     
 返回参考：
 
@@ -1075,7 +1075,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&login_password=password&format=json&group_name=dnspod'
+    curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_token=LOGIN_TOKEN&format=json&group_name=dnspod'
 
 返回参考：
 
@@ -1119,7 +1119,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domaingroup.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&group_id=1985&group_name=dnspodgroup'
+    curl -X POST https://dnsapi.cn/Domaingroup.Modify -d 'login_token=LOGIN_TOKEN&format=json&group_id=1985&group_name=dnspodgroup'
 
 返回参考：
 
@@ -1150,7 +1150,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domaingroup.Remove -d 'login_email=api@dnspod.com&login_password=password&format=json&group_id=1985'
+    curl -X POST https://dnsapi.cn/Domaingroup.Remove -d 'login_token=LOGIN_TOKEN&format=json&group_id=1985'
 
 返回参考：
 
@@ -1183,7 +1183,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Changegroup -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&group_id=1985'
+    curl -X POST https://dnsapi.cn/Domain.Changegroup -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&group_id=1985'
     
 返回参考：
 
@@ -1220,7 +1220,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&is_mark=yes'
+    curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&is_mark=yes'
 
 返回参考：
 
@@ -1252,7 +1252,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079&remark=这个域名需要备注一下'
+    curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079&remark=这个域名需要备注一下'
     
 返回参考：
 
@@ -1283,7 +1283,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Purview -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2059079'
+    curl -X POST https://dnsapi.cn/Domain.Purview -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2059079'
     
 返回参考：
 
@@ -1362,10 +1362,11 @@ HTTP请求方式：
 说明：
     * 获取成功后要在本地保存一份, 不要操作一次获取一次
 
+
 .. _Domain.Acquire:
 
-域名取回获取邮箱列表
----------------------
+域名取回获取 WHOIS 邮箱列表
+--------------------------
 接口地址：
     * https://dnsapi.cn/Domain.Acquire
 HTTP请求方式：
@@ -1389,7 +1390,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_email=api@dnspod.com&login_password=password&format=json&domain=api4.com'
+    curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_token=LOGIN_TOKEN&format=json&domain=api4.com'
     
 返回参考：
 
@@ -1438,7 +1439,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Acquiresend -d 'login_email=api@dnspod.com&login_password=password&format=json&domain=api4.com&email=support@namecheap.com'
+    curl -X POST https://dnsapi.cn/Domain.Acquiresend -d 'login_token=LOGIN_TOKEN&format=json&domain=api4.com&email=support@namecheap.com'
     
 返回参考：
     * JSON::
@@ -1479,7 +1480,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&login_password=password&format=json&domain=api4.com&code=111000'
+    curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_token=LOGIN_TOKEN&format=json&domain=api4.com&code=111000'
     
 返回参考：
 
@@ -1493,10 +1494,55 @@ HTTP请求方式：
             }
         }
 
+
+.. _Domain.Acquiresend.New:
+
+域名取回发送验证链接
+---------------------
+接口地址：
+    *  https://dnsapi.cn/Domain.Acquiresend.New
+HTTP请求方式：
+    * POST
+请求参数：
+    * 公共参数
+    * domain 要取回的域名
+    * whois_email 域名取回 WHOIS 邮箱列表中的一个邮箱
+响应代码：
+    * 共通返回
+    * 6 域名不正确
+    * 7 不支持中文域名
+    * 8 域名不正确
+    * 9 不支持免费.tk域名
+    * 10 域名不存在
+    * 11 域名已被封禁, 不能取回
+    * 12 锁定的域名不能取回
+    * 13 个人用户不能取回企业用户域名
+    * 14 企业用户不能取回个人用户域名
+    * 15 获取不到邮箱, 可能是网络错误或域名不支持
+    * 16 邮箱参数错误
+
+示例::
+    
+    curl -X POST https://dnsapi.cn/Domain.Acquiresend.New -d 'login_token=LOGIN_TOKEN&format=json&domain=api4.com&whois_email=support@namecheap.com'
+    
+返回参考：
+    * JSON::
+        
+        {
+            "status": {
+                "code": "1",
+                "message": "Action completed successful",
+                "created_at": "2016-03-04 16:07:44"
+            }
+        }
+
+说明：
+    该接口是直接将验证链接发送至域名的 WHOIS 邮箱，用户点击链接进行确认，认证通过后，完成域名取回。
+
 .. _Record.Type:
 
 获取等级允许的记录类型
-----------------------------
+-----------------------
 接口地址：
     *  https://dnsapi.cn/Record.Type
 HTTP请求方式：
@@ -1511,7 +1557,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Record.Type -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_grade=D_Free'
+    curl -X POST https://dnsapi.cn/Record.Type -d 'login_token=LOGIN_TOKEN&format=json&domain_grade=D_Free'
 
 返回参考：
 
@@ -1535,6 +1581,10 @@ HTTP请求方式：
             ]
         }    
 
+说明：
+    * 如果域名等级没有变更，则每次返回的允许的记录类型都是一致的，建议获取成功后在本地保存一份, 不要用一次就请求一次
+
+
 .. _Record.Line:
 
 获取等级允许的线路
@@ -1554,35 +1604,37 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Record.Line -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_grade=D_Free&domain_id=2059079'
+    curl -X POST https://dnsapi.cn/Record.Line -d 'login_token=LOGIN_TOKEN&format=json&domain_grade=D_Free&domain_id=2059079'
 
 返回参考：
 
     * JSON::
         
             {
-            "status": {
-                "code": "1",
-                "message": "Action completed successful",
-                "created_at": "2015-01-18 18:29:58"
-            },
-            "lines": [
-                "默认",
-                "电信",
-                "联通",
-                "教育网",
-                "移动",
-                "铁通",
-                "国内",
-                "国外",
-                "搜索引擎",
-                "百度",
-                "Google",
-                "有道",
-                "必应",
-                "搜搜",
-                "搜狗",
-                "360搜索"
-            ]
+                "status": {
+                    "code": "1",
+                    "message": "Action completed successful",
+                    "created_at": "2015-01-18 18:29:58"
+                },
+                "lines": [
+                    "默认",
+                    "电信",
+                    "联通",
+                    "教育网",
+                    "移动",
+                    "铁通",
+                    "国内",
+                    "国外",
+                    "搜索引擎",
+                    "百度",
+                    "Google",
+                    "有道",
+                    "必应",
+                    "搜搜",
+                    "搜狗",
+                    "360搜索"
+                ]
             }
 
+说明：
+    * 如果域名等级没有变更，则每次返回的允许的线路都是一致的，建议获取成功后在本地保存一份, 不要用一次就请求一次
