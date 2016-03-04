@@ -114,8 +114,7 @@
 <dl class="docutils">
 <dt>所有的接口都需要这些参数，在此统一说明，下面的接口将不再列出。这些参数必须和接口参数一起提交。</dt>
 <dd><ul class="first last simple">
-<li>login_email 用户帐号，必选</li>
-<li>login_password 用户密码，必选</li>
+<li>login_token 用于鉴权的 API Token</li>
 <li>format {json,xml} 返回的数据格式，可选，默认为xml，建议用json</li>
 <li>lang {en,cn} 返回的错误语言，可选，默认为en，建议用cn</li>
 <li>error_on_empty {yes,no} 没有数据时是否返回错误，可选，默认为yes，建议用no</li>
@@ -123,6 +122,7 @@
 </ul>
 </dd>
 </dl>
+<p>注：旧的 &#8220;用户名 + 密码&#8221; 的鉴权方式仍能继续使用，推荐开发者优先使用 login_token 来鉴权，Token 生成方法详见：<a class="reference external" href="https://www.dnspod.cn/docs/info.html#api-token">https://www.dnspod.cn/docs/info.html#api-token</a></p>
 </div>
 <div class="section" id="api-token">
 <span id="id3"></span><h2>API Token<a class="headerlink" href="#api-token" title="Permalink to this headline">¶</a></h2>
@@ -200,7 +200,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Info.Version -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Info.Version -d 'login_token=LOGIN_TOKEN&amp;format=json'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>

@@ -70,7 +70,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;domain=api2.com&amp;format=json'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Create -d 'login_token=LOGIN_TOKEN&amp;domain=api2.com&amp;format=json'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -161,7 +161,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.List -d 'login_token=LOGIN_TOKEN&amp;format=json'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -404,7 +404,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=1992403'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=1992403'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -456,7 +456,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Status -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2058967&amp;status=disable'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Status -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2058967&amp;status=disable'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -505,7 +505,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -683,7 +683,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -748,7 +748,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;status=yes'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;status=yes'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -804,7 +804,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=otheruser@dnspod.com&amp;mode=rw'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=otheruser@dnspod.com&amp;mode=rw'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -862,7 +862,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.List -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -964,23 +964,23 @@
 <p>示例</p>
 <ol class="arabic">
 <li><p class="first">修改主域名共享状态, 从 rw 修改为 r:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r'</pre>
 </div>
 </li>
 <li><p class="first">修改子域名的共享状态, 从rw 修改为 r:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&amp;old_sub_domain=www&amp;new_sub_domain=www'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&amp;old_sub_domain=www&amp;new_sub_domain=www'</pre>
 </div>
 </li>
 <li><p class="first">将主域名共享修改为子域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;new_sub_domain=www'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;new_sub_domain=www'</pre>
 </div>
 </li>
 <li><p class="first">将子域名共享修改为主域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www'</pre>
 </div>
 </li>
 <li><p class="first">将www的子域名共享修改为bbs的子主域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&amp;new_sub_domain=bbs'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&amp;new_sub_domain=bbs'</pre>
 </div>
 </li>
 </ol>
@@ -1035,7 +1035,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1090,7 +1090,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1144,7 +1144,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;days=3'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;days=3'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1209,7 +1209,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1287,7 +1287,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Unlock -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;lock_code=fdd638'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Unlock -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;lock_code=fdd638'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1336,7 +1336,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.List -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1409,7 +1409,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Create -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;domain=dnspodapi.com'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;domain=dnspodapi.com'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1473,7 +1473,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;alias_id=18737'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;alias_id=18737'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1517,7 +1517,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_token=LOGIN_TOKEN&amp;format=json'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1612,7 +1612,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_name=dnspod'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;group_name=dnspod'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1675,7 +1675,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Modify -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985&amp;group_name=dnspodgroup'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;group_id=1985&amp;group_name=dnspodgroup'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1721,7 +1721,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Remove -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;group_id=1985'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;group_id=1985'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1769,7 +1769,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Changegroup -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;group_id=1985'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Changegroup -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;group_id=1985'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1823,7 +1823,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;is_mark=yes'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;is_mark=yes'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1870,7 +1870,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079&amp;remark=这个域名需要备注一下'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;remark=这个域名需要备注一下'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1916,7 +1916,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Purview -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Purview -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2004,8 +2004,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="domain-acquire">
-<span id="id28"></span><h2>域名取回获取邮箱列表<a class="headerlink" href="#domain-acquire" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="whois">
+<span id="domain-acquire"></span><h2>域名取回获取 WHOIS 邮箱列表<a class="headerlink" href="#whois" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -2041,7 +2041,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2071,7 +2071,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-acquiresend">
-<span id="id29"></span><h2>域名取回发送验证码<a class="headerlink" href="#domain-acquiresend" title="Permalink to this headline">¶</a></h2>
+<span id="id28"></span><h2>域名取回发送验证码<a class="headerlink" href="#domain-acquiresend" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -2108,7 +2108,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;email=support@namecheap.com'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;email=support@namecheap.com'</pre>
 </div>
 <dl class="docutils">
 <dt>返回参考：</dt>
@@ -2129,7 +2129,7 @@
 </dl>
 </div>
 <div class="section" id="domain-acquirevalidate">
-<span id="id30"></span><h2>验证域名取回的验证码<a class="headerlink" href="#domain-acquirevalidate" title="Permalink to this headline">¶</a></h2>
+<span id="id29"></span><h2>验证域名取回的验证码<a class="headerlink" href="#domain-acquirevalidate" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -2166,7 +2166,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain=api4.com&amp;code=111000'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;code=111000'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2184,6 +2184,66 @@
 </li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="domain-acquiresend-new">
+<span id="id30"></span><h2>域名取回发送验证链接<a class="headerlink" href="#domain-acquiresend-new" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>接口地址：</dt>
+<dd><ul class="first last simple">
+<li>&nbsp;<a class="reference external" href="https://dnsapi.cn/Domain.Acquiresend.New">https://dnsapi.cn/Domain.Acquiresend.New</a></li>
+</ul>
+</dd>
+<dt>HTTP请求方式：</dt>
+<dd><ul class="first last simple">
+<li>POST</li>
+</ul>
+</dd>
+<dt>请求参数：</dt>
+<dd><ul class="first last simple">
+<li>公共参数</li>
+<li>domain 要取回的域名</li>
+<li>whois_email 域名取回 WHOIS 邮箱列表中的一个邮箱</li>
+</ul>
+</dd>
+<dt>响应代码：</dt>
+<dd><ul class="first last simple">
+<li>共通返回</li>
+<li>6 域名不正确</li>
+<li>7 不支持中文域名</li>
+<li>8 域名不正确</li>
+<li>9 不支持免费.tk域名</li>
+<li>10 域名不存在</li>
+<li>11 域名已被封禁, 不能取回</li>
+<li>12 锁定的域名不能取回</li>
+<li>13 个人用户不能取回企业用户域名</li>
+<li>14 企业用户不能取回个人用户域名</li>
+<li>15 获取不到邮箱, 可能是网络错误或域名不支持</li>
+<li>16 邮箱参数错误</li>
+</ul>
+</dd>
+</dl>
+<p>示例:</p>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend.New -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;whois_email=support@namecheap.com'</pre>
+</div>
+<dl class="docutils">
+<dt>返回参考：</dt>
+<dd><ul class="first last">
+<li><p class="first">JSON:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2016-03-04 16:07:44&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt>说明：</dt>
+<dd>该接口是直接将验证链接发送至域名的 WHOIS 邮箱，用户点击链接进行确认，认证通过后，完成域名取回。</dd>
+</dl>
 </div>
 <div class="section" id="record-type">
 <span id="id31"></span><h2>获取等级允许的记录类型<a class="headerlink" href="#record-type" title="Permalink to this headline">¶</a></h2>
@@ -2218,7 +2278,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Type -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Type -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_grade=D_Free'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2246,6 +2306,13 @@
 </li>
 </ul>
 </div></blockquote>
+<dl class="docutils">
+<dt>说明：</dt>
+<dd><ul class="first last simple">
+<li>如果域名等级没有变更，则每次返回的允许的记录类型都是一致的，建议获取成功后在本地保存一份, 不要用一次就请求一次</li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="record-line">
 <span id="id32"></span><h2>获取等级允许的线路<a class="headerlink" href="#record-line" title="Permalink to this headline">¶</a></h2>
@@ -2282,42 +2349,49 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Line -d 'login_email=api@dnspod.com&amp;login_password=password&amp;format=json&amp;domain_grade=D_Free&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Line -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_grade=D_Free&amp;domain_id=2059079'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
 <div><ul>
 <li><p class="first">JSON:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
-<span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-    <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:29:58&quot;</span>
-<span class="p">},</span>
-<span class="s">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s">&quot;默认&quot;</span><span class="p">,</span>
-    <span class="s">&quot;电信&quot;</span><span class="p">,</span>
-    <span class="s">&quot;联通&quot;</span><span class="p">,</span>
-    <span class="s">&quot;教育网&quot;</span><span class="p">,</span>
-    <span class="s">&quot;移动&quot;</span><span class="p">,</span>
-    <span class="s">&quot;铁通&quot;</span><span class="p">,</span>
-    <span class="s">&quot;国内&quot;</span><span class="p">,</span>
-    <span class="s">&quot;国外&quot;</span><span class="p">,</span>
-    <span class="s">&quot;搜索引擎&quot;</span><span class="p">,</span>
-    <span class="s">&quot;百度&quot;</span><span class="p">,</span>
-    <span class="s">&quot;Google&quot;</span><span class="p">,</span>
-    <span class="s">&quot;有道&quot;</span><span class="p">,</span>
-    <span class="s">&quot;必应&quot;</span><span class="p">,</span>
-    <span class="s">&quot;搜搜&quot;</span><span class="p">,</span>
-    <span class="s">&quot;搜狗&quot;</span><span class="p">,</span>
-    <span class="s">&quot;360搜索&quot;</span>
-<span class="p">]</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:29:58&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+        <span class="s">&quot;电信&quot;</span><span class="p">,</span>
+        <span class="s">&quot;联通&quot;</span><span class="p">,</span>
+        <span class="s">&quot;教育网&quot;</span><span class="p">,</span>
+        <span class="s">&quot;移动&quot;</span><span class="p">,</span>
+        <span class="s">&quot;铁通&quot;</span><span class="p">,</span>
+        <span class="s">&quot;国内&quot;</span><span class="p">,</span>
+        <span class="s">&quot;国外&quot;</span><span class="p">,</span>
+        <span class="s">&quot;搜索引擎&quot;</span><span class="p">,</span>
+        <span class="s">&quot;百度&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Google&quot;</span><span class="p">,</span>
+        <span class="s">&quot;有道&quot;</span><span class="p">,</span>
+        <span class="s">&quot;必应&quot;</span><span class="p">,</span>
+        <span class="s">&quot;搜搜&quot;</span><span class="p">,</span>
+        <span class="s">&quot;搜狗&quot;</span><span class="p">,</span>
+        <span class="s">&quot;360搜索&quot;</span>
+    <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
 </ul>
 </div></blockquote>
+<dl class="docutils">
+<dt>说明：</dt>
+<dd><ul class="first last simple">
+<li>如果域名等级没有变更，则每次返回的允许的线路都是一致的，建议获取成功后在本地保存一份, 不要用一次就请求一次</li>
+</ul>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -2359,9 +2433,10 @@
 <li><a class="reference internal" href="#domain-ismark">设置域名星标</a></li>
 <li><a class="reference internal" href="#domain-remark">设置域名备注</a></li>
 <li><a class="reference internal" href="#domain-purview">获取域名权限</a></li>
-<li><a class="reference internal" href="#domain-acquire">域名取回获取邮箱列表</a></li>
+<li><a class="reference internal" href="#whois">域名取回获取 WHOIS 邮箱列表</a></li>
 <li><a class="reference internal" href="#domain-acquiresend">域名取回发送验证码</a></li>
 <li><a class="reference internal" href="#domain-acquirevalidate">验证域名取回的验证码</a></li>
+<li><a class="reference internal" href="#domain-acquiresend-new">域名取回发送验证链接</a></li>
 <li><a class="reference internal" href="#record-type">获取等级允许的记录类型</a></li>
 <li><a class="reference internal" href="#record-line">获取等级允许的线路</a></li>
 </ul>

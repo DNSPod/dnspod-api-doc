@@ -196,7 +196,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Batch.Record.Create -d 'login_token=10086,a9ac76eb8cd9928bbea5fc68345a37b7&amp;format=json&amp;records=[{"sub_domain":"www,wap,bbs","record_type":"A","record_line":"默认","value":"11.22.33.44","ttl":600},{"sub_domain":"","record_type":"MX","record_line":"默认","value":"mx.qq.com","ttl":600,"MX":10}]&amp;domain_id=25556994,25556952'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Batch.Record.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;records=[{"sub_domain":"www,wap,bbs","record_type":"A","record_line":"默认","value":"11.22.33.44","ttl":600},{"sub_domain":"","record_type":"MX","record_line":"默认","value":"mx.qq.com","ttl":600,"MX":10}]&amp;domain_id=25556994,25556952'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -345,8 +345,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="userpasswd-modify">
-<span id="id4"></span><h2>批量修改记录<a class="headerlink" href="#userpasswd-modify" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="batch-record-modify">
+<span id="id4"></span><h2>批量修改记录<a class="headerlink" href="#batch-record-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -636,7 +636,7 @@
 <li><a class="reference internal" href="#">批量操作相关</a><ul>
 <li><a class="reference internal" href="#batch-domain-create">批量添加域名</a></li>
 <li><a class="reference internal" href="#batch-record-create">批量添加记录</a></li>
-<li><a class="reference internal" href="#userpasswd-modify">批量修改记录</a></li>
+<li><a class="reference internal" href="#batch-record-modify">批量修改记录</a></li>
 <li><a class="reference internal" href="#batch-detail">获取任务详情</a></li>
 </ul>
 </li>

@@ -37,9 +37,15 @@
   <div class="section" id="dnspodapi">
 <h1>DNSPod用户API文档<a class="headerlink" href="#dnspodapi" title="Permalink to this headline">¶</a></h1>
 <p class="centered">
-<strong>DNSPod Documentation 1.0 released November 26, 2015</strong></p><div class="section" id="id1">
+<strong>DNSPod Documentation 1.0 released March 04, 2016</strong></p><div class="section" id="id1">
 <h2>最近更新<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
+<dt>2016-03-04</dt>
+<dd><ul class="first last simple">
+<li>增加 Domain.Acquiresend.New 接口，直接将域名取回的验证链接发送至 WHOIS 邮箱，用户点击链接即可完成取回</li>
+<li>将示例中的 login_email、login_password 参数更换为 login_token，推荐开发者们使用 API Token 进行鉴权</li>
+</ul>
+</dd>
 <dt>2015-11-24</dt>
 <dd><ul class="first last simple">
 <li>增加解析记录权重</li>
@@ -169,9 +175,10 @@
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domain-ismark">设置域名星标</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domain-remark">设置域名备注</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domain-purview">获取域名权限</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-acquire">域名取回获取邮箱列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#whois">域名取回获取 WHOIS 邮箱列表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domain-acquiresend">域名取回发送验证码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domain-acquirevalidate">验证域名取回的验证码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-acquiresend-new">域名取回发送验证链接</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#record-type">获取等级允许的记录类型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#record-line">获取等级允许的线路</a></li>
 </ul>
@@ -190,7 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="batch.html">批量操作相关</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="batch.html#batch-domain-create">批量添加域名</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch.html#batch-record-create">批量添加记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="batch.html#userpasswd-modify">批量修改记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch.html#batch-record-modify">批量修改记录</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch.html#batch-detail">获取任务详情</a></li>
 </ul>
 </li>

@@ -20,7 +20,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Listsubdomain -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346'
+    curl -X POST https://dnsapi.cn/Monitor.Listsubdomain -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346'
     
 返回参考：
 
@@ -63,7 +63,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Listsubvalue -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&subdomain=@'
+    curl -X POST https://dnsapi.cn/Monitor.Listsubvalue -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&subdomain=@'
     
 返回参考：
 
@@ -113,7 +113,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.List -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346'
+    curl -X POST https://dnsapi.cn/Monitor.List -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346'
     
 返回参考：
 
@@ -215,7 +215,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Create -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&record_id=16909160&port=80&monitor_type=http&monitor_path=/&monitor_interval=360&points=ctc,cuc,cmc&bak_ip=pass&host=testapi.com'
+    curl -X POST https://dnsapi.cn/Monitor.Create -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16909160&port=80&monitor_type=http&monitor_path=/&monitor_interval=360&points=ctc,cuc,cmc&bak_ip=pass&host=testapi.com'
 
 返回参考：
 
@@ -282,7 +282,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&domain_id=2317346&monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970&port=80&monitor_type=http&monitor_path=/&monitor_interval=360&points=ctc,cuc,cmc&bak_ip=pass'
+    curl -X POST https://dnsapi.cn/Monitor.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970&port=80&monitor_type=http&monitor_path=/&monitor_interval=360&points=ctc,cuc,cmc&bak_ip=pass'
 
 返回参考：
 
@@ -313,7 +313,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970'
+    curl -X POST https://dnsapi.cn/Monitor.Modify -d 'login_token=LOGIN_TOKEN&format=json&monitor_id=51fc9a20-363c-11e2-bab7-0819a6248970'
     
 返回参考：
 
@@ -344,7 +344,7 @@ HTTP请求方式：
 
 示例::
         
-    curl -X POST https://dnsapi.cn/Monitor.Info -d 'login_email=api@dnspod.com&login_password=password&format=json&monitor_id=e91997aa-3641-11e2-bab7-0819a6248970'
+    curl -X POST https://dnsapi.cn/Monitor.Info -d 'login_token=LOGIN_TOKEN&format=json&monitor_id=e91997aa-3641-11e2-bab7-0819a6248970'
     
 返回参考：
 
@@ -411,7 +411,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_email=api@dnspod.com&login_password=password&format=json&monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&status=disable'
+    curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_token=LOGIN_TOKEN&format=json&monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&status=disable'
     
 返回参考：
 
@@ -443,7 +443,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_email=api@dnspod.com&login_password=password&format=json&monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&hours=1'
+    curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_token=LOGIN_TOKEN&format=json&monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&hours=1'
     
 返回参考：
 
@@ -583,7 +583,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Userdesc -d 'login_email=api@dnspod.com&login_password=password&format=json'
+    curl -X POST https://dnsapi.cn/Monitor.Userdesc -d 'login_token=LOGIN_TOKEN&format=json'
     
 返回参考：
 
@@ -623,7 +623,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Getdowns -d 'login_email=api@dnspod.com&login_password=password&format=json&offset=0&length=10'
+    curl -X POST https://dnsapi.cn/Monitor.Getdowns -d 'login_token=LOGIN_TOKEN&format=json&offset=0&length=10'
     
 返回参考：
 
