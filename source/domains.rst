@@ -1366,7 +1366,7 @@ HTTP请求方式：
 .. _Domain.Acquire:
 
 域名取回获取 WHOIS 邮箱列表
---------------------------
+----------------------------
 接口地址：
     * https://dnsapi.cn/Domain.Acquire
 HTTP请求方式：
