@@ -16,7 +16,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/User.Detail -d 'login_email=api@dnspod.com&login_password=password&format=json'
+    curl -X POST https://dnsapi.cn/User.Detail -d 'login_token=LOGIN_TOKEN&format=json'
 
 返回参考：
 
@@ -104,7 +104,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/User.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&im=10000000'
+    curl -X POST https://dnsapi.cn/User.Modify -d 'login_token=LOGIN_TOKEN&format=json&im=10000000'
 
 返回参考：
 
@@ -139,7 +139,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Userpasswd.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&old_password=old_password&new_password=new_password'
+    curl -X POST https://dnsapi.cn/Userpasswd.Modify -d 'login_token=LOGIN_TOKEN&format=json&old_password=old_password&new_password=new_password'
 
 返回参考：
 
@@ -174,7 +174,7 @@ HTTP请求方式：
 
 示例:: 
 
-    curl -X POST https://dnsapi.cn/Useremail.Modify -d 'login_email=api@dnspod.com&login_password=password&format=json&old_email=api1@dnspod.com&new_email=api@dnspod.com&password=password'   
+    curl -X POST https://dnsapi.cn/Useremail.Modify -d 'login_token=LOGIN_TOKEN&format=json&old_email=api1@dnspod.com&new_email=api@dnspod.com&password=password'
 
 返回参考：
 
@@ -207,7 +207,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Telephoneverify.Code -d 'login_email=api@dnspod.com&login_password=password&format=json&telephone=18600000000'
+    curl -X POST https://dnsapi.cn/Telephoneverify.Code -d 'login_token=LOGIN_TOKEN&format=json&telephone=18600000000'
 
 返回参考：
 
@@ -245,7 +245,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/User.Log -d 'login_email=api@dnspod.com&login_password=password&format=json'
+    curl -X POST https://dnsapi.cn/User.Log -d 'login_token=LOGIN_TOKEN&format=json'
 
 返回参考：
 

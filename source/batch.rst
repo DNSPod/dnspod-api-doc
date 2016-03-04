@@ -123,7 +123,7 @@ HTTP请求方式：
 
 示例::
     
-    curl -X POST https://dnsapi.cn/Batch.Record.Create -d 'login_token=10086,a9ac76eb8cd9928bbea5fc68345a37b7&format=json&records=[{"sub_domain":"www,wap,bbs","record_type":"A","record_line":"默认","value":"11.22.33.44","ttl":600},{"sub_domain":"","record_type":"MX","record_line":"默认","value":"mx.qq.com","ttl":600,"MX":10}]&domain_id=25556994,25556952'
+    curl -X POST https://dnsapi.cn/Batch.Record.Create -d 'login_token=LOGIN_TOKEN&format=json&records=[{"sub_domain":"www,wap,bbs","record_type":"A","record_line":"默认","value":"11.22.33.44","ttl":600},{"sub_domain":"","record_type":"MX","record_line":"默认","value":"mx.qq.com","ttl":600,"MX":10}]&domain_id=25556994,25556952'
 
 返回参考：
 
@@ -263,7 +263,7 @@ HTTP请求方式：
         * detail: 任务详情，仅将用户的输入补全，并非实际执行结果，开发者可以忽略该字段
 
 
-.. _Userpasswd.Modify:
+.. _Batch.Record.Modify:
 
 批量修改记录
 ------------
