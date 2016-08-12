@@ -51,37 +51,25 @@ HTTP请求方式：
 
 
     * 字段说明:
-        * real_name: 用户名称, 企业用户对应为公司名称
-        * user_type: 账号类型
-            * "personal": 个人用户
-            * "enterprise": 企业用户
-        * telephone: 电话号码
-        * im: 用户 IM (已废弃)
-        * nick: 用户昵称
-        * id: 用户 ID, 即为 user_id
-        * email: 用户账号, 邮箱格式
-        * status: 账号状态
-            * "enabled": 正常
-            * "disabled": 被封禁
-        * email_verified: 邮箱是否通过验证
-            * "yes": 通过
-            * "no": 未通过
-        * telephone_verified: 手机是否通过验证
-            * "yes": 通过
-            * "no": 未通过
-        * telephone_verified: 手机是否通过验证
-            * "yes": 通过
-            * "no": 未通过
-        * weixin_binded: 是否绑定微信
-            * "yes": 已绑定
-            * "no": 未绑定
-        * agent_pending: 是否正在申请成为代理
-            * true: 是
-            * false: 否
-        * balance: 账号余额
-        * smsbalance: 剩余短信条数
-        * user_grade: 账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级
-
+        ===================     ====================
+        名称                    说明
+        ===================     ====================
+        real_name               用户名称, 企业用户对应为公司名称
+        user_type               账号类型：["personal","enterprise"]，分别对应个人用户和企业用户
+        telephone               电话号码
+        im                      用户 IM (已废弃)
+        nick                    用户昵称
+        id                      用户 ID, 即为 user_id
+        email                   用户账号, 邮箱格式
+        status                  账号状态："enabled": 正常；"disabled": 被封禁
+        email_verified          邮箱是否通过验证："yes": 通过；"no": 未通过
+        telephone_verified      手机是否通过验证："yes": 通过；"no": 未通过
+        weixin_binded           是否绑定微信："yes": 通过；"no": 未通过
+        agent_pending           是否正在申请成为代理：true: 是；false: 否
+        balance                 账号余额
+        smsbalance              剩余短信条数
+        user_grade              账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级
+        ===================     ====================
 
 .. _User.Modify:
 
