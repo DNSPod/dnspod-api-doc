@@ -2359,25 +2359,41 @@
     <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
         <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 18:29:58&quot;</span>
+        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2016-08-12 17:08:56&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;line_ids&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;默认&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s">&quot;国内&quot;</span><span class="p">:</span> <span class="s">&quot;7=0&quot;</span><span class="p">,</span>
+        <span class="s">&quot;国外&quot;</span><span class="p">:</span> <span class="s">&quot;3=0&quot;</span><span class="p">,</span>
+        <span class="s">&quot;电信&quot;</span><span class="p">:</span> <span class="s">&quot;10=0&quot;</span><span class="p">,</span>
+        <span class="s">&quot;联通&quot;</span><span class="p">:</span> <span class="s">&quot;10=1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;教育网&quot;</span><span class="p">:</span> <span class="s">&quot;10=2&quot;</span><span class="p">,</span>
+        <span class="s">&quot;移动&quot;</span><span class="p">:</span> <span class="s">&quot;10=3&quot;</span><span class="p">,</span>
+        <span class="s">&quot;百度&quot;</span><span class="p">:</span> <span class="s">&quot;90=0&quot;</span><span class="p">,</span>
+        <span class="s">&quot;谷歌&quot;</span><span class="p">:</span> <span class="s">&quot;90=1&quot;</span><span class="p">,</span>
+        <span class="s">&quot;搜搜&quot;</span><span class="p">:</span> <span class="s">&quot;90=4&quot;</span><span class="p">,</span>
+        <span class="s">&quot;有道&quot;</span><span class="p">:</span> <span class="s">&quot;90=2&quot;</span><span class="p">,</span>
+        <span class="s">&quot;必应&quot;</span><span class="p">:</span> <span class="s">&quot;90=3&quot;</span><span class="p">,</span>
+        <span class="s">&quot;搜狗&quot;</span><span class="p">:</span> <span class="s">&quot;90=5&quot;</span><span class="p">,</span>
+        <span class="s">&quot;奇虎&quot;</span><span class="p">:</span> <span class="s">&quot;90=6&quot;</span><span class="p">,</span>
+        <span class="s">&quot;搜索引擎&quot;</span><span class="p">:</span> <span class="s">&quot;80=0&quot;</span>
     <span class="p">},</span>
     <span class="s">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s">&quot;默认&quot;</span><span class="p">,</span>
+        <span class="s">&quot;国内&quot;</span><span class="p">,</span>
+        <span class="s">&quot;国外&quot;</span><span class="p">,</span>
         <span class="s">&quot;电信&quot;</span><span class="p">,</span>
         <span class="s">&quot;联通&quot;</span><span class="p">,</span>
         <span class="s">&quot;教育网&quot;</span><span class="p">,</span>
         <span class="s">&quot;移动&quot;</span><span class="p">,</span>
-        <span class="s">&quot;铁通&quot;</span><span class="p">,</span>
-        <span class="s">&quot;国内&quot;</span><span class="p">,</span>
-        <span class="s">&quot;国外&quot;</span><span class="p">,</span>
-        <span class="s">&quot;搜索引擎&quot;</span><span class="p">,</span>
         <span class="s">&quot;百度&quot;</span><span class="p">,</span>
-        <span class="s">&quot;Google&quot;</span><span class="p">,</span>
+        <span class="s">&quot;谷歌&quot;</span><span class="p">,</span>
+        <span class="s">&quot;搜搜&quot;</span><span class="p">,</span>
         <span class="s">&quot;有道&quot;</span><span class="p">,</span>
         <span class="s">&quot;必应&quot;</span><span class="p">,</span>
-        <span class="s">&quot;搜搜&quot;</span><span class="p">,</span>
         <span class="s">&quot;搜狗&quot;</span><span class="p">,</span>
-        <span class="s">&quot;360搜索&quot;</span>
+        <span class="s">&quot;奇虎&quot;</span><span class="p">,</span>
+        <span class="s">&quot;搜索引擎&quot;</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -2389,6 +2405,7 @@
 <dt>说明：</dt>
 <dd><ul class="first last simple">
 <li>如果域名等级没有变更，则每次返回的允许的线路都是一致的，建议获取成功后在本地保存一份, 不要用一次就请求一次</li>
+<li>line_ids 为新增的返回字段，对应关系为: 中文线路名称：线路ID，支持在创建、修改解析记录的时候传入线路ID，解决之前部分开发者存在的中文编码问题</li>
 </ul>
 </dd>
 </dl>

@@ -37,9 +37,15 @@
   <div class="section" id="dnspodapi">
 <h1>DNSPod用户API文档<a class="headerlink" href="#dnspodapi" title="Permalink to this headline">¶</a></h1>
 <p class="centered">
-<strong>DNSPod Documentation 1.0 released March 04, 2016</strong></p><div class="section" id="id1">
+<strong>DNSPod Documentation 1.0 released August 15, 2016</strong></p><div class="section" id="id1">
 <h2>最近更新<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
+<dt>2016-08-15</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="/docs/domains.html#record-line">Record.Line</a> 接口增加线路 ID 的返回</li>
+<li>记录操作的相关接口支持传入线路 ID，解决之前部分开发者在传入中文线路可能会遇到的编码问题</li>
+</ul>
+</dd>
 <dt>2016-03-04</dt>
 <dd><ul class="first last simple">
 <li>增加 Domain.Acquiresend.New 接口，直接将域名取回的验证链接发送至 WHOIS 邮箱，用户点击链接即可完成取回</li>

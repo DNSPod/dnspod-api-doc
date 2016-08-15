@@ -51,9 +51,25 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="19%" />
+<col width="20%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="/docs/info.html#common-parameters">公共参数</a></td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -99,89 +115,96 @@
 </li>
 <li><dl class="first docutils">
 <dt>字段说明:</dt>
-<dd><ul class="first last">
-<li><p class="first">real_name: 用户名称, 企业用户对应为公司名称</p>
-</li>
-<li><dl class="first docutils">
-<dt>user_type: 账号类型</dt>
-<dd><ul class="first last simple">
-<li>&#8220;personal&#8221;: 个人用户</li>
-<li>&#8220;enterprise&#8221;: 企业用户</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">telephone: 电话号码</p>
-</li>
-<li><p class="first">im: 用户 IM (已废弃)</p>
-</li>
-<li><p class="first">nick: 用户昵称</p>
-</li>
-<li><p class="first">id: 用户 ID, 即为 user_id</p>
-</li>
-<li><p class="first">email: 用户账号, 邮箱格式</p>
-</li>
-<li><dl class="first docutils">
-<dt>status: 账号状态</dt>
-<dd><ul class="first last simple">
-<li>&#8220;enabled&#8221;: 正常</li>
-<li>&#8220;disabled&#8221;: 被封禁</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>email_verified: 邮箱是否通过验证</dt>
-<dd><ul class="first last simple">
-<li>&#8220;yes&#8221;: 通过</li>
-<li>&#8220;no&#8221;: 未通过</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>telephone_verified: 手机是否通过验证</dt>
-<dd><ul class="first last simple">
-<li>&#8220;yes&#8221;: 通过</li>
-<li>&#8220;no&#8221;: 未通过</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>telephone_verified: 手机是否通过验证</dt>
-<dd><ul class="first last simple">
-<li>&#8220;yes&#8221;: 通过</li>
-<li>&#8220;no&#8221;: 未通过</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>weixin_binded: 是否绑定微信</dt>
-<dd><ul class="first last simple">
-<li>&#8220;yes&#8221;: 已绑定</li>
-<li>&#8220;no&#8221;: 未绑定</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>agent_pending: 是否正在申请成为代理</dt>
-<dd><ul class="first last simple">
-<li>true: 是</li>
-<li>false: 否</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">balance: 账号余额</p>
-</li>
-<li><p class="first">smsbalance: 剩余短信条数</p>
-</li>
-<li><p class="first">user_grade: 账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级</p>
-</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">字段名</p>
+</th>
+<th class="head"><p class="first last">说明</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last">real_name</p>
+</td>
+<td><p class="first last">用户名称, 企业用户对应为公司名称</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">user_type</p>
+</td>
+<td><p class="first last">账号类型：[&#8220;personal&#8221;,&#8221;enterprise&#8221;]，分别对应个人用户和企业用户</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">telephone</p>
+</td>
+<td><p class="first last">电话号码</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">im</p>
+</td>
+<td><p class="first last">用户 IM (已废弃)</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">nick</p>
+</td>
+<td><p class="first last">用户昵称</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">id</p>
+</td>
+<td><p class="first last">用户 ID, 即为 user_id</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">email</p>
+</td>
+<td><p class="first last">用户账号, 邮箱格式</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">status</p>
+</td>
+<td><p class="first last">账号状态：&#8221;enabled&#8221;: 正常；&#8221;disabled&#8221;: 被封禁</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">email_verified</p>
+</td>
+<td><p class="first last">邮箱是否通过验证：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">telephone_verified</p>
+</td>
+<td><p class="first last">手机是否通过验证：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">weixin_binded</p>
+</td>
+<td><p class="first last">是否绑定微信：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">agent_pending</p>
+</td>
+<td><p class="first last">是否正在申请成为代理：true: 是；false: 否</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">balance</p>
+</td>
+<td><p class="first last">账号余额</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">smsbalance</p>
+</td>
+<td><p class="first last">剩余短信条数</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">user_grade</p>
+</td>
+<td><p class="first last">账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd>
 </dl>
 </li>
@@ -189,7 +212,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="user-modify">
-<span id="id3"></span><h2>修改资料<a class="headerlink" href="#user-modify" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>修改资料<a class="headerlink" href="#user-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -202,13 +225,37 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>real_name 真实姓名, 如果用户类型是企业, 则为公司名称</li>
-<li>nick 用户称呼, 用于与用户联系时称呼用户</li>
-<li>telephone 用户手机号码</li>
-<li>im 用户qq</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="19%" />
+<col width="20%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="/docs/info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>real_name</td>
+<td>否</td>
+<td>真实姓名, 如果用户类型是企业, 则为公司名称</td>
+</tr>
+<tr class="row-even"><td>nick</td>
+<td>否</td>
+<td>用户称呼, 用于与用户联系时称呼用户</td>
+</tr>
+<tr class="row-odd"><td>telephone</td>
+<td>否</td>
+<td>用户手机号码</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -239,7 +286,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="userpasswd-modify">
-<span id="id4"></span><h2>修改密码<a class="headerlink" href="#userpasswd-modify" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>修改密码<a class="headerlink" href="#userpasswd-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -252,11 +299,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>old_password 旧密码</li>
-<li>new_password 新密码</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="19%" />
+<col width="20%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="/docs/info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>old_password</td>
+<td>是</td>
+<td>旧密码</td>
+</tr>
+<tr class="row-even"><td>new_password</td>
+<td>是</td>
+<td>新密码</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -289,7 +358,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="useremail-modify">
-<span id="id5"></span><h2>修改邮箱<a class="headerlink" href="#useremail-modify" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>修改邮箱<a class="headerlink" href="#useremail-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -302,12 +371,37 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>old_email 旧邮箱</li>
-<li>new_email 新邮箱</li>
-<li>password 当前密码</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="19%" />
+<col width="20%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="/docs/info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>old_email</td>
+<td>是</td>
+<td>旧邮箱帐号</td>
+</tr>
+<tr class="row-even"><td>new_email</td>
+<td>是</td>
+<td>新邮箱帐号</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>是</td>
+<td>密码</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -339,7 +433,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="user-telephoneverify">
-<span id="id6"></span><h2>获取手机验证码<a class="headerlink" href="#user-telephoneverify" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>获取手机验证码<a class="headerlink" href="#user-telephoneverify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -352,10 +446,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>telephone 用户手机号码</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="19%" />
+<col width="20%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="/docs/info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>telephone</td>
+<td>是</td>
+<td>用户手机号码</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -388,10 +501,31 @@
 </li>
 <li><dl class="first docutils">
 <dt>字段说明:</dt>
-<dd><ul class="first last simple">
-<li>verify_code: 验证码</li>
-<li>verify_desc: 描述文字</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">字段名</p>
+</th>
+<th class="head"><p class="first last">说明</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last">verify_code</p>
+</td>
+<td><p class="first last">验证码</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">verify_desc</p>
+</td>
+<td><p class="first last">描述文字</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd>
 </dl>
 </li>
@@ -399,7 +533,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="user-log">
-<span id="id7"></span><h2>获取用户日志<a class="headerlink" href="#user-log" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>获取用户日志<a class="headerlink" href="#user-log" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -412,9 +546,25 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="19%" />
+<col width="20%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="/docs/info.html#common-parameters">公共参数</a></td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
