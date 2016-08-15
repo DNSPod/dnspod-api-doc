@@ -7,7 +7,7 @@ DNSPod用户API文档
 最近更新
 ---------
 2016-08-15
-    * `Record.Line </docs/domains.html#record-line>`_ 接口增加线路 ID 的返回
+    * `Record.Line <domains.html#record-line>`_ 接口增加线路 ID 的返回
     * 记录操作的相关接口支持传入线路 ID，解决之前部分开发者在传入中文线路可能会遇到的编码问题
 2016-03-04
     * 增加 Domain.Acquiresend.New 接口，直接将域名取回的验证链接发送至 WHOIS 邮箱，用户点击链接即可完成取回
