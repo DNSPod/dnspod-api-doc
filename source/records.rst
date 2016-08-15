@@ -12,9 +12,10 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_id  域名ID, 必选
-    * sub_domain  主机记录, 如 www, 默认@，可选
+    * sub_domain  主机记录, 如 www，可选，如果不传，默认为 @
     * record_type  记录类型，通过API记录类型获得，大写英文，比如：A, 必选
-    * record_line  记录线路，通过API记录线路获得，中文，比如：默认, 必选
+    * record_line  记录线路，通过API记录线路获得，中文，比如：默认
+      record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】
     * value  记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com., 必选
     * mx {1-20}  MX优先级, 当记录类型是 MX 时有效，范围1-20, MX记录必选
     * ttl {1-604800}  TTL，范围1-604800，不同等级域名最小值不同, 可选
@@ -31,7 +32,8 @@ HTTP请求方式：
     * 22 子域名不合法
     * 23 子域名级数超出限制
     * 24 泛解析子域名错误
-    * 25 轮循记录数量超出限制
+    * 500025 A记录负载均衡超出限制
+    * 500026 CNAME记录负载均衡超出限制
     * 26 记录线路错误
     * 27 记录类型错误
     * 30 MX 值错误，1-20
@@ -44,7 +46,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Create -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&sub_domain=@&record_type=A&record_line=默认&value=1.1.1.1'
+    curl -X POST https://dnsapi.cn/Record.Create -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&sub_domain=@&record_type=A&record_line_id=0&value=1.1.1.1'
     
 返回参考：
 
@@ -67,6 +69,10 @@ HTTP请求方式：
         * id: 记录ID, 即为 record_id
         * name: 添加的字域名 
         * status: 域名记录的状态
+
+注意：
+    record_line_id 形如 "10=3"，其中可能会包含等号，即 "="，如果是通过类似 URL 传递参数，需要将 '=' 转义成 '%3D'
+
 
 .. _Record.List:
 
@@ -104,88 +110,64 @@ HTTP请求方式：
 
     * JSON::
 
-        {
+            {
             "status": {
                 "code": "1",
                 "message": "Action completed successful",
-                "created_at": "2015-01-18 18:41:42"
+                "created_at": "2016-08-12 17:57:55"
             },
             "domain": {
-                "id": 2238269,
-                "name": "我们.cn",
-                "punycode": "xn--vnqp08b.cn",
-                "grade": "D_Free",
-                "owner": "api@dnspod.com"
+                "id": 9842292,
+                "name": "yizerowu.com",
+                "punycode": "yizerowu.com",
+                "grade": "DP_Free",
+                "owner": "yizerowu@tencent.com",
+                "ext_status": "dnserror",
+                "ttl": 600
             },
             "info": {
-                "sub_domains": "4",
-                "record_total": "4"
+                "sub_domains": "12",
+                "record_total": "2"
             },
             "records": [
                 {
-                    "id": "55195163",
-                    "name": "@",
-                    "line": "默认",
+                    "id": "44146112",
+                    "name": "yizerowwwww",
+                    "line": "联通",
+                    "line_id": "10=1",
                     "type": "A",
                     "ttl": "600",
-                    "value": "218.241.99.140",
+                    "value": "12.3.3.3",
+                    "weight": null,
                     "mx": "0",
                     "enabled": "1",
                     "status": "enabled",
                     "monitor_status": "",
                     "remark": "",
-                    "updated_on": "2014-03-28 18:54:35",
+                    "updated_on": "2016-08-12 17:07:05",
                     "use_aqb": "no"
                 },
                 {
-                    "id": "16158908",
-                    "name": "@",
-                    "line": "默认",
-                    "type": "NS",
-                    "ttl": "600",
-                    "value": "f1g1ns1.dnspod.net.",
-                    "mx": "0",
-                    "enabled": "1",
-                    "status": "enabled",
-                    "monitor_status": "",
-                    "remark": "",
-                    "updated_on": "2015-01-18 20:59:03",
-                    "use_aqb": "no",
-                    "hold": "hold"
-                },
-                {
-                    "id": "16158909",
-                    "name": "@",
-                    "line": "默认",
-                    "type": "NS",
-                    "ttl": "600",
-                    "value": "f1g1ns2.dnspod.net.",
-                    "mx": "0",
-                    "enabled": "1",
-                    "status": "enabled",
-                    "monitor_status": "",
-                    "remark": "",
-                    "updated_on": "2015-01-18 20:59:03",
-                    "use_aqb": "no",
-                    "hold": "hold"
-                },
-                {
-                    "id": "16158918",
-                    "name": "www",
-                    "line": "默认",
+                    "id": "44146111",
+                    "name": "yizerowwwww",
+                    "line": "教育网",
+                    "line_id": "10=2",
                     "type": "A",
                     "ttl": "600",
-                    "value": "218.241.99.140",
+                    "value": "12.3.3.3",
+                    "weight": null,
                     "mx": "0",
                     "enabled": "1",
                     "status": "enabled",
                     "monitor_status": "",
                     "remark": "",
-                    "updated_on": "2015-01-18 20:59:25",
+                    "updated_on": "2016-08-12 17:00:19",
                     "use_aqb": "no"
                 }
             ]
         }
+
+
 
     * 字段说明:
         * domain:
@@ -200,7 +182,8 @@ HTTP请求方式：
         * records:
             * id: 记录ID编号
             * name: 子域名(主机记录)
-            * line: 解析线路, 详见 Record.Line 接口
+            * line: 解析记录的线路, 详见 Record.Line 接口
+            * line_id: 解析记录的线路ID，详见 Record.Line 接口
             * type: 记录类型, 详见 Record.Type 接口
             * ttl: 记录的 TTL 值
             * value: 记录值
@@ -220,6 +203,7 @@ HTTP请求方式：
                 * "yes": 已经开启
                 * "no": 未开启
 
+
 .. _Record.Modify:
 
 修改记录
@@ -232,9 +216,10 @@ HTTP请求方式：
     * 公共参数
     * domain_id 域名ID，必选
     * record_id 记录ID，必选
-    * sub_domain 主机记录，默认@，如 www，可选
+    * sub_domain  主机记录, 如 www，可选，如果不传，默认为 @
     * record_type 记录类型，通过API记录类型获得，大写英文，比如：A，必选
     * record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
+      record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】
     * value 记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com.，必选
     * mx {1-20} MX优先级, 当记录类型是 MX 时有效，范围1-20, mx记录必选
     * ttl {1-604800} TTL，范围1-604800，不同等级域名最小值不同，可选
@@ -252,7 +237,8 @@ HTTP请求方式：
     * 22 子域名不合法
     * 23 子域名级数超出限制
     * 24 泛解析子域名错误
-    * 25 轮循记录数量超出限制
+    * 500025 A记录负载均衡超出限制
+    * 500026 CNAME记录负载均衡超出限制
     * 26 记录线路错误
     * 27 记录类型错误
     * 29 TTL 值太小
@@ -270,7 +256,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&sub_domain=www&value=3.2.2.2&record_type=A&record_line=默认'
+    curl -X POST https://dnsapi.cn/Record.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&sub_domain=www&value=3.2.2.2&record_type=A&record_line_id=0'
    
 返回参考：
 
@@ -295,6 +281,10 @@ HTTP请求方式：
         * name: 子域名
         * value": 记录值
         * status": 记录状态
+
+注意：
+    record_line_id 形如 "10=3"，其中可能会包含等号，即 "="，如果是通过类似 URL 传递参数，需要将 '=' 转义成 '%3D'
+
 
 .. _Record.Remove:
 
@@ -348,6 +338,7 @@ HTTP请求方式：
     * record_id 记录ID，必选
     * sub_domain 主机记录，如 www
     * record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
+      record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】
     * value IP地址，例如：6.6.6.6，可选
 响应代码：
     * 共通返回
@@ -370,7 +361,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&record_line=默认&sub_domain=www'
+    curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&record_line_id=0&sub_domain=www'
     
 返回参考：
 
@@ -394,7 +385,12 @@ HTTP请求方式：
         * name: 子域名
         * value": 记录值
 
+注意：
+    record_line_id 形如 "10=3"，其中可能会包含等号，即 "="，如果是通过类似 URL 传递参数，需要将 '=' 转义成 '%3D'
+
+
 .. _Record.Remark:
+
 
 设置记录备注
 -------------
@@ -428,6 +424,7 @@ HTTP请求方式：
             }
         }
 
+
 .. _Record.Info:
 
 获取记录信息
@@ -459,30 +456,33 @@ HTTP请求方式：
 
         {
             "status": {
-                "code": "1", 
-                "message": "Action completed successful", 
-                "created_at": "2015-01-18 17:36:10"
-            }, 
+                "code": "1",
+                "message": "Action completed successful",
+                "created_at": "2016-08-12 17:51:25"
+            },
             "domain": {
-                "id": 2317346, 
-                "domain": "testapi.com", 
-                "domain_grade": "D_Plus"
-            }, 
+                "id": 9842292,
+                "domain": "yizerowu.com",
+                "domain_grade": "DP_Free"
+            },
             "record": {
-                "id": "16909160", 
-                "sub_domain": "@", 
-                "record_type": "A", 
-                "record_line": "默认", 
-                "value": "111.111.111.111", 
-                "mx": "0", 
-                "ttl": "10", 
-                "enabled": "1", 
-                "monitor_status": "", 
-                "remark": "test", 
-                "updated_on": "2015-01-18 17:23:58", 
-                "domain_id": "2317346"
+                "id": "44146112",
+                "sub_domain": "yizerowwwww",
+                "record_type": "A",
+                "record_line": "联通",
+                "record_line_id": "10=1",
+                "value": "12.3.3.3",
+                "weight": null,
+                "mx": "0",
+                "ttl": "600",
+                "enabled": "1",
+                "monitor_status": "",
+                "remark": "",
+                "updated_on": "2016-08-12 17:07:05",
+                "domain_id": "9842292"
             }
         }
+
 
     * 字段说明:
         * domain:
@@ -493,7 +493,8 @@ HTTP请求方式：
             * id: 记录ID编号
             * sub_domain: 子域名(主机记录)
             * record_type: 记录类型, 详见 Record.Type 接口
-            * record_line: 解析线路, 详见 Record.Line 接口
+            * record_line: 解析记录的线路, 详见 Record.Line 接口
+            * record_line_id: 解析记录的线路ID，详见 Record.Line 接口
             * value: 记录值
             * mx: 记录的 MX 记录值, 非 MX 记录类型，默认为 0
             * ttl: 记录的 TTL 值
