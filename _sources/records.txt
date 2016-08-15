@@ -15,7 +15,7 @@ HTTP请求方式：
     * sub_domain  主机记录, 如 www，可选，如果不传，默认为 @
     * record_type  记录类型，通过API记录类型获得，大写英文，比如：A, 必选
     * record_line  记录线路，通过API记录线路获得，中文，比如：默认
-      record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】
+    * record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id 二者传其一即可，系统优先取 record_line_id】
     * value  记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com., 必选
     * mx {1-20}  MX优先级, 当记录类型是 MX 时有效，范围1-20, MX记录必选
     * ttl {1-604800}  TTL，范围1-604800，不同等级域名最小值不同, 可选
@@ -46,7 +46,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Create -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&sub_domain=@&record_type=A&record_line_id=0&value=1.1.1.1'
+    curl -X POST https://dnsapi.cn/Record.Create -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&sub_domain=@&record_type=A&record_line_id=10%3D3&value=1.1.1.1'
     
 返回参考：
 
@@ -219,7 +219,7 @@ HTTP请求方式：
     * sub_domain  主机记录, 如 www，可选，如果不传，默认为 @
     * record_type 记录类型，通过API记录类型获得，大写英文，比如：A，必选
     * record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
-      record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】
+    * record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id 二者传其一即可，系统优先取 record_line_id】
     * value 记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com.，必选
     * mx {1-20} MX优先级, 当记录类型是 MX 时有效，范围1-20, mx记录必选
     * ttl {1-604800} TTL，范围1-604800，不同等级域名最小值不同，可选
@@ -256,7 +256,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&sub_domain=www&value=3.2.2.2&record_type=A&record_line_id=0'
+    curl -X POST https://dnsapi.cn/Record.Modify -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&sub_domain=www&value=3.2.2.2&record_type=A&record_line_id=10%3D3'
    
 返回参考：
 
@@ -338,7 +338,7 @@ HTTP请求方式：
     * record_id 记录ID，必选
     * sub_domain 主机记录，如 www
     * record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
-      record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】
+    * record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：'10=1' 【record_line 和 record_line_id 二者传其一即可，系统优先取 record_line_id】
     * value IP地址，例如：6.6.6.6，可选
 响应代码：
     * 共通返回
@@ -361,7 +361,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&record_line_id=0&sub_domain=www'
+    curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=LOGIN_TOKEN&format=json&domain_id=2317346&record_id=16894439&record_line_id=10%3D3&sub_domain=www'
     
 返回参考：
 

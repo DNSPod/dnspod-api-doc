@@ -56,8 +56,8 @@
 <li>domain_id  域名ID, 必选</li>
 <li>sub_domain  主机记录, 如 www，可选，如果不传，默认为 &#64;</li>
 <li>record_type  记录类型，通过API记录类型获得，大写英文，比如：A, 必选</li>
-<li>record_line  记录线路，通过API记录线路获得，中文，比如：默认
-record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：&#8216;10=1&#8217; 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】</li>
+<li>record_line  记录线路，通过API记录线路获得，中文，比如：默认</li>
+<li>record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：&#8216;10=1&#8217; 【record_line 和 record_line_id 二者传其一即可，系统优先取 record_line_id】</li>
 <li>value  记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com., 必选</li>
 <li>mx {1-20}  MX优先级, 当记录类型是 MX 时有效，范围1-20, MX记录必选</li>
 <li>ttl {1-604800}  TTL，范围1-604800，不同等级域名最小值不同, 可选</li>
@@ -92,7 +92,7 @@ record_line_id 线路的ID，通过API记录线路获得，英文字符串，比
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line_id=0&amp;value=1.1.1.1'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line_id=10%3D3&amp;value=1.1.1.1'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -345,8 +345,8 @@ record_line_id 线路的ID，通过API记录线路获得，英文字符串，比
 <li>record_id 记录ID，必选</li>
 <li>sub_domain  主机记录, 如 www，可选，如果不传，默认为 &#64;</li>
 <li>record_type 记录类型，通过API记录类型获得，大写英文，比如：A，必选</li>
-<li>record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
-record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：&#8216;10=1&#8217; 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】</li>
+<li>record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选</li>
+<li>record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：&#8216;10=1&#8217; 【record_line 和 record_line_id 二者传其一即可，系统优先取 record_line_id】</li>
 <li>value 记录值, 如 IP:200.200.200.200, CNAME: cname.dnspod.com., MX: mail.dnspod.com.，必选</li>
 <li>mx {1-20} MX优先级, 当记录类型是 MX 时有效，范围1-20, mx记录必选</li>
 <li>ttl {1-604800} TTL，范围1-604800，不同等级域名最小值不同，可选</li>
@@ -389,7 +389,7 @@ record_line_id 线路的ID，通过API记录线路获得，英文字符串，比
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line_id=0'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line_id=10%3D3'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -501,8 +501,8 @@ record_line_id 线路的ID，通过API记录线路获得，英文字符串，比
 <li>domain_id 域名ID，必选</li>
 <li>record_id 记录ID，必选</li>
 <li>sub_domain 主机记录，如 www</li>
-<li>record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
-record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：&#8216;10=1&#8217; 【record_line 和 record_line_id二者传其一即可，系统优先取 record_line_id】</li>
+<li>record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选</li>
+<li>record_line_id 线路的ID，通过API记录线路获得，英文字符串，比如：&#8216;10=1&#8217; 【record_line 和 record_line_id 二者传其一即可，系统优先取 record_line_id】</li>
 <li>value IP地址，例如：6.6.6.6，可选</li>
 </ul>
 </dd>
@@ -531,7 +531,7 @@ record_line_id 线路的ID，通过API记录线路获得，英文字符串，比
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line_id=0&amp;sub_domain=www'</pre>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line_id=10%3D3&amp;sub_domain=www'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
