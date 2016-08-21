@@ -64,7 +64,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Batch.Domain.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domains=dnsapi1.cn,dnsapi2.cn,dnsapi3.cn,dnsapi4.cn&amp;record_value=11.22.33.45'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Batch.Domain.Create -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domains=dnsapi1.cn,dnsapi2.cn,dnsapi3.cn,dnsapi4.cn&amp;record_value=11.22.33.45&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -196,7 +197,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Batch.Record.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;records=[{"sub_domain":"www,wap,bbs","record_type":"A","record_line":"默认","value":"11.22.33.44","ttl":600},{"sub_domain":"","record_type":"MX","record_line":"默认","value":"mx.qq.com","ttl":600,"MX":10}]&amp;domain_id=25556994,25556952'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Batch.Record.Create -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;records=[{&quot;sub_domain&quot;:&quot;www,wap,bbs&quot;,&quot;record_type&quot;:&quot;A&quot;,&quot;record_line&quot;:&quot;默认&quot;,&quot;value&quot;:&quot;11.22.33.44&quot;,&quot;ttl&quot;:600},{&quot;sub_domain&quot;:&quot;&quot;,&quot;record_type&quot;:&quot;MX&quot;,&quot;record_line&quot;:&quot;默认&quot;,&quot;value&quot;:&quot;mx.qq.com&quot;,&quot;ttl&quot;:600,&quot;MX&quot;:10}]&amp;domain_id=25556994,25556952&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -508,7 +510,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Batch.Detail -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;job_id=409752'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Batch.Detail -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;job_id=409752&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -672,7 +675,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -51,12 +51,37 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain 域名, 没有 www, 如 dnspod.com</li>
-<li>group_id 域名分组ID, 可选参数</li>
-<li>is_mark {yes|no} 是否星标域名, 可选参数</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="19%" />
+<col width="20%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain</td>
+<td>是</td>
+<td>域名, 没有 www, 如 dnspod.com</td>
+</tr>
+<tr class="row-even"><td>group_id</td>
+<td>否</td>
+<td>域名分组ID, 可选参数</td>
+</tr>
+<tr class="row-odd"><td>is_mark</td>
+<td>否</td>
+<td>是否星标域名，&#8221;yes&#8221;、&#8221;no&#8221; 分别代表是和否</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -70,7 +95,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Create -d 'login_token=LOGIN_TOKEN&amp;domain=api2.com&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Create -d &#39;login_token=LOGIN_TOKEN&amp;domain=api2.com&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -105,7 +131,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-list">
-<span id="id3"></span><h2>获取域名列表<a class="headerlink" href="#domain-list" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>获取域名列表<a class="headerlink" href="#domain-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -118,11 +144,27 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last">
-<li><p class="first">公共参数</p>
-</li>
-<li><dl class="first docutils">
-<dt>type 域名权限种类, 可选参数, 默认为&#8217;all&#8217;. 包含以下类型：</dt>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="12%" />
+<col width="13%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>否</td>
+<td><dl class="first last docutils">
+<dt>域名分组类型, 默认为&#8217;all&#8217;. 包含以下类型：</dt>
 <dd><ul class="first last simple">
 <li>all：所有域名</li>
 <li>mine：我的域名</li>
@@ -135,16 +177,26 @@
 </ul>
 </dd>
 </dl>
-</li>
-<li><p class="first">offset 记录开始的偏移, 第一条记录为 0, 依次类推, 可选参数</p>
-</li>
-<li><p class="first">length 共要获取的记录的数量, 比如获取20条, 则为20, 可选参数</p>
-</li>
-<li><p class="first">group_id 分组ID, 获取指定分组的域名, 可选参数</p>
-</li>
-<li><p class="first">keyword, 搜索的关键字, 如果指定则只返回符合该关键字的域名, 可选参数</p>
-</li>
-</ul>
+</td>
+</tr>
+<tr class="row-even"><td>offset</td>
+<td>否</td>
+<td>记录开始的偏移, 第一条记录为 0, 依次类推</td>
+</tr>
+<tr class="row-odd"><td>length</td>
+<td>否</td>
+<td>要获取的域名数量, 比如获取20个, 则为20</td>
+</tr>
+<tr class="row-even"><td>group_id</td>
+<td>否</td>
+<td>分组ID, 获取指定分组的域名。可以通过 <a class="reference external" href="domains.html#domaingroup-list">获取域名分组</a> 获取 group_id</td>
+</tr>
+<tr class="row-odd"><td>keyword</td>
+<td>否</td>
+<td>搜索的关键字, 如果指定则只返回符合该关键字的域名</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>注意事项：</dt>
 <dd><ul class="first last simple">
@@ -161,7 +213,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.List -d 'login_token=LOGIN_TOKEN&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.List -d &#39;login_token=LOGIN_TOKEN&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -374,7 +427,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-remove">
-<span id="id4"></span><h2>删除域名<a class="headerlink" href="#domain-remove" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>删除域名<a class="headerlink" href="#domain-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -387,10 +440,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -404,7 +476,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=1992403'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Remove -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=1992403&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -424,7 +497,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-status">
-<span id="id5"></span><h2>设置域名状态<a class="headerlink" href="#domain-status" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>设置域名状态<a class="headerlink" href="#domain-status" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -437,11 +510,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>status {enable, disable} 域名状态</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>是</td>
+<td>域名状态，&#8221;enable&#8221; 、&#8221;disable&#8221; 分别代表启用和暂停</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -456,7 +551,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Status -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2058967&amp;status=disable'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Status -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2058967&amp;status=disable&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -476,7 +572,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-info">
-<span id="id6"></span><h2>获取域名信息<a class="headerlink" href="#domain-info" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>获取域名信息<a class="headerlink" href="#domain-info" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -489,10 +585,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -505,7 +620,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Info  -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -652,7 +768,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-log">
-<span id="id7"></span><h2>获取域名日志<a class="headerlink" href="#domain-log" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>获取域名日志<a class="headerlink" href="#domain-log" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -665,12 +781,37 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain，分别对应域名ID和域名，提交其中一个即可</li>
-<li>offset 记录开始的偏移，第一条记录为 0，依次类推，可选参数</li>
-<li>length 共要获取的日志条数，比如获取20条，则为20，可选参数。默认为500条，最大值为500</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="19%" />
+<col width="15%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>offset</td>
+<td>否</td>
+<td>记录开始的偏移，第一条记录为 0，依次类推，默认为0</td>
+</tr>
+<tr class="row-odd"><td>length</td>
+<td>否</td>
+<td>共要获取的日志条数，比如获取20条，则为20，默认为500条，单次最多获取500条</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -683,7 +824,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Log  -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Log  -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -716,7 +858,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-searchenginepush">
-<span id="id8"></span><h2>设置搜索引擎推送<a class="headerlink" href="#domain-searchenginepush" title="Permalink to this headline">¶</a></h2>
+<span id="id15"></span><h2>设置搜索引擎推送<a class="headerlink" href="#domain-searchenginepush" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -729,11 +871,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>status {yes,no} 是否推送</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>是</td>
+<td>是否推送，&#8221;yes&#8221;、&#8221;no&#8221; 分别代表开启和关闭</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -748,7 +912,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;status=yes'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Searchenginepush -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;status=yes&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -768,7 +933,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domainshare-create">
-<span id="id9"></span><h2>添加域名共享<a class="headerlink" href="#domainshare-create" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h2>添加域名共享<a class="headerlink" href="#domainshare-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -781,13 +946,41 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>email 要共享到的邮箱</li>
-<li>mode {r,rw}共享模式, r (只读)　或 rw (读取、修改), 默认为 r</li>
-<li>sub_domain 子域名共享, 如：www、bbs等. 如果要共享整个域名, 则无需提交此参数</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="21%" />
+<col width="17%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>email</td>
+<td>是</td>
+<td>要共享到的邮箱</td>
+</tr>
+<tr class="row-odd"><td>mode</td>
+<td>否</td>
+<td>共享模式，&#8221;r&#8221;、&#8221;rw&#8221; 分别代表只读和读取、修改, 默认为 r</td>
+</tr>
+<tr class="row-even"><td>sub_domain</td>
+<td>否</td>
+<td>子域名共享, 如：www、bbs等. 如果要共享整个域名, 则无需提交此参数</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -804,7 +997,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=otheruser@dnspod.com&amp;mode=rw'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Create -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=otheruser@dnspod.com&amp;mode=rw&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -824,7 +1018,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domainshare-list">
-<span id="id10"></span><h2>域名共享列表<a class="headerlink" href="#domainshare-list" title="Permalink to this headline">¶</a></h2>
+<span id="id19"></span><h2>域名共享列表<a class="headerlink" href="#domainshare-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -837,10 +1031,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -862,7 +1075,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.List -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.List -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -926,7 +1140,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domainshare-modify">
-<span id="id11"></span><h2>修改域名共享<a class="headerlink" href="#domainshare-modify" title="Permalink to this headline">¶</a></h2>
+<span id="id21"></span><h2>修改域名共享<a class="headerlink" href="#domainshare-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -939,14 +1153,49 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>email 被共享者的邮箱, 原来是什么就提交什么, 不能修改</li>
-<li>mode {r,rw}共享模式, r (只读)　或 rw (读取、修改), 默认为 r</li>
-<li>old_sub_domain 已经成功共享的子域名, 如果只修改主域名共享, 则无需提交此参数</li>
-<li>new_sub_domain 要修改到的共享子域名</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="21%" />
+<col width="17%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>email</td>
+<td>是</td>
+<td>被共享者的邮箱, 原来是什么就提交什么, 不能修改</td>
+</tr>
+<tr class="row-odd"><td>mode</td>
+<td>否</td>
+<td>共享模式，&#8221;r&#8221;、&#8221;rw&#8221; 分别代表只读和读取、修改, 默认为 r</td>
+</tr>
+<tr class="row-even"><td>sub_domain</td>
+<td>否</td>
+<td>子域名共享, 如：www、bbs等. 如果要共享整个域名, 则无需提交此参数</td>
+</tr>
+<tr class="row-odd"><td>old_sub_domain</td>
+<td>否</td>
+<td>已经成功共享的子域名, 如果只修改主域名共享, 则无需提交此参数</td>
+</tr>
+<tr class="row-even"><td>new_sub_domain</td>
+<td>否</td>
+<td>要修改到的共享子域名</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -964,23 +1213,28 @@
 <p>示例</p>
 <ol class="arabic">
 <li><p class="first">修改主域名共享状态, 从 rw 修改为 r:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&#39;
+</pre></div>
 </div>
 </li>
 <li><p class="first">修改子域名的共享状态, 从rw 修改为 r:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&amp;old_sub_domain=www&amp;new_sub_domain=www'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=r&amp;old_sub_domain=www&amp;new_sub_domain=www&#39;
+</pre></div>
 </div>
 </li>
 <li><p class="first">将主域名共享修改为子域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;new_sub_domain=www'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;new_sub_domain=www&#39;
+</pre></div>
 </div>
 </li>
 <li><p class="first">将子域名共享修改为主域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&#39;
+</pre></div>
 </div>
 </li>
 <li><p class="first">将www的子域名共享修改为bbs的子主域名共享:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&amp;new_sub_domain=bbs'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&amp;mode=rw&amp;old_sub_domain=www&amp;new_sub_domain=bbs&#39;
+</pre></div>
 </div>
 </li>
 </ol>
@@ -1002,7 +1256,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domainshare-remove">
-<span id="id12"></span><h2>删除域名共享<a class="headerlink" href="#domainshare-remove" title="Permalink to this headline">¶</a></h2>
+<span id="id23"></span><h2>删除域名共享<a class="headerlink" href="#domainshare-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1015,11 +1269,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>email 被共享者的邮箱, 原来是什么就提交什么, 不能修改</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>email</td>
+<td>是</td>
+<td>被共享者的邮箱, 原来是什么就提交什么, 不能修改</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1035,7 +1311,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Remove -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1055,7 +1332,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-transfer">
-<span id="id13"></span><h2>域名过户<a class="headerlink" href="#domain-transfer" title="Permalink to this headline">¶</a></h2>
+<span id="id25"></span><h2>域名过户<a class="headerlink" href="#domain-transfer" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1068,11 +1345,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>email 被共享者的邮箱, 原来是什么就提交什么, 不能修改</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>email</td>
+<td>是</td>
+<td>域名将要过户到的邮箱帐号</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1090,7 +1389,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainshare.Transfer -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainshare.Transfer -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;email=yizerowu@dnspod.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1110,7 +1410,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-lock">
-<span id="id14"></span><h2>锁定域名<a class="headerlink" href="#domain-lock" title="Permalink to this headline">¶</a></h2>
+<span id="id27"></span><h2>锁定域名<a class="headerlink" href="#domain-lock" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1123,11 +1423,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 域名ID</li>
-<li>days 要锁定的天数</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>days</td>
+<td>是</td>
+<td>域名要锁定的天数，最多可锁定的天数可以通过 <a class="reference external" href="domains.html#domain-purview">获取域名权限</a> 接口获取</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1144,7 +1466,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lock -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;days=3'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Lock -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;days=3&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1178,83 +1501,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="domain-lockstatus">
-<span id="id15"></span><h2>获取域名锁定状态<a class="headerlink" href="#domain-lockstatus" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>接口地址：</dt>
-<dd><ul class="first last simple">
-<li><a class="reference external" href="https://dnsapi.cn/Domain.Lockstatus">https://dnsapi.cn/Domain.Lockstatus</a></li>
-</ul>
-</dd>
-<dt>HTTP请求方式：</dt>
-<dd><ul class="first last simple">
-<li>POST</li>
-</ul>
-</dd>
-<dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-</ul>
-</dd>
-<dt>响应代码：</dt>
-<dd><ul class="first last simple">
-<li>共通返回</li>
-<li>-15 域名已被封禁</li>
-<li>-7 企业账号的域名需要升级才能设置</li>
-<li>-8 代理名下用户的域名需要升级才能设置</li>
-<li>6 域名ID错误</li>
-<li>7 域名没有锁定</li>
-</ul>
-</dd>
-</dl>
-<p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Lockstatus -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
-</div>
-<p>返回参考：</p>
-<blockquote>
-<div><ul>
-<li><p class="first">JSON:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
-        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Action completed successful&quot;</span><span class="p">,</span>
-        <span class="s">&quot;created_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18 20:35:04&quot;</span>
-    <span class="p">},</span>
-    <span class="s">&quot;lock&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;lock_status&quot;</span><span class="p">:</span> <span class="s">&quot;yes&quot;</span><span class="p">,</span>
-        <span class="s">&quot;start_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-18&quot;</span><span class="p">,</span>
-        <span class="s">&quot;end_at&quot;</span><span class="p">:</span> <span class="s">&quot;2015-01-21&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</li>
-<li><dl class="first docutils">
-<dt>字段说明:</dt>
-<dd><ul class="first last">
-<li><dl class="first docutils">
-<dt>lock_status: 域名锁定的状态</dt>
-<dd><ul class="first last simple">
-<li>&#8220;yes&#8221;: 已锁定</li>
-<li>&#8220;no&#8221;: 未锁定</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">start_at: 域名锁定的开始日期</p>
-</li>
-<li><p class="first">lock_end: 域名自动解锁日期</p>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="domain-unlock">
-<span id="id16"></span><h2>域名锁定解锁<a class="headerlink" href="#domain-unlock" title="Permalink to this headline">¶</a></h2>
+<span id="id30"></span><h2>域名锁定解锁<a class="headerlink" href="#domain-unlock" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1267,11 +1515,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>lock_code 域名解锁码, 锁定的时候会返回</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>lock_code</td>
+<td>是</td>
+<td>域名解锁码, 锁定的时候会返回</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1287,7 +1557,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Unlock -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;lock_code=fdd638'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Unlock -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;lock_code=fdd638&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1307,7 +1578,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domainalias-list">
-<span id="id17"></span><h2>域名绑定列表<a class="headerlink" href="#domainalias-list" title="Permalink to this headline">¶</a></h2>
+<span id="id32"></span><h2>域名绑定列表<a class="headerlink" href="#domainalias-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1320,10 +1591,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1336,7 +1626,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.List -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainalias.List -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1375,7 +1666,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domainalias-create">
-<span id="id18"></span><h2>添加域名绑定<a class="headerlink" href="#domainalias-create" title="Permalink to this headline">¶</a></h2>
+<span id="id34"></span><h2>添加域名绑定<a class="headerlink" href="#domainalias-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1388,11 +1679,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id , 域名ID</li>
-<li>domain 要绑定的域名, 不带www.</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id</td>
+<td>是</td>
+<td>要创建别名绑定的域名ID</td>
+</tr>
+<tr class="row-even"><td>domain</td>
+<td>是</td>
+<td>要绑定到的域名，不带 www，例如：dnspod.com</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1409,7 +1722,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;domain=dnspodapi.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainalias.Create -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;domain=dnspodapi.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1442,7 +1756,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domainalias-remove">
-<span id="id19"></span><h2>删除域名绑定<a class="headerlink" href="#domainalias-remove" title="Permalink to this headline">¶</a></h2>
+<span id="id36"></span><h2>删除域名绑定<a class="headerlink" href="#domainalias-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1455,11 +1769,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>alias_id 绑定ID, 绑定域名的时候会返回</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>alias_id</td>
+<td>是</td>
+<td>别名绑定的ID, 绑定域名的时候会返回</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1473,7 +1809,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domainalias.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;alias_id=18737'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domainalias.Remove -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;alias_id=18737&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1493,7 +1830,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domaingroup-list">
-<span id="id20"></span><h2>获取域名分组<a class="headerlink" href="#domaingroup-list" title="Permalink to this headline">¶</a></h2>
+<span id="id38"></span><h2>获取域名分组<a class="headerlink" href="#domaingroup-list" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1506,9 +1843,25 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1517,7 +1870,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_token=LOGIN_TOKEN&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d &#39;login_token=LOGIN_TOKEN&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1587,7 +1941,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domaingroup-create">
-<span id="id21"></span><h2>添加域名分组<a class="headerlink" href="#domaingroup-create" title="Permalink to this headline">¶</a></h2>
+<span id="id40"></span><h2>添加域名分组<a class="headerlink" href="#domaingroup-create" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><a class="reference external" href="https://dnsapi.cn/Domaingroup.Create">https://dnsapi.cn/Domaingroup.Create</a></dd>
@@ -1597,10 +1951,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>group_name 分组名称</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>group_name</td>
+<td>是</td>
+<td>分组名称</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1612,7 +1985,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;group_name=dnspod'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domaingroup.List -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;group_name=dnspod&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1648,7 +2022,7 @@
 </dl>
 </div>
 <div class="section" id="domaingroup-modify">
-<span id="id22"></span><h2>修改域名分组<a class="headerlink" href="#domaingroup-modify" title="Permalink to this headline">¶</a></h2>
+<span id="id42"></span><h2>修改域名分组<a class="headerlink" href="#domaingroup-modify" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><a class="reference external" href="https://dnsapi.cn/Domaingroup.Modify">https://dnsapi.cn/Domaingroup.Modify</a></dd>
@@ -1658,11 +2032,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>group_id 分组ID</li>
-<li>group_name 分组名称</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>group_id</td>
+<td>是</td>
+<td>要修改的分组ID</td>
+</tr>
+<tr class="row-even"><td>group_name</td>
+<td>是</td>
+<td>需要修改到的分组名称</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1675,7 +2071,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;group_id=1985&amp;group_name=dnspodgroup'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;group_id=1985&amp;group_name=dnspodgroup&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1695,7 +2092,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domaingroup-remove">
-<span id="id23"></span><h2>删除域名分组<a class="headerlink" href="#domaingroup-remove" title="Permalink to this headline">¶</a></h2>
+<span id="id44"></span><h2>删除域名分组<a class="headerlink" href="#domaingroup-remove" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1708,10 +2105,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>group_id 分组ID</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>group_id</td>
+<td>是</td>
+<td>要删除的分组ID</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1721,7 +2137,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;group_id=1985'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domaingroup.Remove -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;group_id=1985&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1741,7 +2158,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-changegroup">
-<span id="id24"></span><h2>设置域名分组<a class="headerlink" href="#domain-changegroup" title="Permalink to this headline">¶</a></h2>
+<span id="id46"></span><h2>设置域名分组<a class="headerlink" href="#domain-changegroup" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1754,11 +2171,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>group_id 分组ID</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>group_id</td>
+<td>是</td>
+<td>分组ID</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1769,7 +2208,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Changegroup -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;group_id=1985'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Changegroup -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;group_id=1985&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1796,7 +2236,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-ismark">
-<span id="id25"></span><h2>设置域名星标<a class="headerlink" href="#domain-ismark" title="Permalink to this headline">¶</a></h2>
+<span id="id48"></span><h2>设置域名星标<a class="headerlink" href="#domain-ismark" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1809,11 +2249,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>is_mark {yes | no}, 是否星标域名</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>is_mark</td>
+<td>是</td>
+<td>是否星标域名，&#8221;yes&#8221;、&#8221;no&#8221; 分别代表是和否</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1823,7 +2285,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Ismark -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;is_mark=yes'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Ismark -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;is_mark=yes&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1843,7 +2306,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-remark">
-<span id="id26"></span><h2>设置域名备注<a class="headerlink" href="#domain-remark" title="Permalink to this headline">¶</a></h2>
+<span id="id50"></span><h2>设置域名备注<a class="headerlink" href="#domain-remark" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1856,11 +2319,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-<li>remark 域名备注, 删除备注请提交空内容</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>remark</td>
+<td>是</td>
+<td>域名备注, 删除备注请提交空内容</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1870,7 +2355,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Remark -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;remark=这个域名需要备注一下'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Remark -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&amp;remark=这个域名需要备注一下&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -1890,7 +2376,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-purview">
-<span id="id27"></span><h2>获取域名权限<a class="headerlink" href="#domain-purview" title="Permalink to this headline">¶</a></h2>
+<span id="id52"></span><h2>获取域名权限<a class="headerlink" href="#domain-purview" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -1903,10 +2389,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -1916,7 +2421,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Purview -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Purview -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2018,10 +2524,29 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain 要取回的域名</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain</td>
+<td>是</td>
+<td>要取回的域名</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -2041,7 +2566,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquire -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Acquire -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2071,7 +2597,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-acquiresend">
-<span id="id28"></span><h2>域名取回发送验证码<a class="headerlink" href="#domain-acquiresend" title="Permalink to this headline">¶</a></h2>
+<span id="id55"></span><h2>域名取回发送验证码<a class="headerlink" href="#domain-acquiresend" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -2084,11 +2610,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain 要取回的域名</li>
-<li>email 域名取回邮箱列表中的一个邮箱</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="18%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain</td>
+<td>是</td>
+<td>要取回的域名</td>
+</tr>
+<tr class="row-even"><td>email</td>
+<td>是</td>
+<td>域名取回WHOIS邮箱列表中的一个邮箱，验证码会发送到该邮箱</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -2108,7 +2656,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;email=support@namecheap.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;email=support@namecheap.com&#39;
+</pre></div>
 </div>
 <dl class="docutils">
 <dt>返回参考：</dt>
@@ -2129,7 +2678,7 @@
 </dl>
 </div>
 <div class="section" id="domain-acquirevalidate">
-<span id="id29"></span><h2>验证域名取回的验证码<a class="headerlink" href="#domain-acquirevalidate" title="Permalink to this headline">¶</a></h2>
+<span id="id57"></span><h2>验证域名取回的验证码<a class="headerlink" href="#domain-acquirevalidate" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -2142,11 +2691,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain 要取回的域名</li>
-<li>code  发送到邮箱的验证码</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain</td>
+<td>是</td>
+<td>要取回的域名</td>
+</tr>
+<tr class="row-even"><td>code</td>
+<td>是</td>
+<td>发送到邮箱的验证码</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -2166,7 +2737,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;code=111000'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Acquirevalidate -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;code=111000&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2186,7 +2758,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="domain-acquiresend-new">
-<span id="id30"></span><h2>域名取回发送验证链接<a class="headerlink" href="#domain-acquiresend-new" title="Permalink to this headline">¶</a></h2>
+<span id="id59"></span><h2>域名取回发送验证链接<a class="headerlink" href="#domain-acquiresend-new" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -2199,11 +2771,33 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last simple">
-<li>公共参数</li>
-<li>domain 要取回的域名</li>
-<li>whois_email 域名取回 WHOIS 邮箱列表中的一个邮箱</li>
-</ul>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="22%" />
+<col width="18%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain</td>
+<td>是</td>
+<td>要取回的域名</td>
+</tr>
+<tr class="row-even"><td>whois_email</td>
+<td>是</td>
+<td>域名取回WHOIS邮箱列表中的一个邮箱，验证链接会发送到该邮箱</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -2223,7 +2817,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend.New -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;whois_email=support@namecheap.com'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Domain.Acquiresend.New -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain=api4.com&amp;whois_email=support@namecheap.com&#39;
+</pre></div>
 </div>
 <dl class="docutils">
 <dt>返回参考：</dt>
@@ -2246,7 +2841,7 @@
 </dl>
 </div>
 <div class="section" id="record-type">
-<span id="id31"></span><h2>获取等级允许的记录类型<a class="headerlink" href="#record-type" title="Permalink to this headline">¶</a></h2>
+<span id="id61"></span><h2>获取等级允许的记录类型<a class="headerlink" href="#record-type" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -2259,16 +2854,37 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last">
-<li><p class="first">公共参数</p>
-</li>
-<li><dl class="first docutils">
-<dt>domain_grade 域名等级, 分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra, 分别对应免费套餐、个人豪华、企业1、企业2、企业3</dt>
-<dd><p class="first last">新套餐：DP_Free DP_Plus DP_Extra DP_Expert DP_Ultra, 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版</p>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="13%" />
+<col width="10%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_grade</td>
+<td>是</td>
+<td><dl class="first last docutils">
+<dt>域名等级, 分别为：</dt>
+<dd><ul class="first last simple">
+<li>旧套餐：D_Free、D_Plus、D_Extra、D_Expert、D_Ultra 分别对应免费套餐、个人豪华、企业1、企业2、企业3</li>
+<li>新套餐：DP_Free、DP_Plus、DP_Extra、DP_Expert、DP_Ultra 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版</li>
+</ul>
 </dd>
 </dl>
-</li>
-</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -2278,7 +2894,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Type -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_grade=D_Free'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Type -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_grade=D_Free&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2315,7 +2932,7 @@
 </dl>
 </div>
 <div class="section" id="record-line">
-<span id="id32"></span><h2>获取等级允许的线路<a class="headerlink" href="#record-line" title="Permalink to this headline">¶</a></h2>
+<span id="id63"></span><h2>获取等级允许的线路<a class="headerlink" href="#record-line" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -2328,18 +2945,41 @@
 </ul>
 </dd>
 <dt>请求参数：</dt>
-<dd><ul class="first last">
-<li><p class="first">公共参数</p>
-</li>
-<li><dl class="first docutils">
-<dt>domain_grade 域名等级, 分别为：D_Free, D_Plus, D_Extra, D_Expert, D_Ultra, 分别对应免费套餐、个人豪华、企业Ⅰ、企业Ⅱ、企业Ⅲ.</dt>
-<dd><p class="first last">新套餐：DP_Free, DP_Plus, DP_Extra, DP_Expert, DP_Ultra, 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版</p>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="13%" />
+<col width="10%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">是否必须</th>
+<th class="head">参数描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>公共参数</td>
+<td>是</td>
+<td>详见：<a class="reference external" href="info.html#common-parameters">公共参数</a></td>
+</tr>
+<tr class="row-odd"><td>domain_id 或 domain</td>
+<td>是</td>
+<td>分别对应域名ID和域名, 提交其中一个即可</td>
+</tr>
+<tr class="row-even"><td>domain_grade</td>
+<td>是</td>
+<td><dl class="first last docutils">
+<dt>域名等级, 分别为：</dt>
+<dd><ul class="first last simple">
+<li>旧套餐：D_Free、D_Plus、D_Extra、D_Expert、D_Ultra 分别对应免费套餐、个人豪华、企业1、企业2、企业3</li>
+<li>新套餐：DP_Free、DP_Plus、DP_Extra、DP_Expert、DP_Ultra 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版</li>
+</ul>
 </dd>
 </dl>
-</li>
-<li><p class="first">domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可</p>
-</li>
-</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd>
 <dt>响应代码：</dt>
 <dd><ul class="first last simple">
@@ -2349,7 +2989,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Line -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_grade=D_Free&amp;domain_id=2059079'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Line -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_grade=D_Free&amp;domain_id=2059079&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -2437,7 +3078,6 @@
 <li><a class="reference internal" href="#domainshare-remove">删除域名共享</a></li>
 <li><a class="reference internal" href="#domain-transfer">域名过户</a></li>
 <li><a class="reference internal" href="#domain-lock">锁定域名</a></li>
-<li><a class="reference internal" href="#domain-lockstatus">获取域名锁定状态</a></li>
 <li><a class="reference internal" href="#domain-unlock">域名锁定解锁</a></li>
 <li><a class="reference internal" href="#domainalias-list">域名绑定列表</a></li>
 <li><a class="reference internal" href="#domainalias-create">添加域名绑定</a></li>
@@ -2490,7 +3130,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

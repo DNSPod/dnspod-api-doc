@@ -78,7 +78,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Detail -d 'login_token=LOGIN_TOKEN&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/User.Detail -d &#39;login_token=LOGIN_TOKEN&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -121,87 +122,55 @@
 <col width="83%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><p class="first last">字段名</p>
-</th>
-<th class="head"><p class="first last">说明</p>
-</th>
+<tr class="row-odd"><th class="head">字段名</th>
+<th class="head">说明</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><p class="first last">real_name</p>
-</td>
-<td><p class="first last">用户名称, 企业用户对应为公司名称</p>
-</td>
+<tr class="row-even"><td>real_name</td>
+<td>用户名称, 企业用户对应为公司名称</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">user_type</p>
-</td>
-<td><p class="first last">账号类型：[&#8220;personal&#8221;,&#8221;enterprise&#8221;]，分别对应个人用户和企业用户</p>
-</td>
+<tr class="row-odd"><td>user_type</td>
+<td>账号类型：[&#8220;personal&#8221;,&#8221;enterprise&#8221;]，分别对应个人用户和企业用户</td>
 </tr>
-<tr class="row-even"><td><p class="first last">telephone</p>
-</td>
-<td><p class="first last">电话号码</p>
-</td>
+<tr class="row-even"><td>telephone</td>
+<td>电话号码</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">im</p>
-</td>
-<td><p class="first last">用户 IM (已废弃)</p>
-</td>
+<tr class="row-odd"><td>im</td>
+<td>用户 IM (已废弃)</td>
 </tr>
-<tr class="row-even"><td><p class="first last">nick</p>
-</td>
-<td><p class="first last">用户昵称</p>
-</td>
+<tr class="row-even"><td>nick</td>
+<td>用户昵称</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">id</p>
-</td>
-<td><p class="first last">用户 ID, 即为 user_id</p>
-</td>
+<tr class="row-odd"><td>id</td>
+<td>用户 ID, 即为 user_id</td>
 </tr>
-<tr class="row-even"><td><p class="first last">email</p>
-</td>
-<td><p class="first last">用户账号, 邮箱格式</p>
-</td>
+<tr class="row-even"><td>email</td>
+<td>用户账号, 邮箱格式</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">status</p>
-</td>
-<td><p class="first last">账号状态：&#8221;enabled&#8221;: 正常；&#8221;disabled&#8221;: 被封禁</p>
-</td>
+<tr class="row-odd"><td>status</td>
+<td>账号状态：&#8221;enabled&#8221;: 正常；&#8221;disabled&#8221;: 被封禁</td>
 </tr>
-<tr class="row-even"><td><p class="first last">email_verified</p>
-</td>
-<td><p class="first last">邮箱是否通过验证：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</p>
-</td>
+<tr class="row-even"><td>email_verified</td>
+<td>邮箱是否通过验证：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">telephone_verified</p>
-</td>
-<td><p class="first last">手机是否通过验证：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</p>
-</td>
+<tr class="row-odd"><td>telephone_verified</td>
+<td>手机是否通过验证：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</td>
 </tr>
-<tr class="row-even"><td><p class="first last">weixin_binded</p>
-</td>
-<td><p class="first last">是否绑定微信：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</p>
-</td>
+<tr class="row-even"><td>weixin_binded</td>
+<td>是否绑定微信：&#8221;yes&#8221;: 通过；&#8221;no&#8221;: 未通过</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">agent_pending</p>
-</td>
-<td><p class="first last">是否正在申请成为代理：true: 是；false: 否</p>
-</td>
+<tr class="row-odd"><td>agent_pending</td>
+<td>是否正在申请成为代理：true: 是；false: 否</td>
 </tr>
-<tr class="row-even"><td><p class="first last">balance</p>
-</td>
-<td><p class="first last">账号余额</p>
-</td>
+<tr class="row-even"><td>balance</td>
+<td>账号余额</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">smsbalance</p>
-</td>
-<td><p class="first last">剩余短信条数</p>
-</td>
+<tr class="row-odd"><td>smsbalance</td>
+<td>剩余短信条数</td>
 </tr>
-<tr class="row-even"><td><p class="first last">user_grade</p>
-</td>
-<td><p class="first last">账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级</p>
-</td>
+<tr class="row-even"><td>user_grade</td>
+<td>账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级</td>
 </tr>
 </tbody>
 </table>
@@ -266,7 +235,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;im=10000000'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/User.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;im=10000000&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -338,7 +308,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Userpasswd.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;old_password=old_password&amp;new_password=new_password'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Userpasswd.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;old_password=old_password&amp;new_password=new_password&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -413,7 +384,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Useremail.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;old_email=api1@dnspod.com&amp;new_email=api@dnspod.com&amp;password=password'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Useremail.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;old_email=api1@dnspod.com&amp;new_email=api@dnspod.com&amp;password=password&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -479,7 +451,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Telephoneverify.Code -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;telephone=18600000000'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Telephoneverify.Code -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;telephone=18600000000&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -507,22 +480,16 @@
 <col width="82%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><p class="first last">字段名</p>
-</th>
-<th class="head"><p class="first last">说明</p>
-</th>
+<tr class="row-odd"><th class="head">字段名</th>
+<th class="head">说明</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><p class="first last">verify_code</p>
-</td>
-<td><p class="first last">验证码</p>
-</td>
+<tr class="row-even"><td>verify_code</td>
+<td>验证码</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">verify_desc</p>
-</td>
-<td><p class="first last">描述文字</p>
-</td>
+<tr class="row-odd"><td>verify_desc</td>
+<td>描述文字</td>
 </tr>
 </tbody>
 </table>
@@ -573,7 +540,8 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/User.Log -d 'login_token=LOGIN_TOKEN&amp;format=json'</pre>
+<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/User.Log -d &#39;login_token=LOGIN_TOKEN&amp;format=json&#39;
+</pre></div>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -657,7 +625,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

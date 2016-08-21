@@ -37,7 +37,7 @@
   <div class="section" id="dnspodapi">
 <h1>DNSPod用户API文档<a class="headerlink" href="#dnspodapi" title="Permalink to this headline">¶</a></h1>
 <p class="centered">
-<strong>DNSPod Documentation 1.0 released August 15, 2016</strong></p><div class="section" id="id1">
+<strong>DNSPod Documentation 1.0 released August 21, 2016</strong></p><div class="section" id="id1">
 <h2>最近更新<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>2016-08-15</dt>
@@ -48,7 +48,7 @@
 </dd>
 <dt>2016-03-04</dt>
 <dd><ul class="first last simple">
-<li>增加 Domain.Acquiresend.New 接口，直接将域名取回的验证链接发送至 WHOIS 邮箱，用户点击链接即可完成取回</li>
+<li>增加 <a class="reference external" href="domains.html#domain-acquiresend-new">Domain.Acquiresend.New</a> 接口，直接将域名取回的验证链接发送至 WHOIS 邮箱，用户点击链接即可完成取回</li>
 <li>将示例中的 login_email、login_password 参数更换为 login_token，推荐开发者们使用 API Token 进行鉴权</li>
 </ul>
 </dd>
@@ -65,12 +65,12 @@
 <dt>2015-05-15</dt>
 <dd><ul class="first last simple">
 <li>增加 Token 的验证机制说明</li>
-<li>Record.Create 和 Record.Modify 增加 status 参数，允许传入记录的初始状态</li>
+<li><a class="reference external" href="records.html#record-create">Record.Create</a> 和 <a class="reference external" href="records.html#record-modify">Record.Modify</a> 增加 status 参数，允许传入记录的初始状态</li>
 </ul>
 </dd>
 <dt>2014-09-02</dt>
 <dd><ul class="first last simple">
-<li>Domain.List 和 Record.List 增加 keyword 参数，实现搜索功能</li>
+<li><a class="reference external" href="domains.html#domain-list">Domain.List</a> 和 <a class="reference external" href="records.html#record-list">Record.List</a> 增加 keyword 参数，实现搜索功能</li>
 </ul>
 </dd>
 <dt>2014-08-29</dt>
@@ -80,7 +80,7 @@
 </dd>
 <dt>2014-07-22</dt>
 <dd><ul class="first last simple">
-<li>增加了 Record.Modify 和 Record.Ddns 的关于滥用的说明</li>
+<li>增加了 <a class="reference external" href="records.html#record-modify">Record.Modify</a> 和 <a class="reference external" href="records.html#dns">Record.Ddns</a> 的关于滥用的说明</li>
 </ul>
 </dd>
 <dt>2014-06-02</dt>
@@ -91,7 +91,7 @@
 </dd>
 <dt>2013-05-14</dt>
 <dd><ul class="first last simple">
-<li>Record.Ddns 增加可选的value参数，允许用户提交自己的IP地址</li>
+<li><a class="reference external" href="records.html#dns">Record.Ddns</a> 增加可选的value参数，允许用户提交自己的IP地址</li>
 <li>增加新套餐等级相关的说明</li>
 </ul>
 </dd>
@@ -103,8 +103,8 @@
 <dt>2012-05-07</dt>
 <dd><ul class="first last simple">
 <li>获取记录列表接口增加按子域名(sub_domain)获取记录</li>
-<li>增加Domain.Info接口</li>
-<li>增加Record.Info接口</li>
+<li>增加 <a class="reference external" href="domains.html#domain-info">Domain.Info</a> 接口</li>
+<li>增加 <a class="reference external" href="records.html#record-info">Record.Info</a> 接口</li>
 </ul>
 </dd>
 <dt>2012-03-22</dt>
@@ -115,8 +115,8 @@
 </dd>
 <dt>2012-03-14</dt>
 <dd><ul class="first last simple">
-<li>User.Detail接口增加了nick 返回，意为用户称呼</li>
-<li>User.Modify接口增加了 nick 参数，意为用户称呼</li>
+<li><a class="reference external" href="accounts.html#user-detail">User.Detail</a> 接口增加了nick 返回，意为用户称呼</li>
+<li><a class="reference external" href="accounts.html#user-modify">User.Modify</a> 接口增加了 nick 参数，意为用户称呼</li>
 </ul>
 </dd>
 <dt>2012-03-09</dt>
@@ -132,8 +132,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id2">
-<h2>目录<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>目录<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="info.html">API说明</a><ul>
@@ -168,7 +168,6 @@
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domainshare-remove">删除域名共享</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domain-transfer">域名过户</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domain-lock">锁定域名</a></li>
-<li class="toctree-l2"><a class="reference internal" href="domains.html#domain-lockstatus">获取域名锁定状态</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domain-unlock">域名锁定解锁</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domainalias-list">域名绑定列表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="domains.html#domainalias-create">添加域名绑定</a></li>
@@ -246,9 +245,7 @@
   <ul>
 <li><a class="reference internal" href="#">DNSPod用户API文档</a><ul>
 <li><a class="reference internal" href="#id1">最近更新</a></li>
-<li><a class="reference internal" href="#id2">目录</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#id4">目录</a></li>
 </ul>
 </li>
 </ul>
@@ -280,7 +277,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
