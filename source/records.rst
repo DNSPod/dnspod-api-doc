@@ -12,6 +12,7 @@ HTTP请求方式：
 请求参数：
     * 公共参数
     * domain_id  域名ID, 必选
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * sub_domain  主机记录, 如 www，可选，如果不传，默认为 @
     * record_type  记录类型，通过API记录类型获得，大写英文，比如：A, 必选
     * record_line  记录线路，通过API记录线路获得，中文，比如：默认
@@ -84,7 +85,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 域名ID，必选
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * offset 记录开始的偏移，第一条记录为 0，依次类推，可选
     * length 共要获取的记录的数量，比如获取20条，则为20，可选
     * sub_domain 子域名，如果指定则只返回此子域名的记录，可选
@@ -214,7 +215,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 域名ID，必选
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * record_id 记录ID，必选
     * sub_domain  主机记录, 如 www，可选，如果不传，默认为 @
     * record_type 记录类型，通过API记录类型获得，大写英文，比如：A，必选
@@ -296,7 +297,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 域名ID，必选
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * record_id 记录ID，必选
 响应代码：
     * 共通返回
@@ -334,7 +335,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 域名ID，必选
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * record_id 记录ID，必选
     * sub_domain 主机记录，如 www
     * record_line 记录线路，通过API记录线路获得，中文，比如：默认，必选
@@ -400,7 +401,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 域名ID，必选
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * record_id 记录ID，必选
     * remark 域名备注，删除备注请提交空内容，必选
 响应代码：
@@ -435,7 +436,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 域名ID，必选
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * record_id 记录ID，必选
 响应代码：
     * 共通返回
@@ -520,7 +521,7 @@ HTTP请求方式：
     * POST
 请求参数：
     * 公共参数
-    * domain_id 域名ID，必选
+    * domain_id 或 domain, 分别对应域名ID和域名, 提交其中一个即可
     * record_id 记录ID，必选
     * status {enable|disable} 新的状态，必选
 响应代码：
