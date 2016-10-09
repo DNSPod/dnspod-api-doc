@@ -443,7 +443,7 @@ HTTP请求方式：
 
 示例::
 
-    curl -X POST https://dnsapi.cn/Monitor.Setstatus -d 'login_token=LOGIN_TOKEN&format=json&monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&hours=1'
+    curl -X POST https://dnsapi.cn/Monitor.Gethistory -d 'login_token=LOGIN_TOKEN&format=json&monitor_id=03e3b268-3643-11e2-bab7-0819a6248970&hours=1'
     
 返回参考：
 
