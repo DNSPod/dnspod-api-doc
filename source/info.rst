@@ -55,14 +55,11 @@ API开发规范
     * error_on_empty {yes,no} 没有数据时是否返回错误，可选，默认为yes，建议用no
     * user_id 用户的ID，可选，仅代理接口需要， 用户接口不需要提交此参数
 
-注：旧的 "用户名 + 密码" 的鉴权方式仍能继续使用，推荐开发者优先使用 login_token 来鉴权，Token 生成方法详见：https://www.dnspod.cn/docs/info.html#api-token
+说明：
+    * API Token 生成方法详见：https://support.dnspod.cn/Kb/showarticle/tsid/227/，完整的 API Token 是由 ID,Token 组合而成的，用英文的逗号分割
+    * 旧的 "用户名 + 密码" 的鉴权方式仍能继续使用，推荐开发者优先使用 login_token 来鉴权
 
 
-.. _api_token:
-
-API Token
-----------
-增加 Token 的验证机制，https://support.dnspod.cn/Kb/showarticle/tsid/227/ ，后续新用户将全部使用 Token 来鉴权，具体时间会提前通知，也建议开发者们都采用 Token 来鉴权，不要再使用 "用户名 ＋ 密码" 的方式。
 
 
 .. _common_response:

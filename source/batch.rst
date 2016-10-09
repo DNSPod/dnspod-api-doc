@@ -281,11 +281,11 @@ HTTP请求方式：
 响应代码：
     * 共通返回【具体错误信息参见 message 字段】
 
-示例::
+示例:
     * 批量将多条记录修改为 CNAME 记录
         curl -X POST https://dnsapi.cn/Batch.Record.Modify -d 'login_token=LOGIN_TOKEN&format=json&record_id=36,90,91&change=record_type&change_to=CNAME&value=dnsapi1.cn.'
     * 批量将多条记录暂停
-        curl -X POST https://dnsapi.cn/Batch.Record.Modify -d 'login_token=LOGIN_TOKEN&format=json&record_id=36,90,91&change=status&change_to=disabled'
+        curl -X POST https://dnsapi.cn/Batch.Record.Modify -d 'login_token=LOGIN_TOKEN&format=json&record_id=36,90,91&change=status&change_to=disable'
 
 返回参考：
 
