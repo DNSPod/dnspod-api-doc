@@ -93,8 +93,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Create -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line_id=10%3D3&amp;value=1.1.1.1&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Create -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;sub_domain=@&amp;record_type=A&amp;record_line_id=10%3D3&amp;value=1.1.1.1'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -174,70 +173,68 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.List -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.List -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
 <div><ul>
 <li><p class="first">JSON:</p>
-<div class="highlight-python"><div class="highlight"><pre>    {
-    &quot;status&quot;: {
-        &quot;code&quot;: &quot;1&quot;,
-        &quot;message&quot;: &quot;Action completed successful&quot;,
-        &quot;created_at&quot;: &quot;2016-08-12 17:57:55&quot;
+<div class="highlight-python"><pre>    {
+    "status": {
+        "code": "1",
+        "message": "Action completed successful",
+        "created_at": "2016-08-12 17:57:55"
     },
-    &quot;domain&quot;: {
-        &quot;id&quot;: 9842292,
-        &quot;name&quot;: &quot;yizerowu.com&quot;,
-        &quot;punycode&quot;: &quot;yizerowu.com&quot;,
-        &quot;grade&quot;: &quot;DP_Free&quot;,
-        &quot;owner&quot;: &quot;yizerowu@tencent.com&quot;,
-        &quot;ext_status&quot;: &quot;dnserror&quot;,
-        &quot;ttl&quot;: 600
+    "domain": {
+        "id": 9842292,
+        "name": "yizerowu.com",
+        "punycode": "yizerowu.com",
+        "grade": "DP_Free",
+        "owner": "yizerowu@tencent.com",
+        "ext_status": "dnserror",
+        "ttl": 600
     },
-    &quot;info&quot;: {
-        &quot;sub_domains&quot;: &quot;12&quot;,
-        &quot;record_total&quot;: &quot;2&quot;
+    "info": {
+        "sub_domains": "12",
+        "record_total": "2"
     },
-    &quot;records&quot;: [
+    "records": [
         {
-            &quot;id&quot;: &quot;44146112&quot;,
-            &quot;name&quot;: &quot;yizerowwwww&quot;,
-            &quot;line&quot;: &quot;联通&quot;,
-            &quot;line_id&quot;: &quot;10=1&quot;,
-            &quot;type&quot;: &quot;A&quot;,
-            &quot;ttl&quot;: &quot;600&quot;,
-            &quot;value&quot;: &quot;12.3.3.3&quot;,
-            &quot;weight&quot;: null,
-            &quot;mx&quot;: &quot;0&quot;,
-            &quot;enabled&quot;: &quot;1&quot;,
-            &quot;status&quot;: &quot;enabled&quot;,
-            &quot;monitor_status&quot;: &quot;&quot;,
-            &quot;remark&quot;: &quot;&quot;,
-            &quot;updated_on&quot;: &quot;2016-08-12 17:07:05&quot;,
-            &quot;use_aqb&quot;: &quot;no&quot;
+            "id": "44146112",
+            "name": "yizerowwwww",
+            "line": "联通",
+            "line_id": "10=1",
+            "type": "A",
+            "ttl": "600",
+            "value": "12.3.3.3",
+            "weight": null,
+            "mx": "0",
+            "enabled": "1",
+            "status": "enabled",
+            "monitor_status": "",
+            "remark": "",
+            "updated_on": "2016-08-12 17:07:05",
+            "use_aqb": "no"
         },
         {
-            &quot;id&quot;: &quot;44146111&quot;,
-            &quot;name&quot;: &quot;yizerowwwww&quot;,
-            &quot;line&quot;: &quot;教育网&quot;,
-            &quot;line_id&quot;: &quot;10=2&quot;,
-            &quot;type&quot;: &quot;A&quot;,
-            &quot;ttl&quot;: &quot;600&quot;,
-            &quot;value&quot;: &quot;12.3.3.3&quot;,
-            &quot;weight&quot;: null,
-            &quot;mx&quot;: &quot;0&quot;,
-            &quot;enabled&quot;: &quot;1&quot;,
-            &quot;status&quot;: &quot;enabled&quot;,
-            &quot;monitor_status&quot;: &quot;&quot;,
-            &quot;remark&quot;: &quot;&quot;,
-            &quot;updated_on&quot;: &quot;2016-08-12 17:00:19&quot;,
-            &quot;use_aqb&quot;: &quot;no&quot;
+            "id": "44146111",
+            "name": "yizerowwwww",
+            "line": "教育网",
+            "line_id": "10=2",
+            "type": "A",
+            "ttl": "600",
+            "value": "12.3.3.3",
+            "weight": null,
+            "mx": "0",
+            "enabled": "1",
+            "status": "enabled",
+            "monitor_status": "",
+            "remark": "",
+            "updated_on": "2016-08-12 17:00:19",
+            "use_aqb": "no"
         }
     ]
-}
-</pre></div>
+}</pre>
 </div>
 </li>
 <li><dl class="first docutils">
@@ -393,8 +390,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line_id=10%3D3&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Modify -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;sub_domain=www&amp;value=3.2.2.2&amp;record_type=A&amp;record_line_id=10%3D3'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -468,8 +464,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Remove -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Remove -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -537,8 +532,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line_id=10%3D3&amp;sub_domain=www&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;record_line_id=10%3D3&amp;sub_domain=www'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -606,8 +600,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Remark -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;remark=test&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Remark -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;remark=test'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -659,8 +652,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Info -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Info -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -801,8 +793,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Record.Status -d &#39;login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Record.Status -d 'login_token=LOGIN_TOKEN&amp;format=json&amp;domain_id=2317346&amp;record_id=16894439&amp;status=disable'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -892,7 +883,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>

@@ -121,15 +121,16 @@
 <li>user_id 用户的ID，可选，仅代理接口需要， 用户接口不需要提交此参数</li>
 </ul>
 </dd>
+<dt>说明：</dt>
+<dd><ul class="first last simple">
+<li>API Token 生成方法详见：<a class="reference external" href="https://support.dnspod.cn/Kb/showarticle/tsid/227/">https://support.dnspod.cn/Kb/showarticle/tsid/227/</a>，完整的 API Token 是由 ID,Token 组合而成的，用英文的逗号分割</li>
+<li>旧的 &#8220;用户名 + 密码&#8221; 的鉴权方式仍能继续使用，推荐开发者优先使用 login_token 来鉴权</li>
+</ul>
+</dd>
 </dl>
-<p>注：旧的 &#8220;用户名 + 密码&#8221; 的鉴权方式仍能继续使用，推荐开发者优先使用 login_token 来鉴权，Token 生成方法详见：<a class="reference external" href="https://www.dnspod.cn/docs/info.html#api-token">https://www.dnspod.cn/docs/info.html#api-token</a></p>
-</div>
-<div class="section" id="api-token">
-<span id="id3"></span><h2>API Token<a class="headerlink" href="#api-token" title="Permalink to this headline">¶</a></h2>
-<p>增加 Token 的验证机制，<a class="reference external" href="https://support.dnspod.cn/Kb/showarticle/tsid/227/">https://support.dnspod.cn/Kb/showarticle/tsid/227/</a> ，后续新用户将全部使用 Token 来鉴权，具体时间会提前通知，也建议开发者们都采用 Token 来鉴权，不要再使用 &#8220;用户名 ＋ 密码&#8221; 的方式。</p>
 </div>
 <div class="section" id="common-response">
-<span id="id4"></span><h2>共通返回<a class="headerlink" href="#common-response" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>共通返回<a class="headerlink" href="#common-response" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>这些返回在所有的接口都有可能返回，它们是所有接口共通的，在此统一说明，下面的接口将不再列出。另外，文档中的参考返回只列出JSON格式的，XML格式类似，就不再列出了。</dt>
 <dd><ul class="first last simple">
@@ -176,7 +177,7 @@
 </dl>
 </div>
 <div class="section" id="info-version">
-<span id="id5"></span><h2>获取API版本号<a class="headerlink" href="#info-version" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>获取API版本号<a class="headerlink" href="#info-version" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>接口地址：</dt>
 <dd><ul class="first last simple">
@@ -200,8 +201,7 @@
 </dd>
 </dl>
 <p>示例:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST https://dnsapi.cn/Info.Version -d &#39;login_token=LOGIN_TOKEN&amp;format=json&#39;
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST https://dnsapi.cn/Info.Version -d 'login_token=LOGIN_TOKEN&amp;format=json'</pre>
 </div>
 <p>返回参考：</p>
 <blockquote>
@@ -236,7 +236,6 @@
 <li><a class="reference internal" href="#">API说明</a><ul>
 <li><a class="reference internal" href="#specification">API开发规范</a></li>
 <li><a class="reference internal" href="#common-parameters">公共参数</a></li>
-<li><a class="reference internal" href="#api-token">API Token</a></li>
 <li><a class="reference internal" href="#common-response">共通返回</a></li>
 <li><a class="reference internal" href="#d">D令牌验证相关</a></li>
 <li><a class="reference internal" href="#info-version">获取API版本号</a></li>
@@ -274,7 +273,7 @@
     </div>
     <div class="footer">
         &copy; Copyright DNSPod Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>
